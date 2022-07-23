@@ -90,7 +90,7 @@
 }
 .fa-fw {
     text-align: center;
-    width: 1.25em;
+    inline-size: 1.25em;
 }
 .fa-ul {
     list-style-type: none;
@@ -104,7 +104,7 @@
     left: calc(var(--fa-li-width, 2em) * -1);
     position: absolute;
     text-align: center;
-    width: var(--fa-li-width, 2em);
+    inline-size: var(--fa-li-width, 2em);
     line-height: inherit;
 }
 .fa-border {
@@ -537,18 +537,18 @@
 }
 .fa-stack {
     display: inline-block;
-    height: 2em;
+    block-size: 2em;
     line-height: 2em;
     position: relative;
     vertical-align: middle;
-    width: 2.5em;
+    inline-size: 2.5em;
 }
 .fa-stack-1x,
 .fa-stack-2x {
     left: 0;
     position: absolute;
     text-align: center;
-    width: 100%;
+    inline-size: 100%;
     z-index: var(--fa-stack-z-index, auto);
 }
 .fa-stack-1x {
@@ -10908,8 +10908,8 @@
 .sr-only,
 .sr-only-focusable:not(:focus) {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     padding: 0;
     margin: -1px;
     overflow: hidden;
