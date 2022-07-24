@@ -49,7 +49,7 @@
 
         transition: opacity 400ms 50ms;
 
-        #description {
+        .description {
             min-inline-size: 0;
             inline-size: 100%;
 
@@ -101,7 +101,7 @@
     }
 
     &:hover {
-        #details {
+        .details {
             opacity: 1;
         }
     }

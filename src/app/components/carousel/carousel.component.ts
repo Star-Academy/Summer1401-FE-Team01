@@ -56,7 +56,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     }
 
     private static doBulletAnimation(index: number, addClass: boolean): void {
-        const bullet = document.querySelectorAll('#bullets i').item(index);
+        const bullet = document.querySelectorAll('.bullets i').item(index);
 
         const first = bullet.getBoundingClientRect();
 
