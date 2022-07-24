@@ -40,15 +40,18 @@ jobs:
               with:
                   name: deploy_dist
 
-            - name: Find Push Target-Branch
-              run: |
-                  GITHUB_REF="${github.ref}"
-                  PUSH_TARGET_BRANCH="${GITHUB_REF##*/}"
-                  echo "PUSH_TARGET_BRANCH=${PUSH_TARGET_BRANCH}" >> $GITHUB_ENV
-
-            - name: Deploy to GitHub Pages
+            - name: Deploy to "Release" GitHub Pages
+              if: github.ref == 'refs/heads/main'
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  BRANCH: gh-pages-${{ env.PUSH_TARGET_BRANCH }}
+                  BRANCH: gh-pages
+                  FOLDER: deploy_dist/Summer1401-FE-Team01
+
+            - name: Deploy to "Dev" GitHub Pages
+              if: github.ref != 'refs/heads/main'
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages-dev
                   FOLDER: deploy_dist/Summer1401-FE-Team01
