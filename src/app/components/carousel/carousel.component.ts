@@ -11,6 +11,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
     public slideTimeout: number = 4000;
     public currentIndex = 0;
+
     private autoNextInterval!: number | null;
 
     public ngAfterViewInit(): void {
@@ -66,6 +67,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
         const deltaX = first.left - last.left;
         const deltaW = first.width / last.width;
+
         bullet.animate(
             [{transform: `translateX(${deltaX}px) scaleX(${deltaW})`}, {transform: `translateX(0) scaleX(1)`}],
             {duration: 300, easing: 'ease-in'}
