@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "d&d": {
+        "d-and-d": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -55,10 +55,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "d&d:build:production"
+                            "browserTarget": "d-and-d:build:production"
                         },
                         "development": {
-                            "browserTarget": "d&d:build:development"
+                            "browserTarget": "d-and-d:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -66,7 +66,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "d&d:build"
+                        "browserTarget": "d-and-d:build"
                     }
                 },
                 "test": {
@@ -91,7 +91,7 @@
             }
         }
     },
-    "defaultProject": "d&d",
+    "defaultProject": "d-and-d",
     "cli": {
         "defaultCollection": "@angular-eslint/schematics"
     }
