@@ -7,7 +7,7 @@ export class Game {
         public averageRating: number
     ) {}
 
-    public get sliderImageAddress(): string {
+    public get sliderCoverImage(): string {
         return `assets/images/games/${this.subtitle}/horizontal.webp`;
     }
 }
