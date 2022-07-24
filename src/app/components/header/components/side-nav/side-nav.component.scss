@@ -12,8 +12,7 @@
     block-size: 100%;
 
     inline-size: fit-content;
-
-    border-left: hsl(212deg 43% 50% / 70%) solid;
+    border-inline-end: 0.15rem hsl(212deg 43% 50% / 70%) solid;
 
     a {
         color: hsl(0deg 0% 100%);
