@@ -42,6 +42,7 @@ jobs:
 
             - name: Find Push Target-Branch
               run: |
+                  GITHUB_REF="${github.ref}"
                   PUSH_TARGET_BRANCH="${GITHUB_REF##*/}"
                   echo "PUSH_TARGET_BRANCH=${PUSH_TARGET_BRANCH}" >> $GITHUB_ENV
 
