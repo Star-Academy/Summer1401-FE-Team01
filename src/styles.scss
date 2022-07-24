@@ -39,25 +39,6 @@ optgroup {
     font-family: inherit;
 }
 
-input {
-    background-color: hsl(0deg 0% 100%);
-
-    block-size: 1.5rem;
-
-    inline-size: 25rem;
-
-    padding: 1rem 0.5rem;
-
-    border: none;
-    border-radius: 0.5rem;
-
-    font-weight: bold;
-}
-
-input:focus {
-    outline: none;
-}
-
 .input-box {
     display: flex;
     flex-direction: row;
@@ -71,6 +52,25 @@ input:focus {
         color: hsl(16deg 100% 66%);
 
         font-size: 1.5rem;
+    }
+
+    input {
+        background-color: hsl(0deg 0% 100%);
+
+        block-size: 1.5rem;
+
+        inline-size: 25rem;
+
+        padding: 1rem 0.5rem;
+
+        border: none;
+        border-radius: 0.5rem;
+
+        font-weight: bold;
+    }
+
+    input:focus {
+        outline: none;
     }
 }
 
