@@ -1,0 +1,39 @@
+:root {
+    --color-gray-98: hsl(0deg 0% 98%);
+    --color-gray-95: hsl(0deg 0% 95%);
+    --color-gray-92: hsl(0deg 0% 92%);
+    --color-gray-90: hsl(0deg 0% 90%);
+    --color-gray-80: hsl(0deg 0% 80%);
+    --color-gray-70: hsl(0deg 0% 70%);
+    --color-gray-50: hsl(0deg 0% 50%);
+    --color-gray-40: hsl(0deg 0% 40%);
+    --color-gray-30: hsl(0deg 0% 30%);
+    --color-gray-20: hsl(0deg 0% 20%);
+    --color-gray-15: hsl(0deg 0% 15%);
+    --color-gray-10: hsl(0deg 0% 10%);
+
+    --color-primary: hsl(353deg 84% 58%);
+    --color-primary-opposite: var(--color-gray-98);
+
+    --color-fade: var(--color-gray-50);
+    --color-fader: var(--color-gray-70);
+
+    --color-default-background: var(--color-gray-98);
+    --color-default-foreground: var(--color-gray-10);
+
+    --color-body-background: var(--color-default-background);
+    --color-body-foreground: var(--color-default-foreground);
+
+    --color-background: hsl(238deg 59% 30%);
+
+    --color-box-shadow-subtle: hsl(0deg 90% 10% / 12%);
+    --box-shadow-subtle: 0 0.2rem 1rem 0 var(--color-box-shadow-subtle);
+
+    --minimum-inline-padding: 4rem;
+
+    --border-radius: 0.5rem;
+
+    --animation-duration-fast: 0.2s;
+    --animation-duration-normal: 0.5s;
+    --animation-duration-slow: 1s;
+}

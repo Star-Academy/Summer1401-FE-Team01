@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+@import "pallete";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--color-background);
+
+    scroll-behavior: smooth;
+
+    font-family: Vazirmatn, sans-serif;
+}
+
+.stack {
+    position: relative;
+
+    > .item {
+        position: absolute;
+    }
+}
+
+input,
+label,
+select,
+textarea,
+button,
+fieldset,
+legend,
+datalist,
+output,
+option,
+optgroup {
+    font-family: inherit;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    cursor: text;
+
+    i {
+        color: hsl(16deg 100% 66%);
+
+        font-size: 1.5rem;
+    }
+
+    input {
+        background-color: hsl(0deg 0% 100%);
+
+        block-size: 1.5rem;
+
+        inline-size: 25rem;
+
+        padding: 1rem 0.5rem;
+
+        border: none;
+        border-radius: 0.5rem;
+
+        font-weight: bold;
+    }
+
+    input:focus {
+        outline: none;
+    }
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    display: block;
+}
+
+svg {
+    display: block;
+
+    block-size: 1em;
+
+    inline-size: 1em;
+    fill: currentcolor;
+}
+
+.fade {
+    color: var(--color-fade);
+}

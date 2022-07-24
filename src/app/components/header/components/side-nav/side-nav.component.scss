@@ -1,0 +1,37 @@
+.sidenav {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    overflow-x: hidden;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    block-size: 100%;
+
+    inline-size: fit-content;
+    border-inline-end: 0.15rem hsl(212deg 43% 50% / 70%) solid;
+
+    a {
+        color: hsl(0deg 0% 100%);
+
+        display: block;
+
+        padding: 1rem;
+
+        font-size: 2rem;
+
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+            color: hsl(14deg 69% 58%);
+        }
+    }
+
+    .stick-to-bottom {
+        margin-top: auto;
+    }
+}

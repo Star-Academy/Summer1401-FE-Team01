@@ -1,0 +1,17 @@
+<div class="slides-wrapper">
+    <div class="slides">
+        <app-carousel-item
+            *ngFor="let game of games"
+            [game]="game"
+            [currentIndex]="currentIndex"
+            (mouseenter)="clearInterval()"
+            (mouseleave)="setupInterval()"
+        >
+        </app-carousel-item>
+    </div>
+    <div class="fade-overlay"></div>
+    <i class="far fa-angle-left next-slide-button" title="اسلاید بعد" (click)="setIndexByClick(currentIndex + 1)"></i>
+    <div class="bullets">
+        <i *ngFor="let _ of games; index as i" (click)="setIndexByClick(i)" [title]="'انتخاب اسلاید ' + i"></i>
+    </div>
+</div>

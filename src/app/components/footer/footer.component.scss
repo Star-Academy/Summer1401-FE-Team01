@@ -1,0 +1,20 @@
+.content-wrapper {
+    background-color: hsl(240deg 75% 11%);
+    color: hsl(14deg 69% 58%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 1rem;
+
+    font-weight: bold;
+
+    .top-row {
+        align-self: end;
+    }
+
+    .copyright {
+        align-items: center;
+    }
+}

@@ -1,27 +1,24 @@
-# Summer1401FETeam01
+## فروشگاه بازی D&D
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.17.
+در فروشگاه ما، میتوانیدهر بازی ای که دوست دارید بخرید!...
 
-## Development server
+اما غصه نخورید بازی‌های مجانی و تخفیفات باحال هم داریم!!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### فیچرها
 
-## Code scaffolding
+-   [ ] به‌روزترین بازی‌های موجود در بازار با بهترین قیمت‌ها
+-   [ ] پنل کاربری
+-   [ ] سبد خرید
+-   [ ] پیشنهادات ویژه برای شما
+-   [ ] حراج‌های فصلی
+-   [ ] Membershipهای متنوع و باحال با تخفیف‌های‌ ویژه
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### برنامه‌نویسان این سایت خوشگل
 
-## Build
+| <img src="https://avatars.githubusercontent.com/u/79373077?v=4" width="200"> | <img src="https://avatars.githubusercontent.com/u/59933477?v=4" width="200"> |
+| :--------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
+|                                @dibaaamir 🐱                                 |                                @dorrin-sot 💜                                |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Contributing
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+جهت آشنایی با طریقه اجرا و رفع ایشو فایل [CONTRIBUTING.md](CONTRIBUTING.md) را مطالعه بفرمایید :)
