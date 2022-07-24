@@ -1,9 +1,10 @@
 <footer class="content-wrapper" xmlns="http://www.w3.org/1999/html">
     <div class="top-row">
-        <button class="shiny-button" (click)="backToTopButtonClickHandler()">
-            بازگشت به بالا
-            <i class="far fa-angle-up"></i>
-        </button>
+        <app-shiny-button
+            (click)="backToTopButtonClickHandler()"
+            text="بازگشت به بالا"
+            iconClasses="far fa-angle-up"
+        ></app-shiny-button>
     </div>
 
     <p class="copyright">تمام حقوق اين وب‌سايت برای شرکت D&D است.</p>
