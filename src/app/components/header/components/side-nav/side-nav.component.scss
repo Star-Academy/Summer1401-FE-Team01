@@ -26,13 +26,13 @@
 
         text-align: center;
         text-decoration: none;
+
+        &:hover {
+            color: hsl(14deg 69% 58%);
+        }
     }
 
-    a:hover {
-        color: hsl(14deg 69% 58%);
-    }
-
-    .nav:hover {
-        color: hsl(356deg 50% 45%);
+    .fa-download {
+        margin-block-start: auto;
     }
 }
