@@ -4,7 +4,7 @@ export class Game {
         public title: string,
         public subtitle: string,
         public description: string,
-        public avgRating: number
+        public averageRating: number
     ) {}
 
     public get sliderImageAddress(): string {
