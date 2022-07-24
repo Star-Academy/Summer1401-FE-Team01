@@ -14,7 +14,7 @@
 
     transition: transform ease-in 300ms;
 
-    #image {
+    .image {
         position: absolute;
 
         block-size: 100%;
@@ -26,7 +26,7 @@
         border-radius: 3em;
     }
 
-    #details {
+    .details {
         background: hsl(0deg 0% 0% / 50%);
         color: hsl(0deg 0% 100%);
         opacity: 0;
@@ -71,7 +71,7 @@
         }
     }
 
-    #rating {
+    .rating {
         background-color: hsl(235deg 35% 14%);
         color: hsl(0deg 0% 100%);
 

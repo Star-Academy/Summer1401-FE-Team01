@@ -1,7 +1,7 @@
 <div class="slide" [style.--current-index]="currentIndex">
-    <img id="image" [src]="game.sliderImageAddress" [alt]="game.title" />
-    <div id="details">
-        <div id="description">
+    <img class="image" [src]="game.sliderImageAddress" [alt]="game.title" />
+    <div class="details">
+        <div class="description">
             <span>{{ game.description }}</span>
         </div>
         <button class="shiny-button">
@@ -9,7 +9,7 @@
             <i class="far fa-cart-circle-plus"></i>
         </button>
     </div>
-    <div id="rating">
+    <div class="rating">
         {{ game.averageRating }}
     </div>
 </div>
