@@ -143,7 +143,7 @@ svg {
         background-image: linear-gradient(hsl(10deg 70% 19%) 0, hsl(180deg 4% 5%) 100%);
 
         position: absolute;
-        inset: 4px;
+        inset: 0.5rem;
         z-index: -1;
     }
 
@@ -170,7 +170,7 @@ svg {
         &::after {
             background-image: linear-gradient(hsl(10deg 70% 19%) 0, hsl(180deg 4% 5%) 100%);
 
-            inset: 4px;
+            inset: 0.5rem;
         }
     }
 }
