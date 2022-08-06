@@ -1,6 +1,7 @@
 <div class="wrapper">
     <app-header></app-header>
     <main>
+        <button (click)="translateSample()">TRANSLATE!</button>
         <app-carousel [games]="suggestionGames"></app-carousel>
         <app-categories></app-categories>
         <router-outlet></router-outlet>

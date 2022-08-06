@@ -28,7 +28,7 @@ export class ApiService {
         return await this.fetchRequest<T>(options, init);
     }
 
-    private async fetchRequest<T>(options: RequestOptions, init?: RequestInit): Promise<T | null> {
+    public async fetchRequest<T>(options: RequestOptions, init?: RequestInit): Promise<T | null> {
         const {url, showSnackbar = true} = options;
 
         const response = await fetch(url, init);
