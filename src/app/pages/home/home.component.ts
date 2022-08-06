@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {Game} from '../../models/game.model';
-import {TranslateService} from '../../services/translate.service';
 
 @Component({
     selector: 'app-home',
@@ -53,10 +52,5 @@ export class HomeComponent {
 
     public get suggestionGames(): Array<Game> {
         return HomeComponent.suggestionGamesStatic;
-    }
-
-    public constructor(private translateService: TranslateService) {}
-    public async translateSample(): Promise<void> {
-        console.log(await this.translateService.translateStrings(['hi', 'God Of War']));
     }
 }
