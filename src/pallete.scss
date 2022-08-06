@@ -35,6 +35,9 @@
     --color-danger-darker: hsl(0deg 100% 50%);
     --color-danger-opposite: var(--color-gray-98);
 
+    --color-star: hsl(41deg 90% 60%);
+    --color-star-lighter: hsl(41deg 90% 70%);
+
     --color-default-background: var(--color-gray-98);
     --color-default-foreground: var(--color-gray-10);
 
@@ -46,7 +49,9 @@
     --color-background-10: hsl(226deg 60% 10%);
     --color-background-15: hsl(226deg 60% 15%);
     --color-background-20: hsl(226deg 60% 20%);
+    --color-background-75: hsl(226deg 60% 75%);
     --color-background-85: hsl(226deg 60% 85%);
+    --color-background-95: hsl(226deg 60% 95%);
 
     --primary-color: hsl(16deg 90% 55%);
     --primary-color-darker: hsl(16deg 90% 50%);
