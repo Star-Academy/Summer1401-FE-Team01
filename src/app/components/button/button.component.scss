@@ -6,8 +6,14 @@ button {
 
     position: relative;
 
-    min-inline-size: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    block-size: 2.75rem;
     inline-size: 100%;
+    aspect-ratio: var(--aspect-ratio);
 
     padding: 0.5rem 0.75rem;
 

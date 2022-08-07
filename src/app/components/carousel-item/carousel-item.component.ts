@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Game} from '../../models/game.model';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
     selector: 'app-carousel-item',
@@ -9,6 +10,12 @@ import {Game} from '../../models/game.model';
 export class CarouselItemComponent {
     @Input() public game!: Game;
     @Input() public currentIndex!: number;
+
+    public constructor(private authService: AuthService) {}
+
+    public get isLoggedIn(): boolean {
+        return this.authService.cachedIsLoggedIn!;
+    }
 
     public get sliderCoverImage(): string {
         if (!!this.game) {
@@ -25,5 +32,31 @@ export class CarouselItemComponent {
             }
         }
         return '';
+    }
+
+    public get isInBookmarks(): boolean {
+        // todo
+        return false;
+    }
+
+    public removeFromBookmark(): void {
+        // todo
+    }
+
+    public addToBookmarks(): void {
+        // todo
+    }
+
+    public get isInFavourites(): boolean {
+        // todo
+        return false;
+    }
+
+    public removeFromFavourites(): void {
+        // todo
+    }
+
+    public addToFavourites(): void {
+        // todo
     }
 }
