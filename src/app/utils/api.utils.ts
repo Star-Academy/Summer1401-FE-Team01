@@ -19,7 +19,7 @@ export const TRANSLATE_REQUEST_INIT: RequestInit = {
     method: 'post',
     headers: {
         'content-type': 'application/json',
-        'X-RapidAPI-Key': 'a9f50c2783msh07e246f23d2a0f5p1524bajsnabef888665a3',
+        'X-RapidAPI-Key': 'b30c915c9dmsh856723c4ebc9ac9p10acfcjsnab77b70ee112',
         'X-RapidAPI-Host': 'rapid-translate-multi-traduction.p.rapidapi.com',
     },
 };

@@ -73,21 +73,21 @@ export class GameService {
         )?.games;
 
         if (!!gamesResponse) {
-            const translatables = [];
-
-            for (let i = 0; i < gamesResponse.length; i++) {
-                let game = gamesResponse[i];
-                translatables.push(game.summary || '', game.storyline || '');
-            }
-
-            const translationsResponse = await this.translateService.translateStrings(translatables);
-
-            if (!!translationsResponse) {
-                for (let i = 0; i < gamesResponse.length; i++) {
-                    gamesResponse[i].summary = translationsResponse[2 * i];
-                    gamesResponse[i].storyline = translationsResponse[2 * i + 1];
-                }
-            }
+            // const translatables = [];
+            //
+            // for (let i = 0; i < gamesResponse.length; i++) {
+            //     let game = gamesResponse[i];
+            //     translatables.push(game.summary || '', game.storyline || '');
+            // }
+            //
+            // const translationsResponse = await this.translateService.translateStrings(translatables);
+            //
+            // if (!!translationsResponse) {
+            //     for (let i = 0; i < gamesResponse.length; i++) {
+            //         gamesResponse[i].summary = translationsResponse[2 * i];
+            //         gamesResponse[i].storyline = translationsResponse[2 * i + 1];
+            //     }
+            // }
         }
 
         console.log(gamesResponse);

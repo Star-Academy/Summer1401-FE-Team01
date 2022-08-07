@@ -39,10 +39,6 @@ export class Image {
     public id!: string;
     public width!: number;
     public height!: number;
-
-    public address(type: ImageType): string {
-        return `https://images.igdb.com/igdb/image/upload/t_${type}/${this.id}.jpg`;
-    }
 }
 
 export enum ImageType {

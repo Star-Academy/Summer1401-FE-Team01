@@ -1,9 +1,8 @@
 <div class="slide" [style.--current-index]="currentIndex">
-    <img class="image" [src]="game.artworks[0].address(ImageType._1080P)" [alt]="game.name" />
+    <img [src]="sliderCoverImage" [alt]="game.name" />
     <div class="details">
-        <div class="description">
-            <span>{{ game.summary }}</span>
-        </div>
+        <h2>{{ game.name }}</h2>
+        <p>{{ game.summary }}</p>
         <app-button text="افزودن به سبد خرید" iconClasses="far fa-cart-circle-plus"> </app-button>
     </div>
     <div class="rating">
