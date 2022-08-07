@@ -5,10 +5,9 @@ import {HomeComponent} from './home.component';
 import {HeaderModule} from '../../components/header/header.module';
 import {RouterModule} from '@angular/router';
 import {CarouselModule} from '../../components/carousel/carousel.module';
-import {FooterModule} from '../../components/footer/footer.module';
 
 @NgModule({
     declarations: [HomeComponent, CategoriesComponent],
-    imports: [CommonModule, HeaderModule, RouterModule, CarouselModule, FooterModule],
+    imports: [CommonModule, HeaderModule, RouterModule, CarouselModule],
 })
 export class HomeModule {}
