@@ -59,4 +59,17 @@ export class CarouselItemComponent {
     public addToFavourites(): void {
         // todo
     }
+
+    public toString(longNumber: number): string {
+        if (longNumber >= 1e9) {
+            return `${Math.trunc(longNumber / 1e9).toLocaleString()}B`;
+        }
+        if (longNumber >= 1e6) {
+            return `${Math.trunc(longNumber / 1e6).toLocaleString()}M`;
+        }
+        if (longNumber >= 1_000) {
+            return `${Math.trunc(longNumber / 1_000).toLocaleString()}K`;
+        }
+        return longNumber.toString();
+    }
 }
