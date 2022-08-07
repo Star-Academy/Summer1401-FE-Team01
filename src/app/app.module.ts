@@ -11,6 +11,7 @@ import {ProfileModule} from './components/profile/profile.module';
 import {NgxPopperjsModule} from 'ngx-popperjs';
 import {GamePageModule} from './pages/game-page/game-page.module';
 import {FooterModule} from './components/footer/footer.module';
+import {SearchModule} from './pages/search/search.module';
 
 @NgModule({
     declarations: [AppComponent, SnackbarComponent],
@@ -25,6 +26,7 @@ import {FooterModule} from './components/footer/footer.module';
         NgxPopperjsModule,
         GamePageModule,
         FooterModule,
+        SearchModule,
     ],
     bootstrap: [AppComponent],
 })

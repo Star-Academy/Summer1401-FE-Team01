@@ -1,0 +1,18 @@
+.wrapper {
+    display: grid;
+    grid-template-areas:
+        "filter count"
+        "filter games";
+
+    .item-count {
+        grid-area: count;
+    }
+
+    app-filters {
+        grid-area: filter;
+    }
+
+    app-games-grid {
+        grid-area: games;
+    }
+}
