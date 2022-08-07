@@ -9,6 +9,7 @@ import {SnackbarComponent} from './components/snackbar/snackbar.component';
 import {AuthModule} from './components/auth/auth.module';
 import {ProfileModule} from './components/profile/profile.module';
 import {NgxPopperjsModule} from 'ngx-popperjs';
+import {GamePageModule} from './pages/game-page/game-page.module';
 import {FooterModule} from './components/footer/footer.module';
 
 @NgModule({
@@ -22,6 +23,7 @@ import {FooterModule} from './components/footer/footer.module';
         AuthModule,
         ProfileModule,
         NgxPopperjsModule,
+        GamePageModule,
         FooterModule,
     ],
     bootstrap: [AppComponent],

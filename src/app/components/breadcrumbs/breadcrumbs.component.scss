@@ -1,0 +1,32 @@
+nav {
+    ul {
+        --spacing: 0.5rem;
+
+        display: flex;
+        align-items: center;
+        gap: var(--spacing);
+
+        li {
+            color: var(--color-fade);
+
+            display: flex;
+            align-items: center;
+            gap: var(--spacing);
+
+            font-size: 0.8rem;
+
+            a {
+                color: var(--color-fade);
+            }
+
+            &:not(:last-of-type)::after {
+                content: "/";
+            }
+
+            &:hover,
+            a:hover {
+                color: var(--color-gray-80);
+            }
+        }
+    }
+}
