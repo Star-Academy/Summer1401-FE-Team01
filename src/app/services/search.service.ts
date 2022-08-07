@@ -10,7 +10,7 @@ import {SearchResultObject} from '../models/search-result-object.model';
     providedIn: 'root',
 })
 export class SearchService {
-    public searchPhrase!: string;
+    public searchPhrase: string = '';
 
     public gameModes: Array<ChecklistItem> = [];
     public genres: Array<ChecklistItem> = [];
