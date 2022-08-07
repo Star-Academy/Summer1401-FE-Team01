@@ -16,8 +16,8 @@ export class CarouselItemComponent {
                 return `https://images.igdb.com/igdb/image/upload/t_1080p/${this.game.artworks[0].id}.jpg`;
             }
 
-            if (!!this.game.screenShots && !!this.game.screenShots[0] && !!this.game.screenShots[0].id) {
-                return `https://images.igdb.com/igdb/image/upload/t_1080p/${this.game.screenShots[0].id}.jpg`;
+            if (!!this.game.screenshots && !!this.game.screenshots[0] && !!this.game.screenshots[0].id) {
+                return `https://images.igdb.com/igdb/image/upload/t_1080p/${this.game.screenshots[0].id}.jpg`;
             }
 
             if (!!this.game.cover) {

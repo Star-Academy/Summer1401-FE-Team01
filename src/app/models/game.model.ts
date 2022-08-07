@@ -19,7 +19,7 @@ export class Game {
     public releaseDate!: number;
 
     public cover!: Image;
-    public screenShots!: Array<Image>;
+    public screenshots!: Array<Image>;
     public artworks!: Array<Image>;
     public videos!: Array<Video>;
 
