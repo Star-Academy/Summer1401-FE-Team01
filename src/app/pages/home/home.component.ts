@@ -11,6 +11,6 @@ export class HomeComponent {
     public suggestionGames: Array<Game> = [];
 
     public constructor(private gameService: GameService) {
-        gameService.fetchUpcomingGames().then((games) => (this.suggestionGames = games || []));
+        gameService.fetchSlideshowGames().then((games) => (this.suggestionGames = games || []));
     }
 }

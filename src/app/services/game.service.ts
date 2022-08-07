@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ChecklistItem} from '../pages/search/models/checklist-item.model';
 import {ApiService} from './api.service';
-import {API_GAME_SEARCH, API_GAME_UPCOMING} from '../utils/api.utils';
+import {API_GAME_SEARCH} from '../utils/api.utils';
 import {Game} from '../models/game.model';
 import {Pair} from '../models/pair.model';
 import {SearchResultObject} from '../models/search-result-object.model';
@@ -59,10 +59,16 @@ export class GameService {
         return new Pair(response.count, response.games);
     }
 
-    public async fetchUpcomingGames(): Promise<Array<Game>> {
+    public async fetchSlideshowGames(): Promise<Array<Game>> {
         let gamesResponse = (
-            await this.apiService.getRequest<{games: Array<Game>}>({
-                url: API_GAME_UPCOMING,
+            await this.apiService.postRequest<{games: Array<Game>}>({
+                url: API_GAME_SEARCH,
+                body: {
+                    searchPhrase: '',
+                    pageSize: 6,
+                    offset: 0,
+                    sort: 1,
+                },
             })
         )?.games;
 
