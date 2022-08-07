@@ -9,7 +9,7 @@ import {SearchResultObject} from '../models/search-result-object.model';
 @Injectable({
     providedIn: 'root',
 })
-export class SearchService {
+export class GameService {
     public searchPhrase: string = '';
 
     public gameModes: Array<ChecklistItem> = [];

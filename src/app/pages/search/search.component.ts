@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SearchService} from '../../services/search.service';
+import {GameService} from '../../services/game.service';
 import {Game} from '../../models/game.model';
 
 @Component({
@@ -11,7 +11,7 @@ export class SearchComponent {
     public gameCount: number = 0;
     public games: Array<Game> = [];
 
-    public constructor(private searchService: SearchService) {
+    public constructor(private searchService: GameService) {
         searchService.search().then((res) => {
             if (!!res) {
                 this.gameCount = res?.first;
