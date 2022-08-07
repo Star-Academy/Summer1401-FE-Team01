@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ChecklistItem} from '../pages/search/models/checklist-item.model';
 import {ApiService} from './api.service';
-import {API_GAME_SEARCH} from '../utils/api.utils';
+import {API_GAME_SEARCH, API_GAME_UPCOMING} from '../utils/api.utils';
 import {Game} from '../models/game.model';
 import {Pair} from '../models/pair.model';
 import {SearchResultObject} from '../models/search-result-object.model';
+import {TranslateService} from './translate.service';
 
 @Injectable({
     providedIn: 'root',
@@ -31,7 +32,7 @@ export class GameService {
         return this.pageSize * this.pageNumber;
     }
 
-    public constructor(private apiService: ApiService) {}
+    public constructor(private apiService: ApiService, private translateService: TranslateService) {}
 
     public async search(): Promise<Pair<number, Array<Game>> | null> {
         const response = await this.apiService.postRequest<SearchResultObject>({
@@ -56,5 +57,35 @@ export class GameService {
         if (!response) return null;
 
         return new Pair(response.count, response.games);
+    }
+
+    public async fetchUpcomingGames(): Promise<Array<Game>> {
+        let gamesResponse = (
+            await this.apiService.getRequest<{games: Array<Game>}>({
+                url: API_GAME_UPCOMING,
+            })
+        )?.games;
+
+        if (!!gamesResponse) {
+            const translatables = [];
+
+            for (let i = 0; i < gamesResponse.length; i++) {
+                let game = gamesResponse[i];
+                translatables.push(game.summary || '', game.storyline || '');
+            }
+
+            const translationsResponse = await this.translateService.translateStrings(translatables);
+
+            if (!!translationsResponse) {
+                for (let i = 0; i < gamesResponse.length; i++) {
+                    gamesResponse[i].summary = translationsResponse[2 * i];
+                    gamesResponse[i].storyline = translationsResponse[2 * i + 1];
+                }
+            }
+        }
+
+        console.log(gamesResponse);
+
+        return gamesResponse || [];
     }
 }

@@ -1,12 +1,12 @@
 <div class="slide" [style.--current-index]="currentIndex">
-    <img class="image" [src]="game?.sliderCoverImage || ''" [alt]="game?.title || 'نصویر کاور بازی'" />
+    <img class="image" [src]="gameCoverImage" [alt]="game?.name || 'نصویر کاور بازی'" />
     <div class="details">
         <div class="description">
-            <span>{{ game?.description || '' }}</span>
+            <span>{{ game?.summary || '' }}</span>
         </div>
         <app-button text="افزودن به سبد خرید" iconClasses="far fa-cart-circle-plus"> </app-button>
     </div>
     <div class="rating">
-        {{ game?.averageRating || '' }}
+        {{ game?.rating || '' }}
     </div>
 </div>

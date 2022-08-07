@@ -9,4 +9,8 @@ import {Game} from '../../models/game.model';
 export class CarouselItemComponent {
     @Input() public game!: Game;
     @Input() public currentIndex!: number;
+
+    public get gameCoverImage(): string {
+        return `https://images.igdb.com/igdb/image/upload/t_1080p/${this.game.cover?.id}.jpg`;
+    }
 }

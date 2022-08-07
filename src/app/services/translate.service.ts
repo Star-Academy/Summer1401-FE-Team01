@@ -17,11 +17,21 @@ export class TranslateService {
         };
     }
 
-    public async translateStrings(strings: Array<string>): Promise<Array<string> | null> {
+    public async translateStrings(strings: Array<string>): Promise<Array<string>> {
         const body = {from: 'en', to: 'fa', e: '', q: strings};
         const options = {url: API_TRANSLATE, body};
         const init = TranslateService.generateTranslateRequestInit(options);
 
-        return await this.apiService.fetchRequest<Array<string>>(options, init);
+        const response = await this.apiService.fetchRequest<Array<string>>(options, init);
+
+        if (!!response) {
+            return response.map((s) => this.removeEnglish(s));
+        }
+
+        return [];
+    }
+
+    private removeEnglish(text: string): string {
+        return text.replaceAll(/(<\/?b> ?)|(<i>.*?<\/i>)/gi, '').replaceAll(/ {2,}/gi, ' ');
     }
 }

@@ -18,7 +18,7 @@ export class Game {
 
     public releaseDate!: number;
 
-    public coverImage!: Image;
+    public cover!: Image;
     public screenShots!: Array<Image>;
     public videos!: Array<Video>;
 
