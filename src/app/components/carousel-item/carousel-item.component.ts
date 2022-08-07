@@ -59,7 +59,7 @@ export class CarouselItemComponent {
     }
 
     public async addToFavourites(): Promise<void> {
-        await this.userBookmarkFavouriteService.addToBookmarks(this.game.id);
+        await this.userBookmarkFavouriteService.addToFaves(this.game.id);
     }
 
     public toString(longNumber: number): string {

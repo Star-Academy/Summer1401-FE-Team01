@@ -10,6 +10,8 @@ import {
     API_FAVES_ALL,
     API_FAVES_REMOVE,
 } from '../utils/api.utils';
+import {SnackbarService} from './snackbar.service';
+import {SnackbarTheme} from '../enums/snackbar-theme.enum';
 
 @Injectable({
     providedIn: 'root',
@@ -18,56 +20,59 @@ export class UserBookmarkFavouriteService {
     public cachedFaveIds: Array<number> | null = null;
     public cachedBookmarkIds: Array<number> | null = null;
 
-    public constructor(private apiService: ApiService, private authService: AuthService) {
-        this.fetchAllFavourites().then();
+    public constructor(
+        private apiService: ApiService,
+        private authService: AuthService,
+        private snackbarService: SnackbarService
+    ) {
         this.fetchAllBookmarks().then();
+        this.fetchAllFavourites().then();
     }
 
     public async fetchAllFavourites(): Promise<Array<number>> {
-        console.log('cachedFaveIds', this.cachedFaveIds);
-        if (this.cachedFaveIds !== null) return this.cachedFaveIds;
-
-        const faves = await this.fetchAll(API_FAVES_ALL);
-        this.cachedFaveIds = faves;
-
-        return faves;
+        const res = await this.fetchAll(API_FAVES_ALL);
+        if (!!res) {
+            this.cachedFaveIds = res;
+        }
+        return res;
     }
 
     public async fetchAllBookmarks(): Promise<Array<number>> {
-        console.log('cachedBookmarkIds', this.cachedBookmarkIds);
-        if (this.cachedBookmarkIds !== null) return this.cachedBookmarkIds;
-
-        const bookmarks = await this.fetchAll(API_BOOKMARKS_ALL);
-        this.cachedBookmarkIds = bookmarks;
-
-        return bookmarks;
+        const res = await this.fetchAll(API_BOOKMARKS_ALL);
+        if (!!res) {
+            this.cachedBookmarkIds = res;
+        }
+        return res;
     }
 
     private async fetchAll(url: string): Promise<Array<number>> {
         const response = await this.apiService.postRequest<{games: Array<Game>}>({
             url,
             body: {token: this.authService.token},
-            showSnackbar: false,
         });
-
-        console.log(url, response, response?.games, response?.games || []);
 
         return (response?.games || []).map((g) => g.id);
     }
 
     public async addToFaves(gameId: number): Promise<void> {
-        const addRes = await this.add(API_FAVES_ADD, gameId);
-
-        if (addRes) {
+        const res = await this.add(API_FAVES_ADD, gameId);
+        if (res) {
             this.cachedFaveIds?.push(gameId);
+            this.snackbarService.show({
+                theme: SnackbarTheme.SUCCESS,
+                text: 'بازی با موفقیت به علاقه‌مندی‌ها افزوده شد',
+            });
         }
     }
 
     public async addToBookmarks(gameId: number): Promise<void> {
-        const addRes = await this.add(API_BOOKMARKS_ADD, gameId);
-
-        if (addRes) {
+        const res = await this.add(API_BOOKMARKS_ADD, gameId);
+        if (res) {
             this.cachedBookmarkIds?.push(gameId);
+            this.snackbarService.show({
+                theme: SnackbarTheme.SUCCESS,
+                text: 'بازی با موفقیت به نشان‌شده‌ها افزوده شد',
+            });
         }
     }
 
@@ -75,26 +80,29 @@ export class UserBookmarkFavouriteService {
         const response = await this.apiService.postRequest<{games: Array<Game>}>({
             url,
             body: {token: this.authService.token, gameId},
-            showSnackbar: false,
         });
         return !!response;
     }
 
     public async removeFromFaves(gameId: number): Promise<void> {
-        const removeRes = await this.add(API_FAVES_REMOVE, gameId);
-        console.log('removeFromFaves', removeRes);
-
-        if (removeRes) {
-            this.cachedFaveIds = this.cachedFaveIds?.filter((gId) => gId != gameId) || [];
+        const res = await this.remove(API_FAVES_REMOVE, gameId);
+        if (res) {
+            this.cachedFaveIds = this.cachedFaveIds?.filter((gId) => gId !== gameId) || [];
+            this.snackbarService.show({
+                theme: SnackbarTheme.SUCCESS,
+                text: 'بازی با موفقیت از علاقه‌مندی‌های شما حذف شد',
+            });
         }
     }
 
     public async removeFromBookmarks(gameId: number): Promise<void> {
-        const removeRes = await this.add(API_BOOKMARKS_REMOVE, gameId);
-        console.log('removeFromBookmarks', removeRes);
-
-        if (removeRes) {
-            this.cachedBookmarkIds = this.cachedBookmarkIds?.filter((gId) => gId != gameId) || [];
+        const res = await this.remove(API_BOOKMARKS_REMOVE, gameId);
+        if (res) {
+            this.cachedFaveIds = this.cachedFaveIds?.filter((gId) => gId !== gameId) || [];
+            this.snackbarService.show({
+                theme: SnackbarTheme.SUCCESS,
+                text: 'بازی با موفقیت از نشان‌شده‌های شما حذف شد',
+            });
         }
     }
 
@@ -102,7 +110,6 @@ export class UserBookmarkFavouriteService {
         const response = await this.apiService.deleteRequest<{games: Array<Game>}>({
             url,
             body: {token: this.authService.token, gameId},
-            showSnackbar: false,
         });
         return !!response;
     }

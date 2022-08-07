@@ -13,16 +13,36 @@
         </div>
         <div *ngIf="isLoggedIn" class="button-bar">
             <ng-container *ngIf="isInBookmarks; else addBookmark">
-                <app-button iconClasses="far fa-bookmark" theme="outline" (click)="removeFromBookmark()"></app-button>
+                <app-button
+                    text="حذف از نشان‌شده‌ها"
+                    iconClasses="far fa-bookmark"
+                    theme="text"
+                    (click)="removeFromBookmark()"
+                ></app-button>
             </ng-container>
             <ng-template #addBookmark>
-                <app-button iconClasses="fas fa-bookmark" theme="outline" (click)="addToBookmarks()"></app-button>
+                <app-button
+                    text="افزودن به نشان‌شده‌ها"
+                    iconClasses="fas fa-bookmark"
+                    theme="text"
+                    (click)="addToBookmarks()"
+                ></app-button>
             </ng-template>
             <ng-container *ngIf="isInFavourites; else addFave">
-                <app-button iconClasses="far fa-heart" theme="outline" (click)="removeFromFavourites()"></app-button>
+                <app-button
+                    text="حذف از علاقه‌مندی‌ها"
+                    iconClasses="far fa-heart"
+                    theme="text"
+                    (click)="removeFromFavourites()"
+                ></app-button>
             </ng-container>
             <ng-template #addFave>
-                <app-button iconClasses="fas fa-heart" theme="outline" (click)="addToFavourites()"></app-button>
+                <app-button
+                    text="افزودن به علاقه‌مندی‌ها"
+                    iconClasses="fas fa-heart"
+                    theme="text"
+                    (click)="addToFavourites()"
+                ></app-button>
             </ng-template>
             <app-button text="افزودن به سبد خرید" iconClasses="far fa-cart-circle-plus"> </app-button>
         </div>

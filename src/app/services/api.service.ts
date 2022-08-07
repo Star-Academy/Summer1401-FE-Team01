@@ -45,7 +45,13 @@ export class ApiService {
         const {url, showSnackbar = true} = options;
 
         const response = await fetch(url, init);
-        const data = await response.json();
+
+        let data;
+        try {
+            data = await response.json();
+        } catch (e) {
+            data = {};
+        }
 
         if (response.ok) return data as T;
 
