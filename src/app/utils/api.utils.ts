@@ -8,10 +8,23 @@ export const API_USER_ONE = `${BASE_URL}/user/one`;
 export const API_GAME_UPCOMING = `${BASE_URL}/upcoming`;
 export const API_GAME_SEARCH = `${BASE_URL}/search`;
 
+export const API_FAVES_ALL = `${BASE_URL}/favorites/all`;
+export const API_FAVES_ADD = `${BASE_URL}/favorites/add`;
+export const API_FAVES_REMOVE = `${BASE_URL}/favorites/remove`;
+
+export const API_BOOKMARKS_ALL = `${BASE_URL}/wishlist/all`;
+export const API_BOOKMARKS_ADD = `${BASE_URL}/wishlist/add`;
+export const API_BOOKMARKS_REMOVE = `${BASE_URL}/wishlist/remove`;
+
 export const API_TRANSLATE = 'https://rapid-translate-multi-traduction.p.rapidapi.com/t';
 
 export const DEFAULT_POST_REQUEST_INIT: RequestInit = {
     method: 'post',
+    headers: {'Content-Type': 'application/json'},
+};
+
+export const DEFAULT_DELETE_REQUEST_INIT: RequestInit = {
+    method: 'delete',
     headers: {'Content-Type': 'application/json'},
 };
 

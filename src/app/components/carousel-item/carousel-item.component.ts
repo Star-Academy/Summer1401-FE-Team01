@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Game} from '../../models/game.model';
 import {AuthService} from '../../services/auth.service';
+import {UserBookmarkFavouriteService} from '../../services/user-bookmark-favourite.service';
 
 @Component({
     selector: 'app-carousel-item',
@@ -11,7 +12,10 @@ export class CarouselItemComponent {
     @Input() public game!: Game;
     @Input() public currentIndex!: number;
 
-    public constructor(private authService: AuthService) {}
+    public constructor(
+        private authService: AuthService,
+        private userBookmarkFavouriteService: UserBookmarkFavouriteService
+    ) {}
 
     public get isLoggedIn(): boolean {
         return this.authService.cachedIsLoggedIn!;
@@ -35,29 +39,27 @@ export class CarouselItemComponent {
     }
 
     public get isInBookmarks(): boolean {
-        // todo
-        return false;
+        return (this.userBookmarkFavouriteService.cachedBookmarkIds || []).includes(this.game.id);
     }
 
-    public removeFromBookmark(): void {
-        // todo
+    public async removeFromBookmark(): Promise<void> {
+        await this.userBookmarkFavouriteService.removeFromBookmarks(this.game.id);
     }
 
-    public addToBookmarks(): void {
-        // todo
+    public async addToBookmarks(): Promise<void> {
+        await this.userBookmarkFavouriteService.addToBookmarks(this.game.id);
     }
 
     public get isInFavourites(): boolean {
-        // todo
-        return false;
+        return (this.userBookmarkFavouriteService.cachedFaveIds || []).includes(this.game.id);
     }
 
-    public removeFromFavourites(): void {
-        // todo
+    public async removeFromFavourites(): Promise<void> {
+        await this.userBookmarkFavouriteService.removeFromFaves(this.game.id);
     }
 
-    public addToFavourites(): void {
-        // todo
+    public async addToFavourites(): Promise<void> {
+        await this.userBookmarkFavouriteService.addToBookmarks(this.game.id);
     }
 
     public toString(longNumber: number): string {
