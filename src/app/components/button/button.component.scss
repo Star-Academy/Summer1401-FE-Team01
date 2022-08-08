@@ -11,7 +11,7 @@ button {
     justify-content: center;
     gap: 0.5rem;
 
-    block-size: 2.75rem;
+    block-size: 3em;
     inline-size: 100%;
     aspect-ratio: var(--aspect-ratio);
 
@@ -20,7 +20,7 @@ button {
     border: solid 1px var(--border-color);
     border-radius: 0.25rem;
 
-    font-size: 1rem;
+    font-size: var(--font-size, 1em);
     font-weight: bold;
 
     cursor: pointer;

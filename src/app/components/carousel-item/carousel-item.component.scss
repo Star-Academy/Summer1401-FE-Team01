@@ -78,6 +78,12 @@
 
             font-size: 0.8rem;
 
+            div {
+                display: flex;
+                align-items: baseline;
+                gap: 0.2rem;
+            }
+
             .fa-star {
                 color: var(--color-star);
             }
@@ -89,6 +95,8 @@
         }
 
         .button-bar {
+            --font-size: 0.8rem;
+
             grid-area: buttons;
 
             display: flex;

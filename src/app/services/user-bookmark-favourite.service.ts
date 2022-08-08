@@ -71,7 +71,7 @@ export class UserBookmarkFavouriteService {
             this.cachedBookmarkIds?.push(gameId);
             this.snackbarService.show({
                 theme: SnackbarTheme.SUCCESS,
-                text: 'بازی با موفقیت به نشان‌شده‌ها افزوده شد',
+                text: 'بازی با موفقیت به بوکمارک‌ها افزوده شد',
             });
         }
     }
@@ -101,7 +101,7 @@ export class UserBookmarkFavouriteService {
             this.cachedFaveIds = this.cachedFaveIds?.filter((gId) => gId !== gameId) || [];
             this.snackbarService.show({
                 theme: SnackbarTheme.SUCCESS,
-                text: 'بازی با موفقیت از نشان‌شده‌های شما حذف شد',
+                text: 'بازی با موفقیت از بوکمارک‌های شما حذف شد',
             });
         }
     }

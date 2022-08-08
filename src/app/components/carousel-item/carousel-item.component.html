@@ -5,42 +5,44 @@
         <p>{{ game.summary }}</p>
         <div class="rating-bar">
             <div>
-                <b>{{ (game.rating / 20).toFixed(1) }}</b> <i class="fas fa-star"></i>
+                <b>{{ (game.rating / 20).toFixed(1) }}</b>
+                <i class="fas fa-star"></i>
             </div>
             <div>
-                <b>{{ toString(game.ratingCount * 100) }}</b> نظر
+                <b>{{ toString(game.ratingCount * 100) }}</b>
+                نظر
             </div>
         </div>
         <div *ngIf="isLoggedIn" class="button-bar">
             <ng-container *ngIf="isInBookmarks; else addBookmark">
                 <app-button
-                    text="حذف از نشان‌شده‌ها"
+                    text="حذف بوکمارک"
                     iconClasses="far fa-bookmark"
-                    theme="text"
+                    theme="outline"
                     (click)="removeFromBookmark()"
                 ></app-button>
             </ng-container>
             <ng-template #addBookmark>
                 <app-button
-                    text="افزودن به نشان‌شده‌ها"
+                    text="افزودن بوکمارک"
                     iconClasses="fas fa-bookmark"
-                    theme="text"
+                    theme="outline"
                     (click)="addToBookmarks()"
                 ></app-button>
             </ng-template>
             <ng-container *ngIf="isInFavourites; else addFave">
                 <app-button
-                    text="حذف از علاقه‌مندی‌ها"
+                    text="حذف علاقه‌مندی"
                     iconClasses="far fa-heart"
-                    theme="text"
+                    theme="outline"
                     (click)="removeFromFavourites()"
                 ></app-button>
             </ng-container>
             <ng-template #addFave>
                 <app-button
-                    text="افزودن به علاقه‌مندی‌ها"
+                    text="افزودن علاقه‌مندی"
                     iconClasses="fas fa-heart"
-                    theme="text"
+                    theme="outline"
                     (click)="addToFavourites()"
                 ></app-button>
             </ng-template>
