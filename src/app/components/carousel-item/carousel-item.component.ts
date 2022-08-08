@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Game} from '../../models/game.model';
 import {AuthService} from '../../services/auth.service';
 import {UserBookmarkFavouriteService} from '../../services/user-bookmark-favourite.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-carousel-item',
@@ -13,9 +14,16 @@ export class CarouselItemComponent {
     @Input() public currentIndex!: number;
 
     public constructor(
+        private router: Router,
         private authService: AuthService,
         private userBookmarkFavouriteService: UserBookmarkFavouriteService
     ) {}
+
+    public async openGamePage(): Promise<void> {
+        await this.router.navigateByUrl('/game', {
+            state: {game: this.game},
+        });
+    }
 
     public get isLoggedIn(): boolean {
         return this.authService.cachedIsLoggedIn!;

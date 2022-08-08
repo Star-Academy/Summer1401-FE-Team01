@@ -1,4 +1,4 @@
-<div class="slide" [style.--current-index]="currentIndex">
+<div class="slide" [style.--current-index]="currentIndex" (click)="openGamePage()">
     <img [src]="sliderCoverImage" [alt]="game.name" />
     <div class="details">
         <h2>{{ game.name }}</h2>
