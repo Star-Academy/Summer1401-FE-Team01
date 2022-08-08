@@ -1,32 +1,10 @@
 <div class="container">
     <app-breadcrumbs [breadcrumbs]="breadcrumbs"></app-breadcrumbs>
     <main>
-        <h2>{{ game.name }}</h2>
-        <p class="story">{{ game.storyline }}</p>
-        <app-rating [value]="game.rating / 20"></app-rating>
-        <video controls>
-            <source [src]="'https://videos.igdb.com/igdb/upload/' + game.videos[1].id + 'mp4'" type="video/mp4" />
-        </video>
-        <h3>عکس‌هایی از بازی</h3>
-
-        <ul>
-            <li *ngFor="let photo of game.screenshots">
-                <img [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + photo.id + '.jpg'" alt="کاور بازی" />
-            </li>
-        </ul>
+        <app-game [game]="this.game"></app-game>
     </main>
 
     <aside>
-        <img [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + game.cover?.id + '.webp'" alt="کاور بازی" />
-        <h2>{{ game.name }}</h2>
-        <div class="wrapper">
-            <app-button theme="contained" text="خرید"></app-button>
-            <app-button theme="outline" text="افزودن به سبد خرید"></app-button>
-            <app-button theme="outline" text="افزودن به علاقه‌مندی‌ها"></app-button>
-            <p>سازنده:{{ game.genres[0].name }}</p>
-            <p>پخش کننده: diba</p>
-            <p>تاریخ انتشار:{{ date }}</p>
-            <p>پلتفرم: diba</p>
-        </div>
+        <app-side-menu [game]="this.game"></app-side-menu>
     </aside>
 </div>

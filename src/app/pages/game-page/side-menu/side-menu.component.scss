@@ -1,0 +1,40 @@
+.container {
+    --gap: 0.5rem;
+
+    background-color: var(--color-background-5);
+    color: var(--color-gray-80);
+
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+
+    block-size: fit-content;
+
+    border-radius: var(--border-radius-medium);
+
+    img {
+        inline-size: 100%;
+        aspect-ratio: 2 / 3;
+        object-fit: cover;
+
+        border-radius: var(--border-radius-medium);
+    }
+
+    p:not(:last-of-type) {
+        border-block-end: 0.1rem solid var(--color-fader);
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+
+        inline-size: 100%;
+
+        padding: 1rem;
+    }
+}

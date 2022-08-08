@@ -1,0 +1,13 @@
+<div class="container">
+    <img [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + game.cover?.id + '.webp'" alt="کاور بازی" />
+    <h2>{{ game.name }}</h2>
+    <div class="wrapper">
+        <app-button theme="contained" text="خرید"></app-button>
+        <app-button theme="outline" text="افزودن به سبد خرید"></app-button>
+        <app-button theme="outline" text="افزودن به علاقه‌مندی‌ها"></app-button>
+        <p>سازنده:{{ game.genres[0].name }}</p>
+        <p>پخش کننده: diba</p>
+        <p>تاریخ انتشار:{{ this.toDateTime() }}</p>
+        <p>پلتفرم: diba</p>
+    </div>
+</div>

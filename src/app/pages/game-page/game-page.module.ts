@@ -7,9 +7,11 @@ import {BreadcrumbsModule} from '../../components/breadcrumbs/breadcrumbs.module
 import {CarouselItemModule} from '../../components/carousel-item/carousel-item.module';
 import {RatingModule} from '../../components/rating/rating.module';
 import {RouterModule} from '@angular/router';
+import {GameComponent} from './game/game.component';
+import {SideMenuComponent} from './side-menu/side-menu.component';
 
 @NgModule({
-    declarations: [GamePageComponent],
+    declarations: [GamePageComponent, GameComponent, SideMenuComponent],
     imports: [
         CommonModule,
         HeaderModule,
