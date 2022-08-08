@@ -7,11 +7,12 @@ import {BreadcrumbsModule} from '../../components/breadcrumbs/breadcrumbs.module
 import {CarouselItemModule} from '../../components/carousel-item/carousel-item.module';
 import {RatingModule} from '../../components/rating/rating.module';
 import {RouterModule} from '@angular/router';
-import {GameComponent} from './game/game.component';
-import {SideMenuComponent} from './side-menu/side-menu.component';
+import {GameComponent} from './components/game/game.component';
+import {SideMenuComponent} from './components/side-menu/side-menu.component';
+import {IncludePipe} from './pipes/include.pipe';
 
 @NgModule({
-    declarations: [GamePageComponent, GameComponent, SideMenuComponent],
+    declarations: [GamePageComponent, GameComponent, SideMenuComponent, IncludePipe],
     imports: [
         CommonModule,
         HeaderModule,
