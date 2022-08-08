@@ -8,6 +8,8 @@
         <p>سازنده:{{ game.genres[0].name }}</p>
         <p>پخش کننده: diba</p>
         <p>تاریخ انتشار:{{ this.toDateTime() }}</p>
-        <p>پلتفرم: diba</p>
+        <ul>
+            <li *ngFor="let platform of game.platforms">{{ platform.name }}</li>
+        </ul>
     </div>
 </div>

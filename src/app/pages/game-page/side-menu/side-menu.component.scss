@@ -36,5 +36,10 @@
         inline-size: 100%;
 
         padding: 1rem;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+        }
     }
 }
