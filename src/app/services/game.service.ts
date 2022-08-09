@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ChecklistItem} from '../pages/search/models/checklist-item.model';
 import {ApiService} from './api.service';
-import {API_GAME_SEARCH, API_GAME_UPCOMING} from '../utils/api.utils';
+import {API_GAME_ONE, API_GAME_SEARCH, API_GAME_UPCOMING} from '../utils/api.utils';
 import {Game} from '../models/game.model';
 import {Pair} from '../models/pair.model';
 import {SearchResultObject} from '../models/search-result-object.model';
@@ -64,31 +64,56 @@ export class GameService {
             await this.apiService.getRequest<{games: Array<Game>}>({
                 url: API_GAME_UPCOMING,
             })
-        )?.games.reduce((prevArray: Array<Game>, game: Game) => {
-            if (!prevArray.some((g) => g.id == game.id)) prevArray.push(game);
-            return prevArray;
-        }, []);
+        )?.games
+            // remove repeating games
+            .reduce((prevArray: Array<Game>, game: Game) => {
+                if (!prevArray.some((g) => g.id == game.id)) prevArray.push(game);
+                return prevArray;
+            }, []);
 
         if (!!gamesResponse) {
-            // const translatables = [];
-            //
-            // for (let i = 0; i < gamesResponse.length; i++) {
-            //     let game = gamesResponse[i];
-            //     translatables.push(game.summary || '', game.storyline || '');
-            // }
-            //
-            // const translationsResponse = await this.translateService.translateStrings(translatables);
-            //
-            // if (!!translationsResponse) {
-            //     for (let i = 0; i < gamesResponse.length; i++) {
-            //         gamesResponse[i].summary = translationsResponse[2 * i];
-            //         gamesResponse[i].storyline = translationsResponse[2 * i + 1];
-            //     }
-            // }
+            // todo: uncomment
+            // gamesResponse = await this.translateGameInfo(gamesResponse);
         }
 
         console.log(gamesResponse);
 
         return gamesResponse || [];
+    }
+
+    public async fetchGame(gameId: number): Promise<Game | null> {
+        let gameResponse =
+            (
+                await this.apiService.getRequest<{game: Game}>({
+                    url: `${API_GAME_ONE}/${gameId}`,
+                })
+            )?.game || null;
+
+        if (!!gameResponse) {
+            // todo: uncomment
+            // gameResponse = (await this.translateGameInfo([gameResponse]))[0];
+        }
+
+        return gameResponse;
+    }
+
+    private async translateGameInfo(games: Array<Game>): Promise<Array<Game>> {
+        const translatables = [];
+
+        for (let i = 0; i < games.length; i++) {
+            let game = games[i];
+            translatables.push(game.summary || '', game.storyline || '');
+        }
+
+        const translationsResponse = await this.translateService.translateStrings(translatables);
+
+        if (!!translationsResponse) {
+            for (let i = 0; i < games.length; i++) {
+                games[i].summary = translationsResponse[2 * i];
+                games[i].storyline = translationsResponse[2 * i + 1];
+            }
+        }
+
+        return games;
     }
 }
