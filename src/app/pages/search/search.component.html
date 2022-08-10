@@ -1,5 +1,7 @@
 <div class="wrapper">
-    <div class="item-count">{{ gameCount }} کالا</div>
+    <div class="item-count">
+        <p>{{ gameCount }} بازی</p>
+    </div>
     <app-filters [onFilterSubmit]="search"></app-filters>
     <app-games-grid [games]="games"></app-games-grid>
 </div>

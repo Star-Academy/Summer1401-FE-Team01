@@ -4,11 +4,20 @@
         "filter count"
         "filter games";
     grid-template-columns: 17.5rem 1fr;
+    grid-template-rows: 2rem 1fr;
+
+    padding-block: 3rem 5rem;
 
     .item-count {
         grid-area: count;
 
-        background-color: red;
+        color: var(--color-background-85);
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        padding-inline: 0.75rem;
     }
 
     app-filters {
@@ -22,7 +31,5 @@
 
     app-games-grid {
         grid-area: games;
-
-        background-color: yellow;
     }
 }
