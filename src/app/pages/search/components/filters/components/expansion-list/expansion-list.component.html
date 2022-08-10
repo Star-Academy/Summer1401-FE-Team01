@@ -4,7 +4,7 @@
         <i class="far fa-angle-down" [style.transform]="isExpanded ? 'rotateZ(180deg)' : ''"></i>
     </div>
     <ul *ngIf="isExpanded">
-        <li *ngFor="let item of items; index as index">
+        <li #item *ngFor="let item of items; index as index">
             <label>
                 <input type="checkbox" [value]="item.isSelected" (change)="onToggleItemSelect(index)" />
                 <p dir="ltr">{{ item.name }}</p>
