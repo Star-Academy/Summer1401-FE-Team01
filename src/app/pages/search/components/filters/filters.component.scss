@@ -1,0 +1,42 @@
+.filters-wrapper {
+    color: var(--color-gray-98);
+
+    display: grid;
+    grid-template-areas:
+        "title clear submit"
+        "filters filters filters";
+    align-content: stretch;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: stretch;
+    row-gap: 1rem;
+
+    padding: 1.5rem;
+
+    app-button {
+        --font-size: 0.75rem;
+    }
+
+    #submit-filters {
+        grid-area: submit;
+        justify-self: flex-end;
+
+        width: 3rem;
+    }
+
+    h1 {
+        grid-area: title;
+    }
+
+    #clear-filters {
+        grid-area: clear;
+    }
+
+    #filters {
+        grid-area: filters;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

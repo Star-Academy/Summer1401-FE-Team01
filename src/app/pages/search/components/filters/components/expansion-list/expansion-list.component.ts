@@ -19,5 +19,13 @@ export class ExpansionListComponent {
 
     public onToggleItemSelect(index: number): void {
         this.items[index].toggle();
+
+        // if item is selected, move item to top of list. otherwise, move it to end of list
+        const itemsExcluding = this.items.filter((_, i) => i !== index);
+        if (this.items[index].isSelected) {
+            this.items = [this.items[index], ...itemsExcluding];
+        } else {
+            this.items = [...itemsExcluding, this.items[index]];
+        }
     }
 }

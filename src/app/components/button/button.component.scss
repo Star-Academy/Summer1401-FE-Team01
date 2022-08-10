@@ -15,12 +15,12 @@ button {
     inline-size: 100%;
     aspect-ratio: var(--aspect-ratio);
 
-    padding: 0.5rem 0.75rem;
+    padding: 0.5em 0.75em;
 
     border: solid 1px var(--border-color);
-    border-radius: 0.25rem;
+    border-radius: 0.25em;
 
-    font-size: var(--font-size, 1em);
+    font-size: var(--font-size, 1rem);
     font-weight: bold;
 
     cursor: pointer;

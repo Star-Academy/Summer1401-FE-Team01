@@ -3,7 +3,7 @@
     grid-template-areas:
         "filter count"
         "filter games";
-    grid-template-columns: 15rem 1fr;
+    grid-template-columns: 17.5rem 1fr;
 
     .item-count {
         grid-area: count;
@@ -14,7 +14,10 @@
     app-filters {
         grid-area: filter;
 
-        background-color: green;
+        background-color: transparent;
+
+        border: 1px solid var(--color-background-75);
+        border-radius: 0.25rem;
     }
 
     app-games-grid {

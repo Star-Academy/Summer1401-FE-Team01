@@ -1,22 +1,17 @@
-<div class="wrapper">
+<div class="filters-wrapper">
     <h1>فیلتر</h1>
-    <app-button
-        text="اعمال فیلتر‌ها"
-        iconClasses="far fa-filter"
-        theme="outline"
-        (click)="onFilterSubmit()"
-    ></app-button>
-    <app-button
-        text="حذف فیلتر‌ها"
-        iconClasses="far fa-filter-slash"
-        theme="text"
-        (click)="searchService.resetFilters()"
-    ></app-button>
+    <app-button id="submit-filters" text="ثبت" theme="contained" (click)="onFilterSubmit()"></app-button>
+    <app-button id="clear-filters" text="حذف فیلتر‌ها" theme="text" (click)="searchService.resetFilters()"></app-button>
 
-    <app-expansion-list title="پلتفرم" [(items)]="searchService.platforms"></app-expansion-list>
-    <app-expansion-list title="کلیدواژه" [(items)]="searchService.keywords"></app-expansion-list>
-    <app-expansion-list title="نقطه دیدگاه بازیکن" [(items)]="searchService.playerPerspectives"></app-expansion-list>
-    <app-expansion-list title="تم" [(items)]="searchService.themes"></app-expansion-list>
-    <app-expansion-list title="دسته‌بندی" [(items)]="searchService.genres"></app-expansion-list>
-    <app-expansion-list title="نوع بازی" [(items)]="searchService.gameModes"></app-expansion-list>
+    <div id="filters">
+        <app-expansion-list title="پلتفرم" [(items)]="searchService.platforms"></app-expansion-list>
+        <app-expansion-list title="کلیدواژه" [(items)]="searchService.keywords"></app-expansion-list>
+        <app-expansion-list
+            title="نقطهٔ‌دیدگاه بازیکن"
+            [(items)]="searchService.playerPerspectives"
+        ></app-expansion-list>
+        <app-expansion-list title="تم" [(items)]="searchService.themes"></app-expansion-list>
+        <app-expansion-list title="دسته‌بندی" [(items)]="searchService.genres"></app-expansion-list>
+        <app-expansion-list title="نوع بازی" [(items)]="searchService.gameModes"></app-expansion-list>
+    </div>
 </div>
