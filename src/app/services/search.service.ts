@@ -11,7 +11,6 @@ import {
 } from '../utils/api.utils';
 import {Game} from '../models/game.model';
 import {Pair} from '../models/pair.model';
-import {GameService} from './game.service';
 
 @Injectable({
     providedIn: 'root',
@@ -38,12 +37,29 @@ export class SearchService {
         return this.pageSize * this.pageNumber;
     }
 
-    public constructor(private apiService: ApiService, private gameService: GameService) {
-        gameService.fetchCheckListItems(API_GAME_MODES).then((res) => (this.gameModes = res));
-        gameService.fetchCheckListItems(API_GENRES).then((res) => (this.genres = res));
-        gameService.fetchCheckListItems(API_PLATFORMS).then((res) => (this.platforms = res));
-        gameService.fetchCheckListItems(API_PLAYER_PERSPECTIVES).then((res) => (this.playerPerspectives = res));
-        gameService.fetchCheckListItems(API_GAME_THEMES).then((res) => (this.themes = res));
+    public constructor(private apiService: ApiService) {
+        this.setupLists().then();
+    }
+    private async setupLists(): Promise<void> {
+        this.gameModes = await this.fetchCheckListItems('gameModes', API_GAME_MODES);
+        this.genres = await this.fetchCheckListItems('genres', API_GENRES);
+        this.platforms = await this.fetchCheckListItems('platforms', API_PLATFORMS);
+        this.playerPerspectives = await this.fetchCheckListItems('playerPerspectives', API_PLAYER_PERSPECTIVES);
+        this.themes = await this.fetchCheckListItems('themes', API_GAME_THEMES);
+    }
+
+    public async fetchCheckListItems(key: string, url: string): Promise<Array<ChecklistItem>> {
+        let items = JSON.parse(localStorage.getItem(key) || '{}') as Array<ChecklistItem>;
+
+        if (!items) {
+            items = (await this.apiService.getRequest<Array<ChecklistItem>>({url})) || [];
+        }
+
+        items = items?.map(({id, name}) => new ChecklistItem(id, name, false));
+
+        localStorage.setItem(key, JSON.stringify(items));
+
+        return items;
     }
 
     public async search(): Promise<Pair<number, Array<Game>> | null> {

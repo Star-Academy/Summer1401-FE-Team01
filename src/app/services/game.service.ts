@@ -3,7 +3,6 @@ import {ApiService} from './api.service';
 import {API_GAME_ONE, API_GAME_UPCOMING} from '../utils/api.utils';
 import {Game} from '../models/game.model';
 import {TranslateService} from './translate.service';
-import {ChecklistItem} from '../pages/search/models/checklist-item.model';
 
 @Injectable({
     providedIn: 'root',
@@ -31,12 +30,6 @@ export class GameService {
         console.log(gamesResponse);
 
         return gamesResponse || [];
-    }
-
-    public async fetchCheckListItems(url: string): Promise<Array<ChecklistItem>> {
-        const items = (await this.apiService.getRequest<Array<ChecklistItem>>({url})) || [];
-
-        return items.map(({id, name}) => new ChecklistItem(id, name, false));
     }
 
     public async fetchGame(gameId: number): Promise<Game | null> {
