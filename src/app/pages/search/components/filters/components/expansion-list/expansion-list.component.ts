@@ -1,6 +1,5 @@
 import {Component, ElementRef, EventEmitter, Input, Output, QueryList, ViewChildren} from '@angular/core';
 import {ChecklistItem} from '../../../../models/checklist-item.model';
-import {SearchService} from '../../../../../../services/search.service';
 
 @Component({
     selector: 'app-expansion-list',
@@ -17,7 +16,7 @@ export class ExpansionListComponent {
 
     public isExpanded: boolean = false;
 
-    public constructor(private searchService: SearchService) {}
+    public constructor() {}
 
     public onToggleItemSelect(index: number): void {
         this.items[index].toggle();

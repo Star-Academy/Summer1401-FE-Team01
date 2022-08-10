@@ -89,20 +89,14 @@ export class SearchService {
     }
 
     public resetFilters(): void {
-        this.searchPhrase = '';
-
-        this.gameModes.forEach((item) => (item.isSelected = false));
-        this.genres.forEach((item) => (item.isSelected = false));
-        this.keywords.forEach((item) => (item.isSelected = false));
-        this.platforms.forEach((item) => (item.isSelected = false));
-        this.playerPerspectives.forEach((item) => (item.isSelected = false));
-        this.themes.forEach((item) => (item.isSelected = false));
+        this.gameModes = this.gameModes.map(({id, name}) => new ChecklistItem(id, name, false));
+        this.genres = this.genres.map(({id, name}) => new ChecklistItem(id, name, false));
+        this.keywords = this.keywords.map(({id, name}) => new ChecklistItem(id, name, false));
+        this.platforms = this.platforms.map(({id, name}) => new ChecklistItem(id, name, false));
+        this.playerPerspectives = this.playerPerspectives.map(({id, name}) => new ChecklistItem(id, name, false));
+        this.themes = this.themes.map(({id, name}) => new ChecklistItem(id, name, false));
 
         this.minRating = 0;
         this.maxRating = 10;
-
-        this.sort = 2;
-        this.pageSize = 10;
-        this.pageNumber = 0;
     }
 }
