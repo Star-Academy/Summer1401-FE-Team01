@@ -18,7 +18,7 @@
     <iframe
         width="560"
         height="315"
-        [src]="'https://www.youtube-nocookie.com/embed/' + game.videos[0].id"
+        [src]="game.videos[0].safeUrl"
         [title]="game.videos[0].name"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

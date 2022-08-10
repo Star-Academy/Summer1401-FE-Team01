@@ -1,4 +1,5 @@
 import {ChecklistItem} from '../pages/search/models/checklist-item.model';
+import {SafeResourceUrl} from '@angular/platform-browser';
 
 export class Game {
     public id!: number;
@@ -11,7 +12,7 @@ export class Game {
     public themes!: Array<ChecklistItem>;
     public playerPerspectives!: Array<ChecklistItem>;
 
-    private involvedCompanies!: Array<InvolvedCompany>;
+    public involvedCompanies!: Array<InvolvedCompany>;
 
     public rating!: number;
     public ratingCount!: number;
@@ -25,14 +26,6 @@ export class Game {
 
     public storyline!: string;
     public summary!: string;
-
-    public get developerCompanies(): Array<Company> {
-        return this.involvedCompanies.filter((c) => c.developer);
-    }
-
-    public get publisherCompanies(): Array<Company> {
-        return this.involvedCompanies.filter((c) => c.publisher);
-    }
 }
 
 export class Image {
@@ -57,6 +50,7 @@ export enum ImageType {
 export class Video {
     public id!: string;
     public name!: string;
+    public safeUrl?: SafeResourceUrl;
 }
 
 export class Company {
@@ -66,7 +60,8 @@ export class Company {
     public url!: string;
 }
 
-export class InvolvedCompany extends Company {
+export class InvolvedCompany {
+    public company!: Company;
     public developer!: boolean;
     public porting!: boolean;
     public publisher!: boolean;

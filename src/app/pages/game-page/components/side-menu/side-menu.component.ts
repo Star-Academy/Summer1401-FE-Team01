@@ -9,9 +9,22 @@ import {Game} from '../../../../models/game.model';
 export class SideMenuComponent {
     @Input() public game!: Game;
 
-    public toDateTime(): string {
-        let t = new Date();
-        t.setTime(this.game.releaseDate * 1000);
-        return t.toLocaleString();
+    public get developerCompanies(): string {
+        return this.game.involvedCompanies
+            .filter((c) => c.developer)
+            .map((c) => c.company.name)
+            .join(', ');
+    }
+
+    public get publisherCompanies(): string {
+        return this.game.involvedCompanies
+            .filter((c) => c.publisher)
+            .map((c) => c.company.name)
+            .join(', ');
+    }
+
+    public get gameReleaseDate(): string {
+        const date = new Date(this.game.releaseDate);
+        return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
     }
 }

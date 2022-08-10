@@ -5,9 +5,9 @@
         <app-button theme="contained" text="خرید"></app-button>
         <app-button theme="outline" text="افزودن به سبد خرید"></app-button>
         <app-button theme="outline" text="افزودن به علاقه‌مندی‌ها"></app-button>
-        <p>سازنده:{{ game.genres[0].name }}</p>
-        <p>پخش کننده: diba</p>
-        <p>تاریخ انتشار:{{ this.toDateTime() }}</p>
+        <p *ngIf="developerCompanies">سازنده: {{ developerCompanies }}</p>
+        <p *ngIf="publisherCompanies">پخش کننده: {{ publisherCompanies }}</p>
+        <p>تاریخ انتشار: {{ gameReleaseDate }}</p>
         <ul class="platforms">
             <ng-container *ngFor="let platform of game.platforms">
                 <li *ngIf="platform.name | include: 'playstation'">
