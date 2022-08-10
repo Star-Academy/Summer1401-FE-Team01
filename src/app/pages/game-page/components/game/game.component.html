@@ -15,9 +15,15 @@
         <p>{{ game.ratingCount * 100 + 'نظر' }}</p>
     </div>
 
-    <video controls>
-        <source [src]="'https://videos.igdb.com/igdb/upload/' + game.videos[1].id + 'mp4'" type="video/mp4" />
-    </video>
+    <iframe
+        width="560"
+        height="315"
+        [src]="'https://www.youtube-nocookie.com/embed/' + game.videos[0].id"
+        [title]="game.videos[0].name"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+    ></iframe>
 
     <h3>عکس‌هایی از بازی</h3>
 

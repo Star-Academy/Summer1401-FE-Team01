@@ -20,9 +20,8 @@ export class CarouselItemComponent {
     ) {}
 
     public async openGamePage(): Promise<void> {
-        await this.router.navigate(['/game'], {
+        await this.router.navigateByUrl('/game', {
             state: {game: this.game},
-            queryParams: {id: this.game.id},
         });
     }
 
