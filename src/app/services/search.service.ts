@@ -33,7 +33,7 @@ export class SearchService {
     public constructor(private apiService: ApiService) {}
 
     public async search(): Promise<Pair<number, Array<Game>> | null> {
-        const response = await this.apiService.postRequest({
+        const response = await this.apiService.postRequest<{count: number; games: Array<Game>}>({
             url: API_GAME_SEARCH,
             body: {
                 searchPhrase: this.searchPhrase,
@@ -52,7 +52,25 @@ export class SearchService {
                 },
             },
         });
-        if (!!response) return null;
+        if (!response) return null;
         return new Pair(response.count, response.games);
+    }
+
+    public clearFilters(): void {
+        this.searchPhrase = '';
+
+        this.gameModes = [];
+        this.genres = [];
+        this.keywords = [];
+        this.platforms = [];
+        this.playerPerspectives = [];
+        this.themes = [];
+
+        this.minRating = 0;
+        this.maxRating = 10;
+
+        this.sort = 2;
+        this.pageSize = 10;
+        this.pageNumber = 0;
     }
 }

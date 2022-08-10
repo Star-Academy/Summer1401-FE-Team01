@@ -12,7 +12,11 @@ export class SearchComponent {
     public games: Array<Game> = [];
 
     public constructor(private searchService: GameService) {
-        searchService.search().then((res) => {
+        this.search();
+    }
+
+    public search(): void {
+        this.searchService.search().then((res) => {
             if (!!res) {
                 this.gameCount = res?.first;
                 this.games = res?.second;

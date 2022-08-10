@@ -3,16 +3,23 @@
     grid-template-areas:
         "filter count"
         "filter games";
+    grid-template-columns: 15rem 1fr;
 
     .item-count {
         grid-area: count;
+
+        background-color: red;
     }
 
     app-filters {
         grid-area: filter;
+
+        background-color: green;
     }
 
     app-games-grid {
         grid-area: games;
+
+        background-color: yellow;
     }
 }
