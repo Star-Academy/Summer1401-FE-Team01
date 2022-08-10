@@ -94,6 +94,8 @@ export class GameService {
             // gameResponse = (await this.translateGameInfo([gameResponse]))[0];
         }
 
+        console.log(gameResponse);
+
         return gameResponse;
     }
 

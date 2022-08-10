@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Breadcrumb} from '../../components/breadcrumbs/models/breadcrumbs.model';
 import {GameService} from '../../services/game.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Game} from '../../models/game.model';
 
 @Component({
@@ -17,8 +17,12 @@ export class GamePageComponent {
         {title: 'بازی‌های پرطرفدار', url: '#'},
         {title: 'بازی های تفنگی', url: '#'},
     ];
-    public constructor(private router: Router, public gameService: GameService) {
+    public constructor(private router: Router, private route: ActivatedRoute, public gameService: GameService) {
         this.game = router.getCurrentNavigation()?.extras?.state?.game;
-        console.log(this.game);
+        if (!this.game) {
+            route.queryParams.subscribe(async ({id}) => {
+                this.game = (await gameService.fetchGame(id))!;
+            });
+        }
     }
 }
