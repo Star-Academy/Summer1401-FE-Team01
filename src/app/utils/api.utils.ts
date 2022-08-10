@@ -9,6 +9,12 @@ export const API_GAME_ONE = `${BASE_URL}/one`;
 export const API_GAME_UPCOMING = `${BASE_URL}/upcoming`;
 export const API_GAME_SEARCH = `${BASE_URL}/search`;
 
+export const API_GAME_MODES = `${BASE_URL}/game-modes`;
+export const API_GAME_THEMES = `${BASE_URL}/themes`;
+export const API_PLAYER_PERSPECTIVES = `${BASE_URL}/player-perspectives`;
+export const API_GENRES = `${BASE_URL}/genres`;
+export const API_PLATFORMS = `${BASE_URL}/platforms`;
+
 export const API_FAVES_ALL = `${BASE_URL}/favorites/all`;
 export const API_FAVES_ADD = `${BASE_URL}/favorites/add`;
 export const API_FAVES_REMOVE = `${BASE_URL}/favorites/remove`;

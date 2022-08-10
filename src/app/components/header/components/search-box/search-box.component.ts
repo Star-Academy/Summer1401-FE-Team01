@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from '@angular/router';
-import {GameService} from '../../../../services/game.service';
+import {SearchService} from '../../../../services/search.service';
 
 @Component({
     selector: 'app-search-box',
@@ -11,7 +11,7 @@ export class SearchBoxComponent {
     @Input() public searchPhrase: string = '';
     @Output() public searchPhraseChange = new EventEmitter<string>();
 
-    public constructor(private router: Router, private searchService: GameService) {}
+    public constructor(private router: Router, private searchService: SearchService) {}
 
     public async submitSearch(input: HTMLInputElement): Promise<void> {
         this.searchService.searchPhrase = this.searchPhrase;

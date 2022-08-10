@@ -4,13 +4,13 @@
         text="اعمال فیلتر‌ها"
         iconClasses="far fa-filter"
         theme="outline"
-        onclick="onFilterSubmit()"
+        (click)="onFilterSubmit()"
     ></app-button>
     <app-button
         text="حذف فیلتر‌ها"
         iconClasses="far fa-filter-slash"
         theme="text"
-        onclick="clearFilters()"
+        (click)="searchService.resetFilters()"
     ></app-button>
 
     <app-expansion-list title="پلتفرم" [(items)]="searchService.platforms"></app-expansion-list>

@@ -17,7 +17,7 @@ export class ExpansionListComponent {
 
     public constructor(private searchService: SearchService) {}
 
-    public clearFilters(): void {
-        this.searchService.clearFilters();
+    public onToggleItemSelect(index: number): void {
+        this.items[index].toggle();
     }
 }

@@ -1,1 +1,11 @@
-<p>expansion-list works!</p>
+<div class="wrapper">
+    <h3 (click)="isExpanded = !isExpanded">{{ title }}</h3>
+    <ul *ngIf="isExpanded">
+        <li *ngFor="let item of items; index as index">
+            <label>
+                <input type="checkbox" [value]="item.isSelected" (change)="onToggleItemSelect(index)" />
+                {{ item.name }}
+            </label>
+        </li>
+    </ul>
+</div>
