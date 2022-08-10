@@ -3,6 +3,7 @@
 
     <div class="genre">
         <p>Genre:</p>
+
         <ul>
             <li *ngFor="let genre of game.genres">{{ genre.name }}</li>
         </ul>
@@ -12,7 +13,7 @@
 
     <div class="rating">
         <app-rating [value]="game.rating / 20"></app-rating>
-        <p>{{ game.ratingCount * 100 + 'نظر' }}</p>
+        <p>{{ game.ratingCount * 100 }} نظر</p>
     </div>
 
     <iframe

@@ -19,16 +19,18 @@
 
         display: flex;
         flex-direction: row;
+        gap: 0.25rem;
 
         margin-inline-end: auto;
 
         ul {
             display: flex;
             flex-direction: row;
+            gap: 0.25rem;
 
             li {
                 &:not(:last-of-type)::after {
-                    content: ",";
+                    content: ", ";
                 }
             }
         }
@@ -55,6 +57,10 @@
         flex-direction: row;
         align-items: center;
         gap: 1rem;
+
+        p {
+            color: var(--color-gray-98);
+        }
     }
 
     iframe {
