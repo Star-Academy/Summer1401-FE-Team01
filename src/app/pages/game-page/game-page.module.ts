@@ -10,6 +10,7 @@ import {RouterModule} from '@angular/router';
 import {GameComponent} from './components/game/game.component';
 import {SideMenuComponent} from './components/side-menu/side-menu.component';
 import {IncludePipe} from './pipes/include.pipe';
+import {TomanModule} from '../../components/toman/toman.module';
 
 @NgModule({
     declarations: [GamePageComponent, GameComponent, SideMenuComponent, IncludePipe],
@@ -21,6 +22,7 @@ import {IncludePipe} from './pipes/include.pipe';
         CarouselItemModule,
         RatingModule,
         RouterModule,
+        TomanModule,
     ],
 })
 export class GamePageModule {}

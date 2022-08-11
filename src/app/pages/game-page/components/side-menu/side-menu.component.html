@@ -2,7 +2,7 @@
     <img [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + game.cover?.id + '.webp'" alt="کاور بازی" />
     <!--    <h2>{{ game.name }}</h2>-->
     <div class="wrapper">
-        <h5>{{ game.price.toLocaleString() }} تومان</h5>
+        <h5>{{ game.price.toLocaleString() }}<app-toman></app-toman></h5>
         <!--        <app-button theme="contained" text="خرید"></app-button>-->
         <app-button theme="contained" text="افزودن به سبد خرید"></app-button>
         <!--        <app-button theme="outline" text="افزودن به علاقه‌مندی‌ها"></app-button>-->
