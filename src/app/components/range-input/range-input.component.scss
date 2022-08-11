@@ -5,7 +5,7 @@ $r: 0.5 * $d;
 $uw: $w - $d;
 
 @mixin track() {
-    background: none; /* get rid of Firefox track background */
+    background: none;
 
     width: 100%;
     height: 100%;
@@ -18,13 +18,12 @@ $uw: $w - $d;
     width: $d;
     height: $h;
 
-    border: none; /* get rid of Firefox thumb border */
-    border-radius: 0; /* get rid of Firefox corner rounding */
+    border: none;
+    border-radius: 0;
 
     pointer-events: auto;
 }
 
-/* fix too small font-size in both Chrome & Firefox */
 * {
     font: inherit;
 }
@@ -66,79 +65,53 @@ $uw: $w - $d;
 
         margin-inline-start: calc(#{$r} + (var(--b) - var(--min)) / var(--dif) *#{$uw});
     }
-}
 
-[id="multi-lbl"] {
-    grid-column: 1 / span 2;
-}
+    input {
+        --col: #000;
+        background: none;
 
-.sr-only {
-    position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
 
-    clip-path: inset(50%);
-}
+        grid-column: 1 / span 2;
+        grid-row: 3;
 
-input[type="range"] {
-    --col: #000;
-    background: none; /* get rid of white Chrome background */
+        margin: 0;
 
-    top: 0;
-    left: 0;
-    z-index: 1;
+        pointer-events: none;
 
-    grid-column: 1 / span 2;
-    grid-row: 3;
-
-    margin: 0;
-
-    pointer-events: none;
-
-    &::-webkit-slider-runnable-track,
-    &::-webkit-slider-thumb,
-    & {
-        appearance: none;
-    }
-
-    &::-webkit-slider-runnable-track {
-        @include track;
-    }
-
-    &::-moz-range-track {
-        @include track;
-    }
-
-    &::-webkit-slider-thumb {
-        @include thumb;
-    }
-
-    &::-moz-range-thumb {
-        @include thumb;
-    }
-
-    &:focus {
-        z-index: 2;
-
-        outline: dotted 1px currentcolor;
-
-        &,
-        & + output {
-            --col: darkorange;
+        &::-webkit-slider-runnable-track,
+        &::-webkit-slider-thumb,
+        & {
+            appearance: none;
         }
-    }
-}
 
-output {
-    color: var(--col);
+        &::-webkit-slider-runnable-track {
+            @include track;
+        }
 
-    grid-row: 2;
+        &::-moz-range-track {
+            @include track;
+        }
 
-    &:last-child {
-        text-align: right;
-    }
+        &::-webkit-slider-thumb {
+            @include thumb;
+        }
 
-    &::after {
-        content: "--" attr(for) ": " counter(c) ";";
+        &::-moz-range-thumb {
+            @include thumb;
+        }
 
-        counter-reset: c var(--c);
+        &:focus {
+            z-index: 2;
+
+            outline: dotted 1px currentcolor;
+
+            &,
+            & + output {
+                --col: darkorange;
+            }
+        }
     }
 }
