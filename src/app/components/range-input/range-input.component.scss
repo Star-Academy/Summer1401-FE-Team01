@@ -1,0 +1,49 @@
+.line {
+    --start-x: 2;
+    --end-x: 6;
+
+    background-color: var(--color-background-30);
+
+    position: relative;
+
+    block-size: 0.2rem;
+    inline-size: 100%;
+
+    border-radius: 0.1rem;
+
+    .range-line {
+        background-color: var(--primary-color-super-lighter);
+
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: calc(var(--start-x) * 10%);
+
+        inline-size: calc((var(--end-x) - var(--start-x)) * 10%);
+    }
+
+    .start-ball,
+    .end-ball {
+        background-color: var(--primary-color);
+
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: calc(var(--x) * 10%);
+
+        block-size: 1rem;
+        inline-size: 1rem;
+
+        border-radius: 0.5rem;
+
+        transform: translate(50%, -50%);
+
+        cursor: pointer;
+    }
+
+    .start-ball {
+        --x: var(--start-x);
+    }
+
+    .end-ball {
+        --x: var(--end-x);
+    }
+}

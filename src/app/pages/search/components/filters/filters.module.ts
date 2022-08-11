@@ -3,10 +3,11 @@ import {CommonModule} from '@angular/common';
 import {FiltersComponent} from './filters.component';
 import {CarouselItemModule} from '../../../../components/carousel-item/carousel-item.module';
 import {ExpansionListModule} from './components/expansion-list/expansion-list.module';
+import {RangeInputModule} from '../../../../components/range-input/range-input.module';
 
 @NgModule({
     declarations: [FiltersComponent],
     exports: [FiltersComponent],
-    imports: [CommonModule, CarouselItemModule, ExpansionListModule],
+    imports: [CommonModule, CarouselItemModule, ExpansionListModule, RangeInputModule],
 })
 export class FiltersModule {}
