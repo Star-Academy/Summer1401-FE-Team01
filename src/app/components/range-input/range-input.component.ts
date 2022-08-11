@@ -14,7 +14,14 @@ export class RangeInputComponent {
     @Input() public maxValue!: number;
     @Output() public maxValueChange = new EventEmitter<number>();
 
-    public onDragBall(event: MouseEvent): void {
-        console.log(event.x);
+    @Input() public rangeMinimum!: number;
+    @Input() public rangeMaximum!: number;
+
+    public onValueChange(event: Event, emitter: EventEmitter<number>): void {
+        let target = event.target! as HTMLInputElement;
+        let value = Number.parseInt(target.value);
+
+        emitter.emit(value);
+        (target.parentNode as HTMLElement).style?.setProperty(`--${target.id}`, `${value}`);
     }
 }

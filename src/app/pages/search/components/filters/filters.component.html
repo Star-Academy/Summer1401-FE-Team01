@@ -17,6 +17,8 @@
             maxLabel="بیشترین امتیاز"
             [(minValue)]="searchService.minRating"
             [(maxValue)]="searchService.maxRating"
+            [rangeMinimum]="0"
+            [rangeMaximum]="10"
         ></app-range-input>
     </div>
 </div>

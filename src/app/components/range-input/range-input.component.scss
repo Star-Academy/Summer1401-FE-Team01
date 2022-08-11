@@ -1,49 +1,144 @@
-.line {
-    --start-x: 2;
-    --end-x: 6;
+$w: 10em;
+$h: 2em;
+$d: 0.5 * $h;
+$r: 0.5 * $d;
+$uw: $w - $d;
 
-    background-color: var(--color-background-30);
+@mixin track() {
+    background: none; /* get rid of Firefox track background */
+
+    width: 100%;
+    height: 100%;
+}
+
+@mixin thumb() {
+    background: linear-gradient(90deg, #fff 2px, transparent 0) calc(#{$r} - 1px),
+        radial-gradient(circle, var(--col) calc(#{$r} - 1px), transparent $r);
+
+    width: $d;
+    height: $h;
+
+    border: none; /* get rid of Firefox thumb border */
+    border-radius: 0; /* get rid of Firefox corner rounding */
+
+    pointer-events: auto;
+}
+
+/* fix too small font-size in both Chrome & Firefox */
+* {
+    font: inherit;
+}
+
+.wrap {
+    --dif: calc(var(--max) - var(--min));
+    background: linear-gradient(0deg, #ccc $h, transparent 0);
 
     position: relative;
+    overflow: hidden;
 
-    block-size: 0.2rem;
-    inline-size: 100%;
+    display: grid;
+    grid-template: repeat(2, max-content) #{$h}/ 1fr 1fr;
 
-    border-radius: 0.1rem;
+    width: $w;
 
-    .range-line {
-        background-color: var(--primary-color-super-lighter);
+    margin: 1em auto;
 
-        position: absolute;
-        inset-block: 0;
-        inset-inline-start: calc(var(--start-x) * 10%);
+    font-family: "ubuntu mono", consolas, monaco, monospace;
 
-        inline-size: calc((var(--end-x) - var(--start-x)) * 10%);
+    &::before,
+    &::after {
+        content: "";
+
+        background: #95a;
+
+        grid-column: 1 / span 2;
+        grid-row: 3;
     }
 
-    .start-ball,
-    .end-ball {
-        background-color: var(--primary-color);
+    &::before {
+        width: calc((var(--b) - var(--a)) / var(--dif) *#{$uw});
 
-        position: absolute;
-        inset-block-start: 50%;
-        inset-inline-start: calc(var(--x) * 10%);
-
-        block-size: 1rem;
-        inline-size: 1rem;
-
-        border-radius: 0.5rem;
-
-        transform: translate(50%, -50%);
-
-        cursor: pointer;
+        margin-inline-start: calc(#{$r} + (var(--a) - var(--min)) / var(--dif) *#{$uw});
     }
 
-    .start-ball {
-        --x: var(--start-x);
+    &::after {
+        width: calc((var(--a) - var(--b)) / var(--dif) *#{$uw});
+
+        margin-inline-start: calc(#{$r} + (var(--b) - var(--min)) / var(--dif) *#{$uw});
+    }
+}
+
+[id="multi-lbl"] {
+    grid-column: 1 / span 2;
+}
+
+.sr-only {
+    position: absolute;
+
+    clip-path: inset(50%);
+}
+
+input[type="range"] {
+    --col: #000;
+    background: none; /* get rid of white Chrome background */
+
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    grid-column: 1 / span 2;
+    grid-row: 3;
+
+    margin: 0;
+
+    pointer-events: none;
+
+    &::-webkit-slider-runnable-track,
+    &::-webkit-slider-thumb,
+    & {
+        appearance: none;
     }
 
-    .end-ball {
-        --x: var(--end-x);
+    &::-webkit-slider-runnable-track {
+        @include track;
+    }
+
+    &::-moz-range-track {
+        @include track;
+    }
+
+    &::-webkit-slider-thumb {
+        @include thumb;
+    }
+
+    &::-moz-range-thumb {
+        @include thumb;
+    }
+
+    &:focus {
+        z-index: 2;
+
+        outline: dotted 1px currentcolor;
+
+        &,
+        & + output {
+            --col: darkorange;
+        }
+    }
+}
+
+output {
+    color: var(--col);
+
+    grid-row: 2;
+
+    &:last-child {
+        text-align: right;
+    }
+
+    &::after {
+        content: "--" attr(for) ": " counter(c) ";";
+
+        counter-reset: c var(--c);
     }
 }
