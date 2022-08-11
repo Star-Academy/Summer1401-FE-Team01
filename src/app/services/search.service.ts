@@ -11,6 +11,7 @@ import {
 } from '../utils/api.utils';
 import {Game} from '../models/game.model';
 import {Pair} from '../models/pair.model';
+import {Router} from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -37,9 +38,29 @@ export class SearchService {
         return this.pageSize * this.pageNumber;
     }
 
-    public constructor(private apiService: ApiService) {
+    public constructor(private apiService: ApiService, private router: Router) {
         this.setupLists().then();
     }
+
+    public async goToSearchPageWithFilter(filter: FilterObject): Promise<void> {
+        this.resetFilters();
+
+        if (filter.gameModes)
+            this.gameModes.filter((f) => filter.gameModes!.includes(f.id)).forEach((f) => (f.isSelected = true));
+        if (filter.genres)
+            this.genres.filter((f) => filter.genres!.includes(f.id)).forEach((f) => (f.isSelected = true));
+        if (filter.platforms)
+            this.platforms.filter((f) => filter.platforms!.includes(f.id)).forEach((f) => (f.isSelected = true));
+        if (filter.playerPerspectives)
+            this.playerPerspectives
+                .filter((f) => filter.playerPerspectives!.includes(f.id))
+                .forEach((f) => (f.isSelected = true));
+        if (filter.themes)
+            this.themes.filter((f) => filter.themes!.includes(f.id)).forEach((f) => (f.isSelected = true));
+
+        await this.router.navigateByUrl('/search');
+    }
+
     private async setupLists(): Promise<void> {
         this.gameModes = await this.fetchCheckListItems('gameModes', API_GAME_MODES);
         this.genres = await this.fetchCheckListItems('genres', API_GENRES);
@@ -51,7 +72,7 @@ export class SearchService {
     public async fetchCheckListItems(key: string, url: string): Promise<Array<ChecklistItem>> {
         let items = JSON.parse(localStorage.getItem(key) || '{}') as Array<ChecklistItem>;
 
-        if (!items) {
+        if (Object.keys(items).length == 0) {
             items = (await this.apiService.getRequest<Array<ChecklistItem>>({url})) || [];
         }
 
@@ -99,4 +120,12 @@ export class SearchService {
         this.minRating = 0;
         this.maxRating = 10;
     }
+}
+
+export interface FilterObject {
+    gameModes?: Array<number>;
+    genres?: Array<number>;
+    platforms?: Array<number>;
+    playerPerspectives?: Array<number>;
+    themes?: Array<number>;
 }

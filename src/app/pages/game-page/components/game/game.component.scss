@@ -3,33 +3,69 @@
     grid-template-areas:
         "rating name"
         "video video"
-        "genre genre"
+        "categories categories"
         "story story"
         "screenshot screenshot";
     justify-items: center;
     gap: var(--spacing);
 
-    .genre {
-        grid-area: genre;
-
-        color: var(--color-background-85);
-
-        direction: ltr;
+    .categories {
+        grid-area: categories;
 
         display: flex;
-        flex-direction: row;
-        gap: 0.25rem;
+        align-items: center;
+        gap: 2rem;
 
-        margin-inline-end: auto;
+        inline-size: 100%;
 
-        ul {
+        padding-inline: 2rem;
+
+        .modes,
+        .genres {
+            color: var(--color-background-85);
+
+            direction: ltr;
+
             display: flex;
-            flex-direction: row;
-            gap: 0.25rem;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
 
-            li {
-                &:not(:last-of-type)::after {
-                    content: ", ";
+            block-size: 100%;
+            inline-size: 50%;
+
+            margin-inline-end: auto;
+            padding-inline-end: 1rem;
+
+            border-inline-end: 1.5px solid var(--color-background-30);
+
+            p {
+                color: var(--color-background-55);
+
+                direction: rtl;
+
+                font-size: 0.9rem;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.25rem;
+
+                li {
+                    font-size: 0.9rem;
+
+                    white-space: nowrap;
+
+                    a {
+                        text-decoration: underline;
+                    }
+
+                    &:not(:last-of-type)::after {
+                        content: ", ";
+                    }
                 }
             }
         }
@@ -65,7 +101,7 @@
     .story {
         grid-area: story;
 
-        color: var(--color-gray-70);
+        color: var(--color-background-90);
     }
 
     .screenshot {

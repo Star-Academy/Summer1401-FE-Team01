@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Game} from '../../../../models/game.model';
+import {SearchService} from '../../../../services/search.service';
 
 @Component({
     selector: 'app-game',
@@ -8,4 +9,6 @@ import {Game} from '../../../../models/game.model';
 })
 export class GameComponent {
     @Input() public game!: Game;
+
+    public constructor(public searchService: SearchService) {}
 }

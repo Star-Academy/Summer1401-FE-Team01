@@ -1,12 +1,24 @@
 <div class="container">
     <h1>{{ game.name }}</h1>
+    <div class="categories">
+        <div class="modes">
+            <p>ویژگی‌ها</p>
 
-    <div class="genre">
-        <p>Genre:</p>
+            <ul>
+                <li *ngFor="let mode of game.gameModes">
+                    <a (click)="searchService.goToSearchPageWithFilter({gameModes: [mode.id]})">{{ mode.name }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="genres">
+            <p>ژانر‌ها</p>
 
-        <ul>
-            <li *ngFor="let genre of game.genres">{{ genre.name }}</li>
-        </ul>
+            <ul>
+                <li *ngFor="let theme of game.genres">
+                    <a (click)="searchService.goToSearchPageWithFilter({genres: [theme.id]})">{{ theme.name }}</a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <p class="story">{{ game.summary }}</p>
