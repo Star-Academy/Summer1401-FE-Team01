@@ -1,13 +1,20 @@
 <div class="container">
     <img [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + game.cover?.id + '.webp'" alt="کاور بازی" />
     <h2>{{ game.name }}</h2>
+    <h3>{{ game.price.toLocaleString() }} تومان</h3>
     <div class="wrapper">
         <app-button theme="contained" text="خرید"></app-button>
         <app-button theme="outline" text="افزودن به سبد خرید"></app-button>
         <app-button theme="outline" text="افزودن به علاقه‌مندی‌ها"></app-button>
-        <p *ngIf="developerCompanies">سازنده: {{ developerCompanies }}</p>
-        <p *ngIf="publisherCompanies">پخش کننده: {{ publisherCompanies }}</p>
-        <p>تاریخ انتشار: {{ gameReleaseDate }}</p>
+        <p *ngIf="developerCompanies">
+            سازنده: <span>{{ developerCompanies }}</span>
+        </p>
+        <p *ngIf="publisherCompanies">
+            پخش کننده: <span>{{ publisherCompanies }}</span>
+        </p>
+        <p>
+            تاریخ انتشار:<span>{{ gameReleaseDate }}</span>
+        </p>
         <ul class="platforms">
             <ng-container *ngFor="let platform of game.platforms">
                 <li *ngIf="platform.name | include: 'playstation'">
