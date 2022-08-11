@@ -1,11 +1,10 @@
 .container {
     display: grid;
     grid-template-areas:
-        "rating h2"
-        "genre genre"
+        "rating name"
         "video video"
+        "genre genre"
         "story story"
-        "h3 h3"
         "screenshot screenshot";
     justify-items: center;
     gap: var(--spacing);
@@ -13,7 +12,7 @@
     .genre {
         grid-area: genre;
 
-        color: var(--color-fade);
+        color: var(--color-background-85);
 
         direction: ltr;
 
@@ -36,17 +35,11 @@
         }
     }
 
-    h3 {
-        grid-area: h3;
-
-        color: var(--primary-color-lighter);
-    }
-
-    h2 {
-        grid-area: h2;
+    h1 {
+        grid-area: name;
         justify-self: end;
 
-        color: var(--color-gray-70);
+        color: var(--color-gray-98);
     }
 
     .rating {
@@ -81,8 +74,15 @@
         display: grid;
         grid-auto-flow: dense;
         align-content: center;
+        gap: 0.75rem;
 
         inline-size: 85%;
+
+        li {
+            img {
+                border-radius: var(--border-radius-small);
+            }
+        }
 
         li:not(:first-of-type) {
             grid-column: 1 span;

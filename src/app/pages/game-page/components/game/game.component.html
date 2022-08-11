@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>{{ game.name }}</h2>
+    <h1>{{ game.name }}</h1>
 
     <div class="genre">
         <p>Genre:</p>
@@ -25,8 +25,6 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
     ></iframe>
-
-    <h3>عکس‌هایی از بازی</h3>
 
     <ul class="screenshot">
         <li *ngFor="let photo of game.screenshots | slice: 0:3">
