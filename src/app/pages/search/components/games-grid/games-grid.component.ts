@@ -12,6 +12,8 @@ export class GamesGridComponent {
     @Input() public totalGameCount!: number;
     @Input() public games: Array<Game> = [];
 
+    @Input() public updateGamesCallback!: () => void;
+
     public constructor(private router: Router, public searchService: SearchService) {}
 
     public get totalPageCount(): number {

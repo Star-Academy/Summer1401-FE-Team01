@@ -1,3 +1,9 @@
 <ul>
-    <li *ngFor="let page of pages" [ngClass]="{current: page === currentPage}">{{ page + 1 }}</li>
+    <ng-container *ngFor="let page of pages">
+        <li *ngIf="page === maxPage && currentPage !== maxPage" class="ellipsis">...</li>
+        <li [ngClass]="{current: page === currentPage}" (click)="setCurrentPage(page)">
+            {{ page + 1 }}
+        </li>
+        <li *ngIf="page === minPage && currentPage !== minPage" class="ellipsis">...</li>
+    </ng-container>
 </ul>

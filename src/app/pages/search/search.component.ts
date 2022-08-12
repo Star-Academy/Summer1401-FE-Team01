@@ -16,6 +16,7 @@ export class SearchComponent {
     }
 
     public search(): void {
+        console.log('search', this.searchService.offset);
         this.searchService.search().then((res) => {
             if (!!res) {
                 this.gameCount = res?.first;

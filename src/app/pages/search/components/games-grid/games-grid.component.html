@@ -1,30 +1,32 @@
-<ul>
-    <li *ngFor="let game of games" (click)="openGamePage(game)">
-        <img
-            [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + this.game.cover?.id + '.jpg'"
-            [alt]="'تصویر کاور ' + game.name"
-        />
-        <h4 class="title">{{ game.name }}</h4>
+<div class="container">
+    <ul>
+        <li *ngFor="let game of games" (click)="openGamePage(game)">
+            <img
+                [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + this.game.cover?.id + '.jpg'"
+                [alt]="'تصویر کاور ' + game.name"
+            />
+            <h4 class="title">{{ game.name }}</h4>
 
-        <div class="rating">
-            <i class="fas fa-stars"></i>
-            <p>{{ game.rating }}</p>
-        </div>
+            <div class="rating">
+                <i class="fas fa-stars"></i>
+                <p>{{ game.rating }}</p>
+            </div>
 
-        <ng-container class="on-sale" *ngIf="gameSalePercentage(game); else noSale">
-            <h4 class="price-on-sale">{{ game.priceOnSale.toLocaleString() }}<app-toman></app-toman></h4>
-            <h4 class="percentage">{{ gameSalePercentage(game) }}%</h4>
-            <p class="price-before-sale">{{ game.price.toLocaleString() }}<app-toman></app-toman></p>
-        </ng-container>
+            <ng-container class="on-sale" *ngIf="gameSalePercentage(game); else noSale">
+                <h4 class="price-on-sale">{{ game.priceOnSale.toLocaleString() }}<app-toman></app-toman></h4>
+                <h4 class="percentage">{{ gameSalePercentage(game) }}%</h4>
+                <p class="price-before-sale">{{ game.price.toLocaleString() }}<app-toman></app-toman></p>
+            </ng-container>
 
-        <ng-template #noSale>
-            <h4 class="price">{{ game.price.toLocaleString() }}<app-toman></app-toman></h4>
-        </ng-template>
-    </li>
-</ul>
-<app-page-number-selector
-    [minPage]="0"
-    [maxPage]="totalPageCount"
-    [currentPage]="searchService.pageNumber"
-    (currentPageChange)="searchService.search()"
-></app-page-number-selector>
+            <ng-template #noSale>
+                <h4 class="price">{{ game.price.toLocaleString() }}<app-toman></app-toman></h4>
+            </ng-template>
+        </li>
+    </ul>
+    <app-page-number-selector
+        [minPage]="0"
+        [maxPage]="totalPageCount"
+        [currentPage]="searchService.pageNumber"
+        [currentPageChange]="updateGamesCallback"
+    ></app-page-number-selector>
+</div>

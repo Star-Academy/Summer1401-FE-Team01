@@ -1,9 +1,29 @@
 ul {
-    li {
-        color: white;
-    }
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
 
-    li.current {
-        color: red;
+    li {
+        color: var(--color-gray-98);
+
+        display: grid;
+        place-items: center;
+
+        block-size: 2.5rem;
+        aspect-ratio: 1;
+
+        border-radius: 50%;
+
+        &:not(.ellipsis, .current):hover {
+            background-color: var(--color-background-30);
+
+            cursor: pointer;
+        }
+
+        &.current {
+            background-color: var(--primary-color);
+
+            font-weight: bold;
+        }
     }
 }

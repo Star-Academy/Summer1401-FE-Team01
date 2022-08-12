@@ -3,5 +3,5 @@
         <p>{{ gameCount }} بازی</p>
     </div>
     <app-filters [onFilterSubmit]="search"></app-filters>
-    <app-games-grid [games]="games" [totalGameCount]="gameCount"></app-games-grid>
+    <app-games-grid [games]="games" [totalGameCount]="gameCount" [updateGamesCallback]="search"></app-games-grid>
 </div>

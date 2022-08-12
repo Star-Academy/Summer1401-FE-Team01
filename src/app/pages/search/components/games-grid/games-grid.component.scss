@@ -1,102 +1,113 @@
 @import "src/styles";
 
-ul {
-    color: var(--color-gray-98);
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    align-items: stretch;
-    column-gap: 1rem;
-    row-gap: 2rem;
-
-    li {
-        background-color: transparent;
+    ul {
+        color: var(--color-gray-98);
 
         display: grid;
-        grid-template-areas:
-            "img img img"
-            "title title title"
-            "rating rating rating"
-            "price-on-sale price-before-sale percentage"
-            "price price price";
-        grid-template-columns: 1fr 2fr 1fr;
-        justify-items: end;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        align-items: stretch;
+        column-gap: 1rem;
+        row-gap: 2rem;
 
-        cursor: pointer;
+        li {
+            background-color: transparent;
 
-        img {
-            grid-area: img;
+            display: grid;
+            grid-template-areas:
+                "img img img"
+                "title title title"
+                "rating rating rating"
+                "price-on-sale price-before-sale percentage"
+                "price price price";
+            grid-template-columns: 1fr 2fr 1fr;
+            justify-items: end;
 
-            block-size: 20rem;
-            inline-size: 100%;
-            object-fit: cover;
+            cursor: pointer;
 
-            margin-block-end: 1rem;
+            img {
+                grid-area: img;
 
-            border-radius: var(--border-radius-super-small);
-        }
+                block-size: 20rem;
+                inline-size: 100%;
+                object-fit: cover;
 
-        .title {
-            grid-area: title;
+                margin-block-end: 1rem;
 
-            direction: ltr;
+                border-radius: var(--border-radius-super-small);
+            }
 
-            margin-block-end: 1rem;
+            .title {
+                grid-area: title;
 
-            text-align: start;
+                direction: ltr;
 
-            @include max-lines(1);
-        }
+                margin-block-end: 1rem;
 
-        .rating {
-            grid-area: rating;
+                text-align: start;
 
-            display: flex;
-            align-items: stretch;
-            gap: 0.2rem;
+                @include max-lines(1);
+            }
 
-            margin-block-end: 1rem;
+            .rating {
+                grid-area: rating;
 
-            i {
-                color: var(--color-star);
+                display: flex;
+                align-items: stretch;
+                gap: 0.2rem;
+
+                margin-block-end: 1rem;
+
+                i {
+                    color: var(--color-star);
+                }
+            }
+
+            .price-on-sale {
+                grid-area: price-on-sale;
+            }
+
+            .percentage {
+                grid-area: percentage;
+
+                background-color: var(--primary-color-darker);
+
+                width: 75%;
+
+                padding-top: 0.2rem;
+
+                border-radius: var(--border-radius-small);
+
+                text-align: center;
+            }
+
+            .price-before-sale {
+                grid-area: price-before-sale;
+
+                opacity: 0.7;
+
+                text-decoration: line-through;
+            }
+
+            .price {
+                grid-area: price;
+                justify-self: start;
+            }
+
+            .price-on-sale,
+            .price-before-sale,
+            .price {
+                display: flex;
             }
         }
+    }
 
-        .price-on-sale {
-            grid-area: price-on-sale;
-        }
-
-        .percentage {
-            grid-area: percentage;
-
-            background-color: var(--primary-color-darker);
-
-            width: 75%;
-
-            padding-top: 0.2rem;
-
-            border-radius: var(--border-radius-small);
-
-            text-align: center;
-        }
-
-        .price-before-sale {
-            grid-area: price-before-sale;
-
-            opacity: 0.7;
-
-            text-decoration: line-through;
-        }
-
-        .price {
-            grid-area: price;
-            justify-self: start;
-        }
-
-        .price-on-sale,
-        .price-before-sale,
-        .price {
-            display: flex;
-        }
+    app-page-number-selector {
+        align-self: center;
     }
 }
