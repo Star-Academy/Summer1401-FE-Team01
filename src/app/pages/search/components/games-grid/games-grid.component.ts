@@ -8,4 +8,10 @@ import {Game} from '../../../../models/game.model';
 })
 export class GamesGridComponent {
     @Input() public games: Array<Game> = [];
+
+    public gameSalePercentage(game: Game): number | null {
+        if (game.price === game.priceOnSale) return null;
+
+        return 100 - Math.floor((game.priceOnSale / game.price) * 100);
+    }
 }

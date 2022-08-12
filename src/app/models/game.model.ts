@@ -4,6 +4,7 @@ import {SafeResourceUrl} from '@angular/platform-browser';
 export class Game {
     public id!: number;
     public name!: string;
+
     public price!: number;
     public priceOnSale!: number;
 
