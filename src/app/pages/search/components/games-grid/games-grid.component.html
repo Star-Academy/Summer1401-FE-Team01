@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let game of games">
+    <li *ngFor="let game of games" (click)="openGamePage(game)">
         <img
             [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + this.game.cover?.id + '.jpg'"
             [alt]="'تصویر کاور ' + game.name"
@@ -12,22 +12,13 @@
         </div>
 
         <ng-container class="on-sale" *ngIf="gameSalePercentage(game); else noSale">
-            <div class="sale">
-                <h4 class="price">{{ game.priceOnSale.toLocaleString() }}</h4>
-                <app-toman></app-toman>
-                <h5 class="percentage">{{ gameSalePercentage(game) }}%</h5>
-            </div>
-            <div class="price">
-                <h4>{{ game.price.toLocaleString() }}</h4>
-                <app-toman></app-toman>
-            </div>
+            <h4 class="price-on-sale">{{ game.priceOnSale.toLocaleString() }}<app-toman></app-toman></h4>
+            <h4 class="percentage">{{ gameSalePercentage(game) }}%</h4>
+            <p class="price-before-sale">{{ game.price.toLocaleString() }}<app-toman></app-toman></p>
         </ng-container>
 
         <ng-template #noSale>
-            <div class="price">
-                <h5>{{ game.price.toLocaleString() }}</h5>
-                <app-toman></app-toman>
-            </div>
+            <h4 class="price">{{ game.price.toLocaleString() }}<app-toman></app-toman></h4>
         </ng-template>
     </li>
 </ul>

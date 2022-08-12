@@ -18,31 +18,5 @@
             <span class="title">تاریخ انتشار</span>
             <span>{{ gameReleaseDate }}</span>
         </div>
-        <div class="row" *ngIf="game.platforms">
-            <span class="title">پلتفرم‌ها</span>
-
-            <ul class="platforms">
-                <ng-container *ngFor="let platform of game.platforms">
-                    <li *ngIf="platform.name | include: 'playstation'">
-                        <i class="fab fa-playstation" [title]="platform.name"></i>
-                    </li>
-                    <li *ngIf="platform.name | include: 'xbox'">
-                        <i class="fab fa-xbox" [title]="platform.name"></i>
-                    </li>
-                    <li *ngIf="platform.name | include: 'windows'">
-                        <i class="fab fa-windows" [title]="platform.name"></i>
-                    </li>
-                    <li *ngIf="platform.name | include: 'mac'">
-                        <i class="fab fa-apple" [title]="platform.name"></i>
-                    </li>
-                    <li *ngIf="platform.name | include: 'linux'">
-                        <i class="fab fa-linux" [title]="platform.name"></i>
-                    </li>
-                    <li *ngIf="platform.name | include: 'web'">
-                        <i class="fab fa-internet-explorer" [title]="platform.name"></i>
-                    </li>
-                </ng-container>
-            </ul>
-        </div>
     </div>
 </div>

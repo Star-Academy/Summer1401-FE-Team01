@@ -14,7 +14,7 @@
             <p>ژانر‌ها</p>
 
             <ul>
-                <li *ngFor="let theme of game.genres">
+                <li *ngFor="let theme of game.themes">
                     <a (click)="searchService.goToSearchPageWithFilter({genres: [theme.id]})">{{ theme.name }}</a>
                 </li>
             </ul>
@@ -28,15 +28,17 @@
         <p>{{ game.ratingCount * 100 }} نظر</p>
     </div>
 
-    <iframe
-        width="560"
-        height="315"
-        [src]="game.videos[0].safeUrl"
-        [title]="game.videos[0].name"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-    ></iframe>
+    <ng-container *ngIf="game.videos.length > 0">
+        <iframe
+            width="560"
+            height="315"
+            [src]="game.videos[0].safeUrl"
+            [title]="game.videos[0].name"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+        ></iframe>
+    </ng-container>
 
     <ul class="screenshot">
         <li *ngFor="let photo of game.screenshots | slice: 0:3">

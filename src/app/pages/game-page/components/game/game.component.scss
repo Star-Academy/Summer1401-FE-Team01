@@ -6,6 +6,7 @@
         "categories categories"
         "story story"
         "screenshot screenshot";
+    grid-template-columns: 1fr auto;
     justify-items: center;
     gap: var(--spacing);
 
