@@ -1,7 +1,9 @@
 <div class="wrapper">
     <div class="item-count">
-        <p>{{ gameCount }} بازی</p>
+        <p>{{ searchService.totalGameCount }} بازی</p>
     </div>
     <app-filters [onFilterSubmit]="search"></app-filters>
     <app-games-grid [games]="games" [totalGameCount]="gameCount" [updateGamesCallback]="search"></app-games-grid>
+<!--    <app-filters></app-filters>-->
+<!--    <app-games-grid [games]="searchService.games"></app-games-grid>-->
 </div>

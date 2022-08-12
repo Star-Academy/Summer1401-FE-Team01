@@ -1,6 +1,6 @@
 <div class="filters-wrapper">
     <h1>فیلتر</h1>
-    <app-button id="submit-filters" text="ثبت" theme="contained" (click)="onFilterSubmit()"></app-button>
+    <app-button id="submit-filters" text="ثبت" theme="contained" (click)="searchService.search()"></app-button>
     <app-button id="clear-filters" text="حذف فیلتر‌ها" theme="text" (click)="searchService.resetFilters()"></app-button>
 
     <div id="filters">

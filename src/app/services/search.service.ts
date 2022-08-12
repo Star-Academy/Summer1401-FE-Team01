@@ -10,7 +10,6 @@ import {
     API_PLAYER_PERSPECTIVES,
 } from '../utils/api.utils';
 import {Game} from '../models/game.model';
-import {Pair} from '../models/pair.model';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -33,6 +32,9 @@ export class SearchService {
 
     public pageSize: number = 10;
     public pageNumber: number = 0;
+
+    public games: Array<Game> = [];
+    public totalGameCount = 0;
 
     public get offset(): number {
         return this.pageSize * this.pageNumber;
@@ -83,7 +85,7 @@ export class SearchService {
         return items;
     }
 
-    public async search(): Promise<Pair<number, Array<Game>> | null> {
+    public async search(): Promise<void> {
         const response = await this.apiService.postRequest<{count: number; games: Array<Game>}>({
             url: API_GAME_SEARCH,
             body: {
@@ -105,8 +107,8 @@ export class SearchService {
                 },
             },
         });
-        if (!response) return null;
-        return new Pair(response.count, response.games);
+        this.games = response?.games || [];
+        this.totalGameCount = response?.count || 0;
     }
 
     public resetFilters(): void {
