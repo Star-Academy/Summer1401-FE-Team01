@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {SearchService} from '../../../../../../services/search.service';
 
 @Component({
@@ -7,26 +7,42 @@ import {SearchService} from '../../../../../../services/search.service';
     styleUrls: ['./page-number-selector.component.scss'],
 })
 export class PageNumberSelectorComponent {
-    @Input() public minPage!: number;
-    @Input() public maxPage!: number;
+    public constructor(public searchService: SearchService) {}
 
-    @Input() public currentPage!: number;
-    @Input() public currentPageChange!: () => void;
-
-    public constructor(private searchService: SearchService) {}
+    public get minPage(): number {
+        return 0;
+    }
+    public get maxPage(): number {
+        return Math.ceil(this.searchService.totalGameCount / this.searchService.pageSize);
+    }
 
     public get pages(): Array<number> {
+        console.log(this.minPage, this.maxPage);
         return new Array(this.maxPage - this.minPage + 1)
             .fill(0)
             .map((_, i) => i + this.minPage)
             .filter((p) =>
-                [this.minPage, this.maxPage, this.currentPage, this.currentPage + 1, this.currentPage - 1].includes(p)
+                [
+                    this.minPage,
+                    this.maxPage,
+                    this.searchService.pageNumber,
+                    this.searchService.pageNumber + 1,
+                    this.searchService.pageNumber - 1,
+                ].includes(p)
             );
     }
 
-    public setCurrentPage(page: number): void {
+    public async setCurrentPage(page: number): Promise<void> {
         this.searchService.pageNumber = page;
-        this.currentPageChange();
-        console.log(this.currentPage, this.searchService.offset);
+        await this.searchService.search();
+        document.documentElement.scrollTop = 0;
+    }
+
+    public prevPage(): void {
+        this.setCurrentPage(this.searchService.pageNumber - 1).then();
+    }
+
+    public nextPage(): void {
+        this.setCurrentPage(this.searchService.pageNumber + 1).then();
     }
 }

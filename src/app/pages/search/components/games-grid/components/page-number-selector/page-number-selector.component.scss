@@ -1,6 +1,7 @@
 ul {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
     gap: 1rem;
 
     li {
@@ -24,6 +25,22 @@ ul {
             background-color: var(--primary-color);
 
             font-weight: bold;
+        }
+    }
+
+    app-button {
+        --font-size: 0.85rem;
+
+        &.disabled {
+            visibility: hidden;
+        }
+
+        &:first-of-type {
+            margin-inline-start: auto;
+        }
+
+        &:last-of-type {
+            margin-inline-start: auto;
         }
     }
 }
