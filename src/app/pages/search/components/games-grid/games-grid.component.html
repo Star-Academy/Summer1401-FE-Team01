@@ -22,3 +22,9 @@
         </ng-template>
     </li>
 </ul>
+<app-page-number-selector
+    [minPage]="0"
+    [maxPage]="totalPageCount"
+    [currentPage]="searchService.pageNumber"
+    (currentPageChange)="searchService.search()"
+></app-page-number-selector>
