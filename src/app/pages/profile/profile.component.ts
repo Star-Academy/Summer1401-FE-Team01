@@ -12,23 +12,52 @@ import {UserService} from '../../services/user.service';
     styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
-    public user!: User | null;
+    public user!: User;
     public constructor(
         private router: Router,
         private authService: AuthService,
         private snackbarService: SnackbarService,
         private userService: UserService
     ) {
-        this.user = authService.cachedUser;
+        this.user = authService.cachedUser!;
+    }
+
+    public async editField(field: string, newValue: string): Promise<void> {
+        const response = await this.userService.alterUserInfo(field, newValue);
+        if (response) {
+            switch (field) {
+                case 'username':
+                    this.user.username = newValue;
+                    break;
+                case 'password':
+                    this.user.password = newValue;
+                    break;
+                case 'email':
+                    this.user.email = newValue;
+                    break;
+                case 'phone':
+                    this.user.phone = newValue;
+                    break;
+                case 'firstName':
+                    this.user.firstName = newValue;
+                    break;
+                case 'lastName':
+                    this.user.lastName = newValue;
+                    break;
+                case 'dateOfBirth':
+                    this.user.dateOfBirth = newValue;
+                    break;
+                case 'avatar':
+                    this.user.avatar = newValue;
+                    break;
+                default:
+                    throw new Error(`Invalid Field: ${field}`);
+            }
+        }
     }
 
     public get profilePhotoSrc(): string {
-        return this.user?.avatar || '../../../assets/images/default-profile-picture.svg';
-    }
-
-    public async logout(): Promise<void> {
-        await this.authService.logout();
-        await this.router.navigateByUrl('/');
+        return this.user.avatar || '../../../assets/images/default-profile-picture.svg';
     }
 
     public submitPhoto(event: Event): void {
@@ -37,11 +66,15 @@ export class ProfileComponent {
         reader.readAsDataURL(file);
         reader.onload = async (): Promise<void> => {
             const base64Img = reader.result as string;
-            const response = await this.userService.alterUserInfo('avatar', base64Img);
-            if (response) this.user!.avatar = base64Img;
+            await this.editField('avatar', base64Img);
         };
         reader.onerror = (_): void => {
             this.snackbarService.show({text: 'دریافت تصویر با خطا روبرو شد!', theme: SnackbarTheme.DANGER});
         };
+    }
+
+    public async logout(): Promise<void> {
+        await this.authService.logout();
+        await this.router.navigateByUrl('/');
     }
 }
