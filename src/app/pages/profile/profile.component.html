@@ -1,45 +1,48 @@
-<main>
-    <label id="pfp">
-        <img [src]="profilePhotoSrc" alt="عکس کاربر" />
-        <input type="file" accept="image/*" (change)="submitPhoto($event)" />
-    </label>
+<div class="wrapper">
+    <main>
+        <h1>سلام {{ user.username }}!</h1>
+        <label id="pfp">
+            <img [src]="profilePhotoSrc" alt="عکس کاربر" />
+            <input type="file" accept="image/*" (change)="submitPhoto($event)" />
+        </label>
 
-    <app-editable-field
-        id="username"
-        title="username"
-        titlePersian="نام کاربری"
-        [value]="user.username"
-        [onValueChanged]="editField"
-    ></app-editable-field>
+        <app-editable-field
+            id="username"
+            title="username"
+            titlePersian="نام کاربری"
+            [value]="user.username"
+            [onValueChanged]="editField"
+        ></app-editable-field>
 
-    <app-editable-field
-        id="email"
-        title="email"
-        titlePersian="ایمیل"
-        [value]="user.email"
-        [onValueChanged]="editField"
-    ></app-editable-field>
+        <app-editable-field
+            id="email"
+            title="email"
+            titlePersian="ایمیل"
+            [value]="user.email"
+            [onValueChanged]="editField"
+        ></app-editable-field>
 
-    <app-editable-field
-        id="first-name"
-        title="firstName"
-        titlePersian="نام"
-        [value]="user.firstName"
-        [onValueChanged]="editField"
-    ></app-editable-field>
-    <app-editable-field
-        id="last-name"
-        title="lastName"
-        titlePersian="نام‌خانوادگی"
-        [value]="user.lastName"
-        [onValueChanged]="editField"
-    ></app-editable-field>
+        <app-editable-field
+            id="first-name"
+            title="firstName"
+            titlePersian="نام"
+            [value]="user.firstName"
+            [onValueChanged]="editField"
+        ></app-editable-field>
+        <app-editable-field
+            id="last-name"
+            title="lastName"
+            titlePersian="نام‌خانوادگی"
+            [value]="user.lastName"
+            [onValueChanged]="editField"
+        ></app-editable-field>
 
-    <app-editable-field
-        id="birth-date"
-        title="dateOfBirth"
-        titlePersian="تاریخ‌تولد"
-        [value]="user.dateOfBirth"
-        [onValueChanged]="editField"
-    ></app-editable-field>
-</main>
+        <app-editable-field
+            id="birth-date"
+            title="dateOfBirth"
+            titlePersian="تاریخ‌تولد"
+            [value]="user.dateOfBirth"
+            [onValueChanged]="editField"
+        ></app-editable-field>
+    </main>
+</div>

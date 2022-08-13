@@ -1,5 +1,19 @@
 label {
-    background-color: green;
-
     display: flex;
+    align-items: center;
+
+    padding-inline: 0.75rem;
+
+    border-inline-start: 1.5px solid var(--color-background-55);
+
+    h5 {
+        white-space: nowrap;
+    }
+
+    input,
+    p {
+        width: 100%;
+
+        margin-inline: 1rem;
+    }
 }

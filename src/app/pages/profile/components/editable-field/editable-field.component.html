@@ -6,6 +6,7 @@
     <ng-container *ngIf="editable; else notEditable">
         <input [(ngModel)]="value" />
         <app-button iconClasses="far fa-check" theme="text" (click)="onEditSubmit()"></app-button>
+        <app-button iconClasses="far fa-xmark" theme="text" (click)="toggleEditable()"></app-button>
     </ng-container>
     <ng-template #notEditable>
         <p>{{ value || '-' }}</p>

@@ -1,57 +1,71 @@
-main {
-    background-color: var(--color-background-20);
-    color: var(--color-gray-98);
-
+.wrapper {
     display: grid;
-    grid-template-areas:
-        "pfp username . ."
-        "pfp email email ."
-        "pfp first-name last-name birth-date";
-    grid-template-columns: repeat(4, 1fr);
-    align-items: center;
-    column-gap: 1rem;
-    row-gap: 2rem;
+    place-content: center;
 
-    padding: 2rem;
+    main {
+        background-color: var(--color-background-20);
+        color: var(--color-gray-98);
 
-    border-radius: var(--border-radius-small);
+        display: grid;
+        grid-template-areas:
+            "hello . . ."
+            "pfp username . ."
+            "pfp email email ."
+            "pfp first-name last-name birth-date";
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        column-gap: 1rem;
+        row-gap: 2rem;
 
-    #pfp {
-        grid-area: pfp;
+        inline-size: 65rem;
 
-        inline-size: fit-content;
+        padding: 2rem;
 
-        input {
-            display: none;
+        border-radius: var(--border-radius-small);
+
+        h1 {
+            grid-area: hello;
         }
 
-        img {
-            block-size: fit-content;
-            inline-size: 15rem;
-            aspect-ratio: 1;
-            object-fit: cover;
+        #pfp {
+            grid-area: pfp;
 
-            border-radius: 50%;
+            inline-size: fit-content;
+
+            margin-inline-end: 2rem;
+
+            input {
+                display: none;
+            }
+
+            img {
+                block-size: fit-content;
+                inline-size: 15rem;
+                aspect-ratio: 1;
+                object-fit: cover;
+
+                border-radius: 50%;
+            }
         }
-    }
 
-    #username {
-        grid-area: username;
-    }
+        #username {
+            grid-area: username;
+        }
 
-    #email {
-        grid-area: email;
-    }
+        #email {
+            grid-area: email;
+        }
 
-    #first-name {
-        grid-area: first-name;
-    }
+        #first-name {
+            grid-area: first-name;
+        }
 
-    #last-name {
-        grid-area: last-name;
-    }
+        #last-name {
+            grid-area: last-name;
+        }
 
-    #birth-date {
-        grid-area: birth-date;
+        #birth-date {
+            grid-area: birth-date;
+        }
     }
 }
