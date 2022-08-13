@@ -1,6 +1,6 @@
 <div class="wrapper">
     <main>
-        <h1>سلام {{ user.username }}!</h1>
+        <h1>سلام {{ user.firstName || user.username }}!</h1>
         <label id="pfp">
             <img [src]="profilePhotoSrc" alt="عکس کاربر" />
             <input type="file" accept="image/*" (change)="submitPhoto($event)" />
@@ -10,6 +10,9 @@
             id="username"
             title="username"
             titlePersian="نام کاربری"
+            name="username"
+            type="text"
+            direction="ltr"
             [value]="user.username"
             [onValueChanged]="editField"
         ></app-editable-field>
@@ -18,6 +21,9 @@
             id="email"
             title="email"
             titlePersian="ایمیل"
+            name="email"
+            type="email"
+            direction="ltr"
             [value]="user.email"
             [onValueChanged]="editField"
         ></app-editable-field>
@@ -26,6 +32,8 @@
             id="first-name"
             title="firstName"
             titlePersian="نام"
+            name="given-name"
+            type="given-name"
             [value]="user.firstName"
             [onValueChanged]="editField"
         ></app-editable-field>
@@ -33,6 +41,8 @@
             id="last-name"
             title="lastName"
             titlePersian="نام‌خانوادگی"
+            name="family-name"
+            type="family-name"
             [value]="user.lastName"
             [onValueChanged]="editField"
         ></app-editable-field>
@@ -41,6 +51,9 @@
             id="birth-date"
             title="dateOfBirth"
             titlePersian="تاریخ‌تولد"
+            name="date"
+            type="date"
+            direction="ltr"
             [value]="user.dateOfBirth"
             [onValueChanged]="editField"
         ></app-editable-field>

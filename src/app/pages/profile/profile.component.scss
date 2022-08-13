@@ -8,11 +8,11 @@
 
         display: grid;
         grid-template-areas:
-            "hello . . ."
-            "pfp username . ."
-            "pfp email email ."
-            "pfp first-name last-name birth-date";
-        grid-template-columns: repeat(4, 1fr);
+            "hello hello ."
+            "pfp username birth-date"
+            "pfp email email"
+            "pfp first-name last-name";
+        grid-template-columns: auto repeat(2, 1fr);
         align-items: center;
         column-gap: 1rem;
         row-gap: 2rem;
@@ -32,7 +32,7 @@
 
             inline-size: fit-content;
 
-            margin-inline-end: 2rem;
+            margin-inline-end: 1rem;
 
             input {
                 display: none;
@@ -54,6 +54,8 @@
 
         #email {
             grid-area: email;
+
+            max-inline-size: 75%;
         }
 
         #first-name {

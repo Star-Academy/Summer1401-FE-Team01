@@ -9,6 +9,10 @@ export class EditableFieldComponent {
     @Input() public title!: string;
     @Input() public titlePersian!: string;
 
+    @Input() public type!: string;
+    @Input() public name!: string;
+    @Input() public direction: 'rtl' | 'ltr' = 'rtl';
+
     @Input() public value!: string;
     @Input() public onValueChanged!: (title: string, newValue: string) => Promise<boolean>;
 
@@ -21,6 +25,7 @@ export class EditableFieldComponent {
     }
 
     public toggleEditable(): void {
+        console.log('toggleEditable');
         this.editable = !this.editable;
     }
 }

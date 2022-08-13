@@ -5,9 +5,10 @@ import {RouterModule} from '@angular/router';
 import {EditableFieldComponent} from './components/editable-field/editable-field.component';
 import {CarouselItemModule} from '../../components/carousel-item/carousel-item.module';
 import {FormsModule} from '@angular/forms';
+import {InputModule} from '../../components/input/input.module';
 
 @NgModule({
     declarations: [ProfileComponent, EditableFieldComponent],
-    imports: [CommonModule, RouterModule, CarouselItemModule, FormsModule],
+    imports: [CommonModule, RouterModule, CarouselItemModule, FormsModule, InputModule],
 })
 export class ProfileModule {}
