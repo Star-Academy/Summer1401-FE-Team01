@@ -15,12 +15,7 @@ export class GameService {
             await this.apiService.getRequest<{games: Array<Game>}>({
                 url: API_GAME_UPCOMING,
             })
-        )?.games
-            // remove repeating games
-            .reduce((prevArray: Array<Game>, game: Game) => {
-                if (!prevArray.some((g) => g.id == game.id)) prevArray.push(game);
-                return prevArray;
-            }, []);
+        )?.games;
 
         if (!!gamesResponse) {
             // todo: uncomment

@@ -7,7 +7,7 @@ import {HeaderModule} from './components/header/header.module';
 import {HomeModule} from './pages/home/home.module';
 import {SnackbarComponent} from './components/snackbar/snackbar.component';
 import {AuthModule} from './components/auth/auth.module';
-import {ProfileModule} from './components/profile/profile.module';
+import {ProfileModule} from './pages/profile/profile.module';
 import {NgxPopperjsModule} from 'ngx-popperjs';
 import {GamePageModule} from './pages/game-page/game-page.module';
 import {FooterModule} from './components/footer/footer.module';

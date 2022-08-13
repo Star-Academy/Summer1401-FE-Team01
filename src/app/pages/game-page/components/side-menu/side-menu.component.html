@@ -1,19 +1,20 @@
 <div class="container">
     <img [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + game.cover?.id + '.webp'" alt="کاور بازی" />
-    <!--    <h2>{{ game.name }}</h2>-->
     <div class="wrapper">
         <h5>{{ game.price.toLocaleString() }}<app-toman></app-toman></h5>
-        <!--        <app-button theme="contained" text="خرید"></app-button>-->
+
         <app-button theme="contained" text="افزودن به سبد خرید"></app-button>
-        <!--        <app-button theme="outline" text="افزودن به علاقه‌مندی‌ها"></app-button>-->
+
         <div class="row" *ngIf="developerCompanies">
             <span class="title">سازنده</span>
             <span>{{ developerCompanies }}</span>
         </div>
+
         <div class="row" *ngIf="publisherCompanies">
             <span class="title">پخش‌کننده</span>
             <span>{{ publisherCompanies }}</span>
         </div>
+
         <div class="row" *ngIf="gameReleaseDate">
             <span class="title">تاریخ انتشار</span>
             <span>{{ gameReleaseDate }}</span>

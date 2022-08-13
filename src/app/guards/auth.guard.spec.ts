@@ -5,7 +5,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {AuthComponent} from '../components/auth/auth.component';
-import {ProfileComponent} from '../components/profile/profile.component';
+import {ProfileComponent} from '../pages/profile/profile.component';
 
 describe('AuthGuard', () => {
     let guard: AuthGuard;

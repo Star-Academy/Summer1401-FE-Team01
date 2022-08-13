@@ -6,7 +6,7 @@ import {SnackbarService} from '../../../../services/snackbar.service';
 import {SnackbarServiceMock} from '../../../../mocks/snackbar-service.mock';
 import {FetchMock} from '../../../../mocks/fetch.mock';
 import {AuthComponent} from '../../auth.component';
-import {ProfileComponent} from '../../../profile/profile.component';
+import {ProfileComponent} from '../../../../pages/profile/profile.component';
 
 describe('LoginComponent', () => {
     let fixture: ComponentFixture<LoginComponent>;

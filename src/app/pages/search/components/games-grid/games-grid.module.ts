@@ -10,5 +10,6 @@ import {RoundNumberToHalfPipe} from './pipes/round-number-to-half.pipe';
     declarations: [GamesGridComponent, PageNumberSelectorComponent, RoundNumberToHalfPipe],
     exports: [GamesGridComponent],
     imports: [CommonModule, TomanModule, CarouselItemModule],
+    providers: [RoundNumberToHalfPipe],
 })
 export class GamesGridModule {}

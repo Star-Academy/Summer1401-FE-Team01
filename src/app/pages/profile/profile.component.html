@@ -1,0 +1,14 @@
+<aside>
+    <label>
+        <img src="../../../assets/images/default-profile-picture.svg" alt="عکس کاربر" />
+        <input type="file" accept="image/*" />
+    </label>
+
+    <h3 *ngIf="user?.firstName && user?.lastName">{{ user?.firstName }} {{ user?.lastName }}</h3>
+    <p class="row">
+        <span>نام کاربری</span> <span> {{ user?.username }}</span>
+    </p>
+    <p class="row">
+        <span>ایمیل</span> <span> {{ user?.email }}</span>
+    </p>
+</aside>

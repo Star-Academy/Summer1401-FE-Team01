@@ -1,9 +1,13 @@
 export class User {
-    public constructor(
-        public username: string,
-        public password: string,
-        public email: string,
-        public firstName: string,
-        public lastName: string
-    ) {}
+    public username!: string;
+    public password!: string;
+
+    public email!: string;
+    public phone!: string;
+
+    public firstName!: string;
+    public lastName!: string;
+
+    public dateOfBirth!: string; // YYYY-MM-DD
+    public avatar!: string;
 }
