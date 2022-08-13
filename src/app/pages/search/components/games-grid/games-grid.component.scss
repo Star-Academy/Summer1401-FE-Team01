@@ -30,16 +30,45 @@
 
             cursor: pointer;
 
-            img {
+            .image {
                 grid-area: img;
 
+                position: relative;
+
                 block-size: 20rem;
-                inline-size: 100%;
-                object-fit: cover;
 
                 margin-block-end: 1rem;
 
                 border-radius: var(--border-radius-super-small);
+
+                img {
+                    block-size: 100%;
+                    inline-size: 100%;
+                    object-fit: cover;
+                }
+
+                .overlay {
+                    background-color: hsla(0deg 0% 0% / 70%);
+                    opacity: 0;
+
+                    position: absolute;
+                    inset: 0;
+
+                    display: flex;
+                    justify-content: end;
+                    gap: 1rem;
+
+                    block-size: 100%;
+                    inline-size: 100%;
+
+                    padding: 0.5rem;
+
+                    transition: opacity 100ms ease-in-out;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
             }
 
             .title {

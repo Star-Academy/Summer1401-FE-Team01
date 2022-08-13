@@ -3,7 +3,40 @@
 
     <ul>
         <li *ngFor="let game of games" (click)="openGamePage(game)">
-            <img [src]="game.cover.getScreenShotUrl(ImageType._720P)" [alt]="'تصویر کاور ' + game.name" />
+            <div class="image">
+                <img [src]="game.cover.getScreenShotUrl(ImageType._720P)" [alt]="'تصویر کاور ' + game.name" />
+                <div class="overlay">
+                    <ng-container *ngIf="isInBookmarks(game); else addBookmark">
+                        <app-button
+                            iconClasses="fas fa-bookmark"
+                            theme="contained"
+                            (click)="removeFromBookmark(game, $event)"
+                        ></app-button>
+                    </ng-container>
+                    <ng-template #addBookmark>
+                        <app-button
+                            iconClasses="far fa-bookmark"
+                            theme="contained"
+                            (click)="addToBookmarks(game, $event)"
+                        ></app-button>
+                    </ng-template>
+                    <ng-container *ngIf="isInFavourites(game); else addFave">
+                        <app-button
+                            iconClasses="fas fa-heart"
+                            theme="contained"
+                            (click)="removeFromFavourites(game, $event)"
+                        ></app-button>
+                    </ng-container>
+                    <ng-template #addFave>
+                        <app-button
+                            iconClasses="far fa-heart"
+                            theme="contained"
+                            (click)="addToFavourites(game, $event)"
+                        ></app-button>
+                    </ng-template>
+                </div>
+            </div>
+
             <h4 class="title">{{ game.name }}</h4>
 
             <div class="rating">
