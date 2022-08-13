@@ -45,9 +45,9 @@ export class Game {
         this.rating = game.rating;
         this.ratingCount = game.ratingCount;
         this.releaseDate = game.releaseDate;
-        this.cover = game.cover;
-        this.screenshots = game.screenshots;
-        this.artworks = game.artworks;
+        this.cover = new Image(game.cover);
+        this.screenshots = game.screenshots.map((image) => new Image(image));
+        this.artworks = game.artworks.map((image) => new Image(image));
         this.videos = game.videos;
         this.storyline = game.storyline;
         this.summary = game.summary;
@@ -66,6 +66,16 @@ export class Image {
     public id!: string;
     public width!: number;
     public height!: number;
+
+    public constructor(image: Image) {
+        this.id = image.id;
+        this.width = image.width;
+        this.height = image.height;
+    }
+
+    public getScreenShotUrl(imageType: ImageType): string {
+        return `https://images.igdb.com/igdb/image/upload/t_${imageType}/${this.id}.jpg`;
+    }
 }
 
 export enum ImageType {
@@ -97,7 +107,5 @@ export class Company {
 export class InvolvedCompany {
     public company!: Company;
     public developer!: boolean;
-    public porting!: boolean;
     public publisher!: boolean;
-    public supporting!: boolean;
 }

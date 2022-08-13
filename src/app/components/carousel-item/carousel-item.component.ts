@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Game} from '../../models/game.model';
+import {Game, ImageType} from '../../models/game.model';
 import {AuthService} from '../../services/auth.service';
 import {UserBookmarkFavouriteService} from '../../services/user-bookmark-favourite.service';
 import {Router} from '@angular/router';
@@ -32,16 +32,16 @@ export class CarouselItemComponent {
 
     public get sliderCoverImage(): string {
         if (!!this.game) {
-            if (!!this.game.artworks && !!this.game.artworks[0] && !!this.game.artworks[0].id) {
-                return `https://images.igdb.com/igdb/image/upload/t_1080p/${this.game.artworks[0].id}.jpg`;
+            if (!!this.game.artworks && !!this.game.artworks[0]) {
+                return this.game.artworks[0].getScreenShotUrl(ImageType._1080P);
             }
 
-            if (!!this.game.screenshots && !!this.game.screenshots[0] && !!this.game.screenshots[0].id) {
-                return `https://images.igdb.com/igdb/image/upload/t_1080p/${this.game.screenshots[0].id}.jpg`;
+            if (!!this.game.screenshots && !!this.game.screenshots[0]) {
+                return this.game.screenshots[0].getScreenShotUrl(ImageType._1080P);
             }
 
             if (!!this.game.cover) {
-                return `https://images.igdb.com/igdb/image/upload/t_1080p/${this.game.cover.id}.jpg`;
+                return this.game.cover.getScreenShotUrl(ImageType._1080P);
             }
         }
         return '';
