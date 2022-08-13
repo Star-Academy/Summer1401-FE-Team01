@@ -1,12 +1,14 @@
 <label>
-    {{ titlePersian }}
+    <h5>
+        {{ titlePersian }}
+    </h5>
 
     <ng-container *ngIf="editable; else notEditable">
         <input [(ngModel)]="value" />
         <app-button iconClasses="far fa-check" theme="text" (click)="onEditSubmit()"></app-button>
     </ng-container>
     <ng-template #notEditable>
-        <p>{{ value }}</p>
+        <p>{{ value || '-' }}</p>
         <app-button iconClasses="far fa-pen" theme="text" (click)="toggleEditable()"></app-button>
     </ng-template>
 </label>

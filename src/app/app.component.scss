@@ -1,3 +1,13 @@
 .wrapper {
-    padding-inline: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-block-size: 100%;
+    inline-size: 98vw;
+
+    app-header,
+    main {
+        padding-inline: 4rem;
+    }
 }
