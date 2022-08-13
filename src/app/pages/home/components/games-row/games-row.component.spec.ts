@@ -1,19 +1,19 @@
-import {CategoriesComponent} from './categories.component';
+import {GamesRowComponent} from './games-row.component';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 describe('CategoriesComponent', () => {
-    let fixture: ComponentFixture<CategoriesComponent>;
-    let component: CategoriesComponent;
+    let fixture: ComponentFixture<GamesRowComponent>;
+    let component: GamesRowComponent;
     let host: HTMLElement;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [CategoriesComponent],
+            declarations: [GamesRowComponent],
         }).compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(CategoriesComponent);
+        fixture = TestBed.createComponent(GamesRowComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
         host = fixture.nativeElement as HTMLElement;

@@ -10,11 +10,11 @@ interface Category {
 }
 
 @Component({
-    selector: 'app-categories',
-    templateUrl: './categories.component.html',
-    styleUrls: ['./categories.component.scss'],
+    selector: 'app-games-row',
+    templateUrl: './games-row.component.html',
+    styleUrls: ['./games-row.component.scss'],
 })
-export class CategoriesComponent {
+export class GamesRowComponent {
     public categories: Category[] = [
         {
             title: 'Red Dead Redemption II',
