@@ -10,4 +10,6 @@ export class User {
 
     public dateOfBirth!: string; // YYYY-MM-DD
     public avatar!: string;
+
+    public credit!: number;
 }

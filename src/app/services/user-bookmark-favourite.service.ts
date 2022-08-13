@@ -29,29 +29,30 @@ export class UserBookmarkFavouriteService {
         this.fetchAllFavourites().then();
     }
 
-    public async fetchAllFavourites(): Promise<Array<number>> {
+    public async fetchAllFavourites(): Promise<Array<Game>> {
         const res = await this.fetchAll(API_FAVES_ALL);
         if (!!res) {
-            this.cachedFaveIds = res;
+            this.cachedFaveIds = res.map((g) => g.id);
         }
         return res;
     }
 
-    public async fetchAllBookmarks(): Promise<Array<number>> {
+    public async fetchAllBookmarks(): Promise<Array<Game>> {
         const res = await this.fetchAll(API_BOOKMARKS_ALL);
         if (!!res) {
-            this.cachedBookmarkIds = res;
+            this.cachedBookmarkIds = res.map((g) => g.id);
         }
         return res;
     }
 
-    private async fetchAll(url: string): Promise<Array<number>> {
+    private async fetchAll(url: string): Promise<Array<Game>> {
         const response = await this.apiService.postRequest<{games: Array<Game>}>({
             url,
             body: {token: this.authService.token},
+            showSnackbar: false,
         });
 
-        return (response?.games || []).map((g) => g.id);
+        return (response?.games || []).map((game) => new Game(game));
     }
 
     public async addToFaves(gameId: number): Promise<void> {

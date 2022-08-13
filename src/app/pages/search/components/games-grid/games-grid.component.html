@@ -1,5 +1,5 @@
 <div class="container">
-    <ul>
+    <ul *ngIf="games.length > 0">
         <li *ngFor="let game of games" (click)="openGamePage(game)">
             <img [src]="game.cover.getScreenShotUrl(ImageType._720P)" [alt]="'تصویر کاور ' + game.name" />
             <h4 class="title">{{ game.name }}</h4>
@@ -20,5 +20,8 @@
             </ng-template>
         </li>
     </ul>
-    <app-page-number-selector></app-page-number-selector>
+    <img class="empty" *ngIf="games.length === 0" src="assets/images/empty.webp" alt="لیست بازی خالی" />
+    <h2 class="empty-text" *ngIf="games.length === 0">خالییی... :(</h2>
+
+    <app-page-number-selector *ngIf="multiPage"></app-page-number-selector>
 </div>

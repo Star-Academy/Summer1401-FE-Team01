@@ -18,19 +18,19 @@
             <i class="far fa-wallet"></i>
             <div>کیف پول</div>
             <div class="suffix">
-                <div class="number bold">0</div>
+                <div class="number bold">{{ authService.cachedUser?.credit || 0 }}</div>
                 <div class="fade">تومان</div>
             </div>
         </a>
 
-        <a routerLink="/wishlist">
+        <a routerLink="/favourites">
             <i class="far fa-heart"></i>
             <div>علاقه‌مندی‌ها</div>
         </a>
 
-        <a routerLink="/orders">
-            <i class="far fa-shopping-bag"></i>
-            <div>خریداری‌شده</div>
+        <a routerLink="/bookmarks">
+            <i class="far fa-bookmark"></i>
+            <div>بوکمارک‌ها</div>
         </a>
 
         <button class="reset" (click)="logout()">

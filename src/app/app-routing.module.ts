@@ -7,6 +7,7 @@ import {AuthGuard} from './guards/auth.guard';
 import {AuthComponent} from './components/auth/auth.component';
 import {GamePageComponent} from './pages/game-page/game-page.component';
 import {SearchComponent} from './pages/search/search.component';
+import {GamesGridComponent} from './pages/search/components/games-grid/games-grid.component';
 
 const routes: Routes = [
     {path: '', pathMatch: 'full', component: HomeComponent},
@@ -14,6 +15,8 @@ const routes: Routes = [
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     {path: 'game', component: GamePageComponent},
     {path: 'search', component: SearchComponent},
+    {path: 'favourites', component: GamesGridComponent, canActivate: [AuthGuard]},
+    {path: 'bookmarks', component: GamesGridComponent, canActivate: [AuthGuard]},
     {path: '**', redirectTo: ''},
 ];
 

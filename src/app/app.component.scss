@@ -6,8 +6,11 @@
     min-block-size: 100%;
     inline-size: 98vw;
 
-    app-header,
-    main {
+    app-header {
         padding-inline: 4rem;
+    }
+
+    main {
+        padding: 4rem;
     }
 }

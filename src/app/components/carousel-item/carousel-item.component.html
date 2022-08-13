@@ -1,5 +1,5 @@
-<div class="slide" [style.--current-index]="currentIndex" (click)="openGamePage()">
-    <img [src]="sliderCoverImage" [alt]="game.name" />
+<div class="slide" [style.--current-index]="currentIndex">
+    <img [src]="sliderCoverImage" [alt]="game.name" (click)="openGamePage()" />
     <div class="details">
         <h2>{{ game.name }}</h2>
         <p>{{ game.summary }}</p>

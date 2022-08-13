@@ -15,8 +15,6 @@
 
     transition: transform ease-in 300ms;
 
-    cursor: pointer;
-
     img {
         position: absolute;
 
@@ -27,6 +25,8 @@
         object-position: 50% 15%;
 
         border-radius: var(--border-radius-big);
+
+        cursor: pointer;
     }
 
     .details {
