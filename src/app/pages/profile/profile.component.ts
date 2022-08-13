@@ -13,6 +13,9 @@ import {UserService} from '../../services/user.service';
 })
 export class ProfileComponent {
     public user!: User;
+
+    public readonly PFP_MAX_SIZE = 76_800; // 75KB
+
     public constructor(
         private router: Router,
         private authService: AuthService,
@@ -22,7 +25,8 @@ export class ProfileComponent {
         this.user = authService.cachedUser!;
     }
 
-    public async editField(field: string, newValue: string): Promise<void> {
+    public editField = async (field: string, newValue: string): Promise<boolean> => {
+        console.log(this.userService);
         const response = await this.userService.alterUserInfo(field, newValue);
         if (response) {
             switch (field) {
@@ -54,7 +58,8 @@ export class ProfileComponent {
                     throw new Error(`Invalid Field: ${field}`);
             }
         }
-    }
+        return response;
+    };
 
     public get profilePhotoSrc(): string {
         return this.user.avatar || '../../../assets/images/default-profile-picture.svg';
@@ -62,6 +67,10 @@ export class ProfileComponent {
 
     public submitPhoto(event: Event): void {
         const file = (event.target as HTMLInputElement)!.files!.item(0)!;
+        if (file.size > this.PFP_MAX_SIZE) {
+            this.snackbarService.show({text: 'اندازه فایل باید کمتر از 75KB باشد', theme: SnackbarTheme.DANGER});
+            return;
+        }
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = async (): Promise<void> => {

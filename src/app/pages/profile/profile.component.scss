@@ -1,16 +1,10 @@
-aside {
+main {
     color: var(--color-gray-98);
 
     display: flex;
     flex-direction: column;
 
     border: 0.1rem var(--color-gray-98) solid;
-
-    .row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
 
     img {
         block-size: fit-content;

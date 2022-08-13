@@ -1,17 +1,13 @@
-<aside>
+<main>
     <label>
         <img [src]="profilePhotoSrc" alt="عکس کاربر" />
         <input type="file" accept="image/*" (change)="submitPhoto($event)" />
     </label>
 
-    <h3 *ngIf="user.firstName && user.lastName">{{ user.firstName }} {{ user.lastName }}</h3>
-
-    <app-editable-field title="نام کاربری" [value]="user.username" [onValueChanged]="editField"></app-editable-field>
-
-    <p class="row">
-        <span>نام کاربری</span> <span> {{ user.username }}</span>
-    </p>
-    <p class="row">
-        <span>ایمیل</span> <span> {{ user.email }}</span>
-    </p>
-</aside>
+    <app-editable-field
+        title="username"
+        titlePersian="نام کاربری"
+        [value]="user.username"
+        [onValueChanged]="editField"
+    ></app-editable-field>
+</main>

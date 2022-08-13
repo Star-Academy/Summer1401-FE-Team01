@@ -10,6 +10,7 @@ import {SnackbarTheme} from '../enums/snackbar-theme.enum';
 })
 export class UserService {
     public constructor(private apiService: ApiService, private snackbarService: SnackbarService) {}
+
     public get token(): string {
         return localStorage.getItem('token') || '';
     }
