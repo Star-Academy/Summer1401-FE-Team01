@@ -1,7 +1,8 @@
 <div class="slide" [style.--current-index]="currentIndex">
     <img [src]="sliderCoverImage" [alt]="game.name" (click)="openGamePage()" />
     <div class="details">
-        <h2>{{ game.name }}</h2>
+        <h2 class="name">{{ game.name }}</h2>
+        <h2 class="release-date">{{ game.persianReleaseDate }}</h2>
         <p>{{ game.summary }}</p>
         <div class="rating-bar">
             <div>

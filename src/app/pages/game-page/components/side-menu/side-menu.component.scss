@@ -82,5 +82,55 @@
                 }
             }
         }
+
+        .price-info {
+            display: grid;
+            grid-template-areas:
+                " percentage  price-before-sale price-on-sale"
+                "price price price";
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            justify-items: center;
+
+            .price-on-sale {
+                grid-area: price-on-sale;
+            }
+
+            .percentage {
+                grid-area: percentage;
+                justify-self: start;
+
+                background-color: var(--primary-color-darker);
+
+                width: 75%;
+
+                padding-top: 0.2rem;
+
+                border-radius: var(--border-radius-small);
+
+                text-align: center;
+            }
+
+            .price-before-sale {
+                grid-area: price-before-sale;
+
+                opacity: 0.7;
+
+                font-size: 0.9rem;
+
+                text-decoration: line-through;
+            }
+
+            .price {
+                grid-area: price;
+                justify-self: start;
+            }
+
+            .price-on-sale,
+            .price-before-sale,
+            .price {
+                display: flex;
+            }
+        }
     }
 }

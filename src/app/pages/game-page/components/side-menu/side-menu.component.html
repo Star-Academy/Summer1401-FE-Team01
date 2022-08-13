@@ -1,7 +1,18 @@
 <div class="container">
     <img [src]="game.cover.getScreenShotUrl(ImageType._720P)" alt="کاور بازی" />
+
     <div class="wrapper">
-        <h5>{{ game.price.toLocaleString() }}<app-toman></app-toman></h5>
+        <div class="price-info">
+            <ng-container class="on-sale" *ngIf="game.salePercentage; else noSale">
+                <h4 class="price-on-sale">{{ game.priceOnSale.toLocaleString() }}<app-toman></app-toman></h4>
+                <h4 class="percentage">{{ game.salePercentage }}%</h4>
+                <p class="price-before-sale">{{ game.price.toLocaleString() }}<app-toman></app-toman></p>
+            </ng-container>
+
+            <ng-template #noSale>
+                <h4 class="price">{{ game.price.toLocaleString() }}<app-toman></app-toman></h4>
+            </ng-template>
+        </div>
 
         <app-button theme="contained" text="افزودن به سبد خرید"></app-button>
 
@@ -15,9 +26,9 @@
             <span>{{ publisherCompanies }}</span>
         </div>
 
-        <div class="row" *ngIf="gameReleaseDate">
+        <div class="row" *ngIf="game.persianReleaseDate">
             <span class="title">تاریخ انتشار</span>
-            <span>{{ gameReleaseDate }}</span>
+            <span>{{ game.persianReleaseDate }}</span>
         </div>
     </div>
 </div>

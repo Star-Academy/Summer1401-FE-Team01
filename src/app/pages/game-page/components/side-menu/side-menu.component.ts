@@ -18,9 +18,4 @@ export class SideMenuComponent {
     public get publisherCompanies(): string {
         return this.game.publisherCompanies.map((c) => c.name).join(',');
     }
-
-    public get gameReleaseDate(): string {
-        const date = new Date(this.game.releaseDate);
-        return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
-    }
 }

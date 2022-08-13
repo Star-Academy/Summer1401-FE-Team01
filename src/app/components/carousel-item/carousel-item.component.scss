@@ -39,7 +39,7 @@
 
         display: grid;
         grid-template-areas:
-            "title ."
+            "title release-date"
             "summary summary"
             "buttons rating";
         grid-template-columns: 1fr auto;
@@ -56,10 +56,16 @@
 
         transition: opacity 400ms 50ms;
 
-        h2 {
+        .name {
             grid-area: title;
 
             padding-block-end: 0.5rem;
+        }
+
+        .release-date {
+            grid-area: release-date;
+
+            color: var(--primary-color);
         }
 
         p {
