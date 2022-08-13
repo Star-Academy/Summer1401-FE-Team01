@@ -4,8 +4,10 @@
         "rating name"
         "video video"
         "categories categories"
+        "summary summary"
+        "screenshot screenshot"
         "story story"
-        "screenshot screenshot";
+        "more-screenshot more-screenshot";
     grid-template-columns: 1fr auto;
     justify-items: center;
     gap: var(--spacing);
@@ -99,18 +101,35 @@
         inline-size: 100%;
     }
 
-    .story {
-        grid-area: story;
+    .summary {
+        grid-area: summary;
 
         color: var(--color-background-90);
     }
 
+    .story {
+        grid-area: story;
+
+        color: var(--color-background-85);
+
+        font-size: 0.85rem;
+    }
+
     .screenshot {
         grid-area: screenshot;
+    }
 
+    .more-screenshot {
+        grid-area: more-screenshot;
+    }
+
+    .screenshot,
+    .more-screenshot {
         display: grid;
         grid-auto-flow: dense;
         align-content: center;
+        column-count: 2;
+
         gap: 0.75rem;
 
         inline-size: 85%;
@@ -121,7 +140,7 @@
             }
         }
 
-        li:not(:first-of-type) {
+        li:not(.large) {
             grid-column: 1 span;
             grid-row: 1 span;
 
@@ -132,7 +151,7 @@
             }
         }
 
-        li:first-of-type {
+        li.large {
             grid-column: 2 span;
             grid-row: 2 span;
 

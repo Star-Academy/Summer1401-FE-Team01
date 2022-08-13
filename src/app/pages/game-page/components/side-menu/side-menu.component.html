@@ -1,5 +1,5 @@
 <div class="container">
-    <img [src]="'https://images.igdb.com/igdb/image/upload/t_720p/' + game.cover?.id + '.webp'" alt="کاور بازی" />
+    <img [src]="game.cover.getScreenShotUrl(ImageType._720P)" alt="کاور بازی" />
     <div class="wrapper">
         <h5>{{ game.price.toLocaleString() }}<app-toman></app-toman></h5>
 

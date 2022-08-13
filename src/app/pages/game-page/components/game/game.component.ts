@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Game} from '../../../../models/game.model';
+import {Game, ImageType} from '../../../../models/game.model';
 import {SearchService} from '../../../../services/search.service';
 
 @Component({
@@ -9,6 +9,9 @@ import {SearchService} from '../../../../services/search.service';
 })
 export class GameComponent {
     @Input() public game!: Game;
+
+    public ImageType = ImageType;
+    public Math = Math;
 
     public constructor(public searchService: SearchService) {}
 }
