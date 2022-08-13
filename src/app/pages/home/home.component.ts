@@ -12,15 +12,25 @@ import {SearchService} from '../../services/search.service';
 export class HomeComponent {
     public suggestionGames: Array<Game> = [];
     public popularGames: Array<Game> = [];
+    public bestSellerGames: Array<Game> = [];
 
     public constructor(private router: Router, private gameService: GameService, private searchService: SearchService) {
-        gameService.fetchSlideshowGames().then((games) => (this.suggestionGames = games || []));
+        this.initGames().then();
+    }
 
-        searchService.searchPhrase = '';
-        searchService.resetFilters();
-        searchService.search().then(() => {
-            searchService.resetFilters();
-            this.popularGames = searchService.games;
-        });
+    public async initGames(): Promise<void> {
+        this.gameService.fetchSlideshowGames().then((games) => (this.suggestionGames = games || []));
+
+        this.searchService.searchPhrase = '';
+        this.searchService.resetFilters();
+
+        await this.searchService.search();
+        this.popularGames = this.searchService.games;
+
+        this.searchService.sort = 2;
+        await this.searchService.search();
+        this.bestSellerGames = this.searchService.games;
+
+        this.searchService.resetFilters();
     }
 }

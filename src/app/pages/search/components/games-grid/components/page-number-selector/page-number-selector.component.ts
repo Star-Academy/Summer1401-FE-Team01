@@ -17,7 +17,6 @@ export class PageNumberSelectorComponent {
     }
 
     public get pages(): Array<number> {
-        console.log(this.minPage, this.maxPage);
         return new Array(this.maxPage - this.minPage + 1)
             .fill(0)
             .map((_, i) => i + this.minPage)

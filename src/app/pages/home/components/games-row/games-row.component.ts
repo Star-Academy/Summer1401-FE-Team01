@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
     styleUrls: ['./games-row.component.scss'],
 })
 export class GamesRowComponent {
+    @Input() public title!: string;
     @Input() public games!: Array<Game>;
 
     public ImageType = ImageType;

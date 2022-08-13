@@ -26,7 +26,6 @@ export class ProfileComponent {
     }
 
     public editField = async (field: string, newValue: string): Promise<boolean> => {
-        console.log(this.userService);
         const response = await this.userService.alterUserInfo(field, newValue);
         if (response) {
             switch (field) {

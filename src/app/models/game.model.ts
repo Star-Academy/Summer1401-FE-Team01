@@ -31,26 +31,26 @@ export class Game {
     public summary!: string;
 
     public constructor(game: Game) {
-        this.id = game.id;
-        this.name = game.name;
-        this.price = game.price;
-        this.priceOnSale = game.priceOnSale;
-        this.gameModes = game.gameModes;
-        this.genres = game.genres;
-        this.keywords = game.keywords;
-        this.platforms = game.platforms;
-        this.themes = game.themes;
-        this.playerPerspectives = game.playerPerspectives;
-        this.involvedCompanies = game.involvedCompanies;
-        this.rating = game.rating;
-        this.ratingCount = game.ratingCount;
-        this.releaseDate = game.releaseDate;
-        this.cover = new Image(game.cover);
-        this.screenshots = game.screenshots.map((image) => new Image(image));
-        this.artworks = game.artworks.map((image) => new Image(image));
-        this.videos = game.videos;
-        this.storyline = game.storyline;
-        this.summary = game.summary;
+        this.id = game.id || 0;
+        this.name = game.name || '';
+        this.price = game.price || 0;
+        this.priceOnSale = game.priceOnSale || 0;
+        this.gameModes = game.gameModes || '';
+        this.genres = game.genres || '';
+        this.keywords = game.keywords || '';
+        this.platforms = game.platforms || '';
+        this.themes = game.themes || '';
+        this.playerPerspectives = game.playerPerspectives || '';
+        this.involvedCompanies = game.involvedCompanies || '';
+        this.rating = game.rating || 0;
+        this.ratingCount = game.ratingCount || 0;
+        this.releaseDate = game.releaseDate || 0;
+        this.cover = new Image(game.cover || '');
+        this.screenshots = game.screenshots.map((image) => new Image(image)) || [];
+        this.artworks = game.artworks.map((image) => new Image(image)) || [];
+        this.videos = game.videos || '';
+        this.storyline = game.storyline || '';
+        this.summary = game.summary || '';
     }
 
     public get salePercentage(): number | null {
@@ -70,13 +70,9 @@ export class Game {
 
 export class Image {
     public id!: string;
-    public width!: number;
-    public height!: number;
 
     public constructor(image: Image) {
         this.id = image.id;
-        this.width = image.width;
-        this.height = image.height;
     }
 
     public getScreenShotUrl(imageType: ImageType): string {
