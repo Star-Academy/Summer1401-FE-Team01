@@ -53,6 +53,12 @@ export class Game {
         this.summary = game.summary;
     }
 
+    public get salePercentage(): number | null {
+        if (this.price === this.priceOnSale) return null;
+
+        return 100 - Math.floor((this.priceOnSale / this.price) * 100);
+    }
+
     public get developerCompanies(): Array<Company> {
         return this.involvedCompanies.filter((c) => c.developer).map((c) => c.company);
     }

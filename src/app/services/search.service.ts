@@ -28,7 +28,7 @@ export class SearchService {
     public minRating: number = 0;
     public maxRating: number = 10;
 
-    public sort: number = 2;
+    public sort: number = 1;
 
     public pageSize: number = 10;
     public pageNumber: number = 0;
@@ -121,6 +121,8 @@ export class SearchService {
 
         this.minRating = 0;
         this.maxRating = 10;
+
+        this.sort = 1;
     }
 }
 

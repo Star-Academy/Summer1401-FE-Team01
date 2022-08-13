@@ -1,3 +1,5 @@
+@import "src/styles";
+
 .content-wrapper {
     --spacing: 2.5rem;
 
@@ -18,92 +20,114 @@
     }
 
     ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-        align-content: space-around;
+        color: var(--color-gray-98);
+
+        overflow-x: scroll;
+
+        display: flex;
+        align-items: center;
         gap: 1.5rem;
 
+        padding-bottom: 1rem;
+
         li {
-            transition: transform 300ms;
+            background-color: transparent;
 
-            a {
+            display: grid;
+            grid-template-areas:
+                "img img"
+                "title title"
+                "rating rating"
+                "price-on-sale percentage"
+                "price-before-sale percentage"
+                "price price";
+            grid-template-columns: auto auto;
+            justify-items: end;
+
+            cursor: pointer;
+
+            img {
+                grid-area: img;
+
+                inline-size: 12rem;
+                aspect-ratio: 2 / 2.5;
+                object-fit: cover;
+
+                margin-block-end: 0.5rem;
+
+                border-radius: var(--border-radius-super-small);
+            }
+
+            .title {
+                grid-area: title;
+
+                direction: ltr;
+
+                margin-block-end: 0.5rem;
+
+                text-align: start;
+
+                @include max-lines(1);
+            }
+
+            .rating {
+                grid-area: rating;
+
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-between;
-                gap: 0.5rem;
+                align-items: stretch;
+                gap: 0.2rem;
 
-                text-decoration: none;
-
-                .image-stack {
-                    position: relative;
-
-                    inline-size: 100%;
-
-                    img {
-                        inline-size: 100%;
-                        aspect-ratio: 2 / 3;
-                        object-fit: cover;
-
-                        border-radius: var(--border-radius-medium);
-                    }
-
-                    .overlay {
-                        background: linear-gradient(to bottom, hsl(0deg 0% 0% / 10%), hsl(0deg 0% 0% / 90%));
-                        opacity: 0;
-
-                        position: absolute;
-                        inset-block-start: 0;
-                        inset-inline-end: 0;
-
-                        display: flex;
-                        align-items: flex-end;
-                        justify-content: space-between;
-
-                        block-size: 100%;
-                        inline-size: 100%;
-
-                        padding: 0.5rem;
-
-                        border-radius: var(--border-radius-medium);
-
-                        transition: opacity 300ms;
-
-                        p {
-                            color: var(--color-gray-98);
-
-                            display: flex;
-                            align-items: baseline;
-                            gap: 0.2rem;
-
-                            inline-size: fit-content;
-
-                            font-size: 0.9rem;
-                        }
-                    }
-
-                    &:hover .overlay {
-                        opacity: 1;
-                    }
-                }
-
-                p {
-                    color: var(--color-background-85);
-
-                    overflow: hidden;
-
-                    inline-size: 100%;
-
-                    font-size: 1rem;
-
-                    text-align: start;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
+                i {
+                    color: var(--color-star);
                 }
             }
 
-            &:hover {
-                transform: translateY(-2.5%);
+            .price-on-sale {
+                grid-area: price-on-sale;
+            }
+
+            .percentage {
+                grid-area: percentage;
+                align-self: center;
+
+                background-color: var(--primary-color-darker);
+
+                display: grid;
+                place-items: center;
+
+                width: 50%;
+                height: 75%;
+
+                border-radius: var(--border-radius-small);
+
+                text-align: center;
+            }
+
+            .price-before-sale {
+                grid-area: price-before-sale;
+
+                opacity: 0.7;
+
+                text-decoration: line-through;
+            }
+
+            .price {
+                grid-area: price;
+            }
+
+            .price-on-sale,
+            .price-before-sale,
+            .price {
+                justify-self: start;
+
+                display: flex;
+            }
+
+            .price-on-sale,
+            .price-before-sale,
+            .price,
+            .percentage {
+                font-size: 0.9rem;
             }
         }
     }

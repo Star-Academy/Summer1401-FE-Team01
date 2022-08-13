@@ -8,7 +8,7 @@ import {RoundNumberToHalfPipe} from './pipes/round-number-to-half.pipe';
 
 @NgModule({
     declarations: [GamesGridComponent, PageNumberSelectorComponent, RoundNumberToHalfPipe],
-    exports: [GamesGridComponent],
+    exports: [GamesGridComponent, RoundNumberToHalfPipe],
     imports: [CommonModule, TomanModule, CarouselItemModule],
     providers: [RoundNumberToHalfPipe],
 })

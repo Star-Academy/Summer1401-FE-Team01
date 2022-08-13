@@ -2,23 +2,24 @@
     <h2>بازی‌های‌پرطرفدار</h2>
 
     <ul>
-        <li *ngFor="let category of categories">
-            <a [routerLink]="category.link">
-                <div class="image-stack">
-                    <img [src]="category.image" [alt]="category.title" />
-                    <div class="overlay">
-                        <p class="price">
-                            <span>{{ category.price.toLocaleString() }}</span>
-                            <span>تومان</span>
-                        </p>
-                        <p class="rating">
-                            {{ category.rating }}
-                            <i class="far fa-stars"></i>
-                        </p>
-                    </div>
-                </div>
-                <p dir="ltr">{{ category.title }}</p>
-            </a>
+        <li *ngFor="let game of games" (click)="openGamePage(game)">
+            <img [src]="game.cover.getScreenShotUrl(ImageType._720P)" [alt]="'تصویر کاور ' + game.name" />
+            <h4 class="title">{{ game.name }}</h4>
+
+            <div class="rating">
+                <i class="fas fa-stars"></i>
+                <p>{{ game.rating / 20 | roundNumberToHalf }}</p>
+            </div>
+
+            <ng-container class="on-sale" *ngIf="game.salePercentage; else noSale">
+                <h4 class="price-on-sale">{{ game.priceOnSale.toLocaleString() }}<app-toman></app-toman></h4>
+                <h4 class="percentage">{{ game.salePercentage }}%</h4>
+                <p class="price-before-sale">{{ game.price.toLocaleString() }}<app-toman></app-toman></p>
+            </ng-container>
+
+            <ng-template #noSale>
+                <h4 class="price">{{ game.price.toLocaleString() }}<app-toman></app-toman></h4>
+            </ng-template>
         </li>
     </ul>
 </div>
