@@ -10,17 +10,11 @@ export class SideMenuComponent {
     @Input() public game!: Game;
 
     public get developerCompanies(): string {
-        return this.game.involvedCompanies
-            .filter((c) => c.developer)
-            .map((c) => c.company.name)
-            .join(', ');
+        return this.game.developerCompanies.map((c) => c.name).join(',');
     }
 
     public get publisherCompanies(): string {
-        return this.game.involvedCompanies
-            .filter((c) => c.publisher)
-            .map((c) => c.company.name)
-            .join(', ');
+        return this.game.publisherCompanies.map((c) => c.name).join(',');
     }
 
     public get gameReleaseDate(): string {

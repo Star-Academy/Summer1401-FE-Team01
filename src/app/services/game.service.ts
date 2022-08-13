@@ -11,11 +11,12 @@ export class GameService {
     public constructor(private apiService: ApiService, private translateService: TranslateService) {}
 
     public async fetchSlideshowGames(): Promise<Array<Game>> {
-        let gamesResponse = (
-            await this.apiService.getRequest<{games: Array<Game>}>({
-                url: API_GAME_UPCOMING,
-            })
-        )?.games;
+        let gamesResponse =
+            (
+                await this.apiService.getRequest<{games: Array<Game>}>({
+                    url: API_GAME_UPCOMING,
+                })
+            )?.games?.map((game) => new Game(game)) || [];
 
         if (!!gamesResponse) {
             // todo: uncomment
@@ -36,6 +37,7 @@ export class GameService {
             )?.game || null;
 
         if (!!gameResponse) {
+            gameResponse = new Game(gameResponse);
             // todo: uncomment
             // gameResponse = (await this.translateGameInfo([gameResponse]))[0];
         }

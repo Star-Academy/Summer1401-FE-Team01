@@ -107,7 +107,7 @@ export class SearchService {
                 },
             },
         });
-        this.games = response?.games || [];
+        this.games = response?.games.map((game) => new Game(game)) || [];
         this.totalGameCount = response?.count || 0;
     }
 

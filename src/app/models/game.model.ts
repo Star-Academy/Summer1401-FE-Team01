@@ -29,6 +29,37 @@ export class Game {
 
     public storyline!: string;
     public summary!: string;
+
+    public constructor(game: Game) {
+        this.id = game.id;
+        this.name = game.name;
+        this.price = game.price;
+        this.priceOnSale = game.priceOnSale;
+        this.gameModes = game.gameModes;
+        this.genres = game.genres;
+        this.keywords = game.keywords;
+        this.platforms = game.platforms;
+        this.themes = game.themes;
+        this.playerPerspectives = game.playerPerspectives;
+        this.involvedCompanies = game.involvedCompanies;
+        this.rating = game.rating;
+        this.ratingCount = game.ratingCount;
+        this.releaseDate = game.releaseDate;
+        this.cover = game.cover;
+        this.screenshots = game.screenshots;
+        this.artworks = game.artworks;
+        this.videos = game.videos;
+        this.storyline = game.storyline;
+        this.summary = game.summary;
+    }
+
+    public get developerCompanies(): Array<Company> {
+        return this.involvedCompanies.filter((c) => c.developer).map((c) => c.company);
+    }
+
+    public get publisherCompanies(): Array<Company> {
+        return this.involvedCompanies.filter((c) => c.publisher).map((c) => c.company);
+    }
 }
 
 export class Image {
