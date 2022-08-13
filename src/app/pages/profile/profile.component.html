@@ -1,7 +1,7 @@
 <aside>
     <label>
-        <img src="../../../assets/images/default-profile-picture.svg" alt="عکس کاربر" />
-        <input type="file" accept="image/*" />
+        <img [src]="profilePhotoSrc" alt="عکس کاربر" />
+        <input type="file" accept="image/*" (change)="submitPhoto($event)" />
     </label>
 
     <h3 *ngIf="user?.firstName && user?.lastName">{{ user?.firstName }} {{ user?.lastName }}</h3>
