@@ -1,4 +1,5 @@
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {RoundNumberToHalfPipe} from '../../pages/search/components/games-grid/pipes/round-number-to-half.pipe';
 
 @Component({
     selector: 'app-rating',
@@ -17,6 +18,8 @@ export class RatingComponent {
     public readonly MAX_VALUE = 5;
 
     @ViewChild('rating') public rating!: ElementRef<HTMLDivElement>;
+
+    public constructor(private roundNumberToHalfPipe: RoundNumberToHalfPipe) {}
 
     public get fullStars(): Array<number> {
         return new Array(Math.floor(this.isHovering ? this.hoverValue : this.value));
@@ -43,7 +46,7 @@ export class RatingComponent {
         const rect = this.rating.nativeElement.getBoundingClientRect();
         const x = event.clientX - rect.left;
 
-        return this.roundToHalf((x / rect.width) * this.MAX_VALUE);
+        return this.roundNumberToHalfPipe.transform((x / rect.width) * this.MAX_VALUE);
     }
 
     public onHoverEnd(): void {
@@ -54,16 +57,5 @@ export class RatingComponent {
     public onClick(event: MouseEvent): void {
         this.value = this.calculateHoverValue(event);
         this.valueChange.emit(this.value);
-    }
-
-    private roundToHalf(num: number): number {
-        const trunc = Math.floor(num);
-        let frac = num - trunc;
-
-        if (frac <= 0.25) frac = 0;
-        else if (frac <= 0.75) frac = 0.5;
-        else frac = 1;
-
-        return trunc + frac;
     }
 }

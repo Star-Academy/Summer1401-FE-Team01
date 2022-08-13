@@ -9,7 +9,7 @@
 
             <div class="rating">
                 <i class="fas fa-stars"></i>
-                <p>{{ game.rating }}</p>
+                <p>{{ game.rating / 20 | roundNumberToHalf }}</p>
             </div>
 
             <ng-container class="on-sale" *ngIf="gameSalePercentage(game); else noSale">
