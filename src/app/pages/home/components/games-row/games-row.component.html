@@ -4,7 +4,11 @@
     <ul>
         <li *ngFor="let game of games" (click)="openGamePage(game)">
             <div class="image">
-                <img [src]="game.cover.getScreenShotUrl(ImageType._720P)" [alt]="'تصویر کاور ' + game.name" />
+                <img
+                    [src]="game.cover.getScreenShotUrl(ImageType._720P)"
+                    [alt]="'تصویر کاور ' + game.name"
+                    loading="lazy"
+                />
                 <div class="overlay">
                     <ng-container *ngIf="isInBookmarks(game); else addBookmark">
                         <app-button

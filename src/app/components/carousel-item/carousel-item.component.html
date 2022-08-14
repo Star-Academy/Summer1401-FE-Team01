@@ -1,5 +1,5 @@
 <div class="slide" [style.--current-index]="currentIndex">
-    <img [src]="sliderCoverImage" [alt]="game.name" (click)="openGamePage()" />
+    <img [src]="sliderCoverImage" [alt]="game.name" (click)="openGamePage()" loading="lazy" />
     <div class="details">
         <h2 class="name">{{ game.name }}</h2>
         <h2 class="release-date">{{ game.persianReleaseDate }}</h2>

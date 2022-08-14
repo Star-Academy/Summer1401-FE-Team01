@@ -2,7 +2,11 @@
     <ul *ngIf="(games || []).length > 0">
         <li *ngFor="let game of games" (click)="openGamePage(game)">
             <div class="image">
-                <img [src]="game.cover.getScreenShotUrl(ImageType._720P)" [alt]="'تصویر کاور ' + game.name" />
+                <img
+                    [src]="game.cover.getScreenShotUrl(ImageType._720P)"
+                    [alt]="'تصویر کاور ' + game.name"
+                    loading="lazy"
+                />
                 <div class="overlay">
                     <ng-container *ngIf="isInBookmarks(game); else addBookmark">
                         <app-button
@@ -52,7 +56,13 @@
             </ng-template>
         </li>
     </ul>
-    <img class="empty" *ngIf="(games || []).length === 0" src="assets/images/empty.webp" alt="لیست بازی خالی" />
+    <img
+        class="empty"
+        *ngIf="(games || []).length === 0"
+        src="assets/images/empty.webp"
+        alt="لیست بازی خالی"
+        loading="lazy"
+    />
     <h2 class="empty-text" *ngIf="(games || []).length === 0">خالییی... :(</h2>
 
     <app-page-number-selector *ngIf="multiPage"></app-page-number-selector>

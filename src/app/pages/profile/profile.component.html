@@ -5,7 +5,7 @@
             <div class="overlay">
                 <p>برای تغییر عکس کلیک کنید!</p>
             </div>
-            <img [src]="profilePhotoSrc" alt="عکس کاربر" />
+            <img [src]="profilePhotoSrc" alt="عکس کاربر" loading="lazy" />
             <input type="file" accept="image/*" (change)="submitPhoto($event)" />
         </label>
 

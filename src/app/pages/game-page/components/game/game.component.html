@@ -46,7 +46,7 @@
             *ngFor="let photo of game.screenshots | slice: 0:3; index as index; count as count"
             [ngClass]="{large: count % 3 !== 2 && index % 3 === 0}"
         >
-            <img [src]="photo.getScreenShotUrl(ImageType._1080P)" alt="عکس از بازی" />
+            <img [src]="photo.getScreenShotUrl(ImageType._1080P)" alt="عکس از بازی" loading="lazy" />
         </li>
     </ul>
 
@@ -59,7 +59,7 @@
             "
             [ngClass]="{large: count % 3 !== 2 && index % 3 === 0}"
         >
-            <img [src]="photo.getScreenShotUrl(ImageType._1080P)" alt="عکس از بازی" />
+            <img [src]="photo.getScreenShotUrl(ImageType._1080P)" alt="عکس از بازی" loading="lazy" />
         </li>
     </ul>
 </div>
