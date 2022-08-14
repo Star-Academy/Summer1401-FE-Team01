@@ -11,6 +11,7 @@ import {
 } from '../utils/api.utils';
 import {Game} from '../models/game.model';
 import {Router} from '@angular/router';
+import {Sort} from '../enums/sort.enum';
 
 @Injectable({
     providedIn: 'root',
@@ -114,7 +115,7 @@ export class SearchService {
         this.playerPerspectives = this.playerPerspectives.map(({id, name}) => new ChecklistItem(id, name, false));
         this.themes = this.themes.map(({id, name}) => new ChecklistItem(id, name, false));
 
-        this.sort = 1;
+        this.sort = Sort.POPULAR;
     }
 }
 
