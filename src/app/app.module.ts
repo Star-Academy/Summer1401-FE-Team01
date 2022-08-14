@@ -12,6 +12,7 @@ import {NgxPopperjsModule} from 'ngx-popperjs';
 import {GamePageModule} from './pages/game-page/game-page.module';
 import {FooterModule} from './components/footer/footer.module';
 import {SearchModule} from './pages/search/search.module';
+import {SpinnerModule} from './components/spinner/spinner.module';
 
 @NgModule({
     declarations: [AppComponent, SnackbarComponent],
@@ -27,6 +28,7 @@ import {SearchModule} from './pages/search/search.module';
         GamePageModule,
         FooterModule,
         SearchModule,
+        SpinnerModule,
     ],
     bootstrap: [AppComponent],
 })
