@@ -2,6 +2,9 @@
     <main>
         <h1>سلام {{ user.firstName || user.username }}!</h1>
         <label id="pfp">
+            <div class="overlay">
+                <p>برای تغییر عکس کلیک کنید!</p>
+            </div>
             <img [src]="profilePhotoSrc" alt="عکس کاربر" />
             <input type="file" accept="image/*" (change)="submitPhoto($event)" />
         </label>
