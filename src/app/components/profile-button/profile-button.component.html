@@ -6,7 +6,7 @@
 <popper-content #popperContent>
     <div class="rows">
         <a routerLink="/profile">
-            <img src="assets/images/default-profile-picture.svg" alt="عکس پروفایل کاربر" loading="lazy" />
+            <img [src]="profilePhotoSrc" alt="عکس پروفایل کاربر" loading="lazy" />
             <div class="bold">
                 {{ authService.cachedUser?.firstName }}
                 {{ authService.cachedUser?.lastName }}
