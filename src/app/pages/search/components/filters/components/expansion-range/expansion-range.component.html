@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <div class="title" (click)="isExpanded = !isExpanded">
+        <h3>{{ title }}</h3>
+        <i class="far fa-angle-down" [style.transform]="isExpanded ? 'rotateZ(180deg)' : ''"></i>
+    </div>
+    <app-range-input
+        minLabel="منفورترین"
+        maxLabel="محبوب‌ترین"
+        *ngIf="isExpanded"
+        [rangeMinimum]="0"
+        [rangeMaximum]="5"
+        [(minValue)]="minRating"
+        [(maxValue)]="maxRating"
+    ></app-range-input>
+</div>

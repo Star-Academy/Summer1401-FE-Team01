@@ -16,8 +16,6 @@ export class ExpansionListComponent {
 
     public isExpanded: boolean = false;
 
-    public constructor() {}
-
     public onToggleItemSelect(index: number): void {
         this.items[index].toggle();
 

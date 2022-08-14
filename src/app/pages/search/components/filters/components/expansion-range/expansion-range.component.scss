@@ -1,0 +1,20 @@
+.wrapper {
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        justify-items: stretch;
+
+        block-size: 3rem;
+
+        cursor: pointer;
+
+        i {
+            transition: transform 200ms ease-in-out;
+        }
+    }
+
+    app-expansion-range {
+        inline-size: 100%;
+    }
+}
