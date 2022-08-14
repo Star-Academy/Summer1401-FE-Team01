@@ -71,7 +71,7 @@ export class SearchService {
     public async fetchCheckListItems(key: string, url: string): Promise<Array<ChecklistItem>> {
         let items = JSON.parse(localStorage.getItem(key) || '{}') as Array<ChecklistItem>;
 
-        if (Object.keys(items).length == 0) {
+        if (Object.keys(items).length === 0) {
             items = (await this.apiService.getRequest<Array<ChecklistItem>>({url})) || [];
         }
 
