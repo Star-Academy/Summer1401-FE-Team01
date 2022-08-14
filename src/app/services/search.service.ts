@@ -25,9 +25,6 @@ export class SearchService {
     public playerPerspectives: Array<ChecklistItem> = [];
     public themes: Array<ChecklistItem> = [];
 
-    public minRating: number = 0;
-    public maxRating: number = 10;
-
     public sort: number = 1;
 
     public pageSize: number = 10;
@@ -102,8 +99,6 @@ export class SearchService {
                         .filter((item) => item.isSelected)
                         .map((item) => item.id),
                     themes: this.themes.filter((item) => item.isSelected).map((item) => item.id),
-                    minimumRating: this.minRating * 10,
-                    maximumRating: this.maxRating * 10,
                 },
             },
         });
@@ -118,9 +113,6 @@ export class SearchService {
         this.platforms = this.platforms.map(({id, name}) => new ChecklistItem(id, name, false));
         this.playerPerspectives = this.playerPerspectives.map(({id, name}) => new ChecklistItem(id, name, false));
         this.themes = this.themes.map(({id, name}) => new ChecklistItem(id, name, false));
-
-        this.minRating = 0;
-        this.maxRating = 10;
 
         this.sort = 1;
     }
