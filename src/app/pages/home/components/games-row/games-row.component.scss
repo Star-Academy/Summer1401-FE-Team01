@@ -138,6 +138,10 @@
                 grid-area: price-before-sale;
 
                 opacity: 0.7;
+
+                font-size: 0.8rem;
+
+                text-decoration: line-through;
             }
 
             .price {
@@ -153,10 +157,10 @@
             }
 
             .price-on-sale,
-            .price-before-sale,
             .price,
             .percentage {
                 font-size: 0.9rem;
+                font-weight: bold;
             }
         }
     }
