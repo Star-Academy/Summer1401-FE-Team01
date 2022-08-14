@@ -8,8 +8,8 @@ import {ChecklistItem} from '../../../../models/checklist-item.model';
 })
 export class ExpansionListComponent {
     @Input() public title!: string;
-
     @Input() public items!: Array<ChecklistItem>;
+
     @Output() public itemsChange = new EventEmitter<Array<ChecklistItem>>();
 
     @ViewChildren('item') public itemsUI!: QueryList<ElementRef>;

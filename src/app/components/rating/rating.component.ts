@@ -8,8 +8,8 @@ import {RoundNumberToHalfPipe} from '../../pages/search/components/games-grid/pi
 })
 export class RatingComponent {
     @Input() public darkMode: boolean = false;
-
     @Input() public value: number = 0;
+
     @Output() public valueChange = new EventEmitter<number>();
 
     public isHovering: boolean = false;
