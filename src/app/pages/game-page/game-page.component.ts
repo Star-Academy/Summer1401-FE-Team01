@@ -18,12 +18,16 @@ export class GamePageComponent {
         public gameService: GameService,
         private sanitizer: DomSanitizer
     ) {
-        this.game = router.getCurrentNavigation()?.extras?.state?.game;
+        this.setupGame();
+    }
+
+    public setupGame(): void {
+        this.game = this.router.getCurrentNavigation()?.extras?.state?.game;
         if (!!this.game) {
             this.setupGameVideoUrls();
         } else {
-            route.queryParams.subscribe(async ({id}) => {
-                this.game = (await gameService.fetchGame(id))!;
+            this.route.queryParams.subscribe(async ({id}) => {
+                this.game = (await this.gameService.fetchGame(id))!;
                 this.setupGameVideoUrls();
             });
         }
