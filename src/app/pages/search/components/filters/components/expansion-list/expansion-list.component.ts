@@ -15,6 +15,7 @@ export class ExpansionListComponent {
     @ViewChildren('item') public itemsUI!: QueryList<ElementRef>;
 
     public isExpanded: boolean = false;
+    private readonly animationDuration = 200;
 
     public onToggleItemSelect(index: number): void {
         this.items[index].toggle();
@@ -42,7 +43,7 @@ export class ExpansionListComponent {
         this.itemsUI
             .get(oldIndex)!
             .nativeElement.animate([{transform: `translateY(${deltaY}px)`}, {transform: `translateY(0)`}], {
-                duration: 100,
+                duration: this.animationDuration,
                 easing: 'ease-in',
             });
     }
