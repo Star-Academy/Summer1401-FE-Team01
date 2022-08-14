@@ -16,16 +16,16 @@ export class GameService {
                 await this.apiService.getRequest<{games: Array<Game>}>({
                     url: API_GAME_UPCOMING,
                 })
-            )?.games?.map((game) => new Game(game)) || [];
+            )?.games
+                ?.map((game) => new Game(game))
+                ?.slice(0, 7) || [];
 
         if (!!gamesResponse) {
-            for (let i = 0; i < gamesResponse.length; i += 10) {
-                const translations = await this.translateGameInfo(gamesResponse.slice(i, i + 10));
-                for (let j = 0; j < translations.length; j++) {
-                    gamesResponse[i + j].summary = translations[j].summary;
-                    gamesResponse[i + j].storyline = translations[j].storyline;
-                }
-            }
+            const translations = await this.translateGameInfo(gamesResponse);
+            translations.forEach((t, i) => {
+                gamesResponse[i].summary = t.summary;
+                gamesResponse[i].storyline = t.storyline;
+            });
         }
 
         return gamesResponse;
