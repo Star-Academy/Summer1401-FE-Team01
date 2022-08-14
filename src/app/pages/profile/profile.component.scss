@@ -30,9 +30,38 @@
         #pfp {
             grid-area: pfp;
 
+            position: relative;
+
             inline-size: fit-content;
 
             margin-inline-end: 1rem;
+
+            cursor: pointer;
+
+            .overlay {
+                background-color: hsla(0deg 0% 0% / 70%);
+                opacity: 0;
+
+                position: absolute;
+                inset: 0;
+
+                display: grid;
+                place-items: center;
+                gap: 1rem;
+
+                block-size: 100%;
+                inline-size: 100%;
+
+                padding: 0.5rem;
+
+                border-radius: 50%;
+
+                transition: opacity 100ms ease-in-out;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
 
             input {
                 display: none;

@@ -107,7 +107,7 @@
 
                 background-color: var(--primary-color-darker);
 
-                width: 75%;
+                inline-size: 75%;
 
                 padding-top: 0.2rem;
 
@@ -120,8 +120,6 @@
                 grid-area: price-before-sale;
 
                 opacity: 0.7;
-
-                text-decoration: line-through;
             }
 
             .price {
@@ -138,7 +136,7 @@
     }
 
     .empty {
-        height: 20rem;
+        block-size: 20rem;
         object-fit: contain;
     }
 
@@ -156,6 +154,6 @@
     app-page-number-selector {
         align-self: center;
 
-        width: 100%;
+        inline-size: 100%;
     }
 }

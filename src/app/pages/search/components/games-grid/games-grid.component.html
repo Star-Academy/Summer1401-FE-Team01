@@ -44,7 +44,7 @@
             <ng-container class="on-sale" *ngIf="game.salePercentage; else noSale">
                 <h4 class="price-on-sale">{{ game.priceOnSale.toLocaleString() }}<app-toman></app-toman></h4>
                 <h4 class="percentage">{{ game.salePercentage }}%</h4>
-                <p class="price-before-sale">{{ game.price.toLocaleString() }}<app-toman></app-toman></p>
+                <del class="price-before-sale">{{ game.price.toLocaleString() }}<app-toman></app-toman></del>
             </ng-container>
 
             <ng-template #noSale>
