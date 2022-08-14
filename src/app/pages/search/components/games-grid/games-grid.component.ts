@@ -52,7 +52,10 @@ export class GamesGridComponent implements AfterViewInit {
 
     public async removeFromBookmark(game: Game, event: MouseEvent): Promise<void> {
         event.stopPropagation();
-        await this.userBookmarkFavouriteService.removeFromBookmarks(game.id);
+        const response = await this.userBookmarkFavouriteService.removeFromBookmarks(game.id);
+        if (this.router.url == '/bookmarks' && response) {
+            this.games = this.games.filter((g) => g.id !== game.id);
+        }
     }
 
     public async addToBookmarks(game: Game, event: MouseEvent): Promise<void> {
@@ -66,7 +69,10 @@ export class GamesGridComponent implements AfterViewInit {
 
     public async removeFromFavourites(game: Game, event: MouseEvent): Promise<void> {
         event.stopPropagation();
-        await this.userBookmarkFavouriteService.removeFromFaves(game.id);
+        const response = await this.userBookmarkFavouriteService.removeFromFaves(game.id);
+        if (this.router.url == '/favourites' && response) {
+            this.games = this.games.filter((g) => g.id !== game.id);
+        }
     }
 
     public async addToFavourites(game: Game, event: MouseEvent): Promise<void> {

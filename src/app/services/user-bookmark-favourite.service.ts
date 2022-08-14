@@ -55,7 +55,7 @@ export class UserBookmarkFavouriteService {
         return (response?.games || []).map((game) => new Game(game));
     }
 
-    public async addToFaves(gameId: number): Promise<void> {
+    public async addToFaves(gameId: number): Promise<boolean> {
         const res = await this.add(API_FAVES_ADD, gameId);
         if (res) {
             this.cachedFaveIds?.push(gameId);
@@ -64,9 +64,10 @@ export class UserBookmarkFavouriteService {
                 text: 'بازی با موفقیت به علاقه‌مندی‌ها افزوده شد',
             });
         }
+        return res;
     }
 
-    public async addToBookmarks(gameId: number): Promise<void> {
+    public async addToBookmarks(gameId: number): Promise<boolean> {
         const res = await this.add(API_BOOKMARKS_ADD, gameId);
         if (res) {
             this.cachedBookmarkIds?.push(gameId);
@@ -75,6 +76,7 @@ export class UserBookmarkFavouriteService {
                 text: 'بازی با موفقیت به بوکمارک‌ها افزوده شد',
             });
         }
+        return res;
     }
 
     private async add(url: string, gameId: number): Promise<boolean> {
@@ -85,7 +87,7 @@ export class UserBookmarkFavouriteService {
         return !!response;
     }
 
-    public async removeFromFaves(gameId: number): Promise<void> {
+    public async removeFromFaves(gameId: number): Promise<boolean> {
         const res = await this.remove(API_FAVES_REMOVE, gameId);
         if (res) {
             this.cachedFaveIds = this.cachedFaveIds?.filter((gId) => gId !== gameId) || [];
@@ -94,9 +96,10 @@ export class UserBookmarkFavouriteService {
                 text: 'بازی با موفقیت از علاقه‌مندی‌های شما حذف شد',
             });
         }
+        return res;
     }
 
-    public async removeFromBookmarks(gameId: number): Promise<void> {
+    public async removeFromBookmarks(gameId: number): Promise<boolean> {
         const res = await this.remove(API_BOOKMARKS_REMOVE, gameId);
         if (res) {
             this.cachedBookmarkIds = this.cachedBookmarkIds?.filter((gId) => gId !== gameId) || [];
@@ -105,6 +108,7 @@ export class UserBookmarkFavouriteService {
                 text: 'بازی با موفقیت از بوکمارک‌های شما حذف شد',
             });
         }
+        return res;
     }
 
     private async remove(url: string, gameId: number): Promise<boolean> {
