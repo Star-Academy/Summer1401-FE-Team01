@@ -12,11 +12,12 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
         align-items: stretch;
-        column-gap: 1rem;
-        row-gap: 2rem;
+        gap: 1.5rem;
 
         li {
-            background-color: transparent;
+            background-color: var(--color-background-15);
+
+            overflow: hidden;
 
             display: grid;
             grid-template-areas:
@@ -28,7 +29,15 @@
             grid-template-columns: 1fr 2fr 1fr;
             justify-items: end;
 
+            padding-block-end: 0.8rem;
+
+            border-radius: var(--border-radius-small);
+
             cursor: pointer;
+
+            & > *:not(.image, .price-before-sale) {
+                margin-inline: 1rem;
+            }
 
             .image {
                 grid-area: img;
@@ -110,7 +119,7 @@
 
                 inline-size: 75%;
 
-                padding-top: 0.2rem;
+                padding-block-start: 0.2rem;
 
                 border-radius: var(--border-radius-small);
 
@@ -119,6 +128,7 @@
 
             .price-before-sale {
                 grid-area: price-before-sale;
+                justify-self: center;
 
                 opacity: 0.7;
 
