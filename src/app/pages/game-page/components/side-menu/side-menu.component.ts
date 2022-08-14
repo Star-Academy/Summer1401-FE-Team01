@@ -12,10 +12,10 @@ export class SideMenuComponent {
     public ImageType = ImageType;
 
     public get developerCompanies(): string {
-        return this.game.developerCompanies.map((c) => c.name).join(',');
+        return this.game.developerCompanies.map((c) => c.name).join(', ');
     }
 
     public get publisherCompanies(): string {
-        return this.game.publisherCompanies.map((c) => c.name).join(',');
+        return this.game.publisherCompanies.map((c) => c.name).join(', ');
     }
 }
