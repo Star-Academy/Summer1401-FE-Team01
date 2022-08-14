@@ -34,10 +34,9 @@ export class GamePageComponent {
     }
 
     private setupGameVideoUrls(): void {
-        for (let i = 0; i < this.game.videos.length; i++) {
-            const video = this.game.videos[i];
+        this.game.videos.forEach((video) => {
             const unsafeUrl = `https://www.youtube-nocookie.com/embed/${video.id}`;
             video.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
-        }
+        });
     }
 }
