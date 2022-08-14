@@ -9,9 +9,8 @@ import {SearchService} from '../../../../../../services/search.service';
 export class PageNumberSelectorComponent {
     public constructor(public searchService: SearchService) {}
 
-    public get minPage(): number {
-        return 0;
-    }
+    public readonly minPage: number = 0;
+
     public get maxPage(): number {
         return Math.ceil(this.searchService.totalGameCount / this.searchService.pageSize);
     }
