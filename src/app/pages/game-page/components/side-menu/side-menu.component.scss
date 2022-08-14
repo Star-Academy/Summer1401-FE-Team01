@@ -49,6 +49,16 @@
             }
         }
 
+        .button-bar {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 0.5rem;
+
+            app-button:first-of-type {
+                inline-size: 100%;
+            }
+        }
+
         .row {
             color: var(--color-background-85);
 
@@ -101,6 +111,7 @@
                 justify-self: start;
 
                 background-color: var(--primary-color-darker);
+                color: var(--color-gray-98);
 
                 inline-size: 75%;
 
