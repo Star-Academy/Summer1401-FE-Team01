@@ -9,9 +9,9 @@
         display: grid;
         grid-template-areas:
             "hello hello ."
-            "pfp username birth-date"
-            "pfp email email"
-            "pfp first-name last-name";
+            "profile-picture username birth-date"
+            "profile-picture email email"
+            "profile-picture first-name last-name";
         grid-template-columns: auto repeat(2, 1fr);
         align-items: center;
         column-gap: 1rem;
@@ -27,8 +27,8 @@
             grid-area: hello;
         }
 
-        #pfp {
-            grid-area: pfp;
+        #profile-picture {
+            grid-area: profile-picture;
 
             position: relative;
 
