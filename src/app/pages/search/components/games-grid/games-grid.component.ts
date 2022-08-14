@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {Game, ImageType} from '../../../../models/game.model';
 import {Router} from '@angular/router';
 import {UserBookmarkFavouriteService} from '../../../../services/user-bookmark-favourite.service';
@@ -9,7 +9,7 @@ import {GameService} from '../../../../services/game.service';
     templateUrl: './games-grid.component.html',
     styleUrls: ['./games-grid.component.scss'],
 })
-export class GamesGridComponent {
+export class GamesGridComponent implements AfterViewInit {
     @Input() public totalGameCount!: number;
     @Input() public games!: Array<Game>;
 
@@ -23,9 +23,19 @@ export class GamesGridComponent {
         private router: Router,
         private gameService: GameService,
         private userBookmarkFavouriteService: UserBookmarkFavouriteService
-    ) {
+    ) {}
+
+    public async ngAfterViewInit(): Promise<void> {
         if (!this.games) {
-            this.fetchGames().then();
+            this.multiPage = false;
+            switch (this.router.url) {
+                case '/favourites':
+                    this.games = await this.userBookmarkFavouriteService.fetchAllFavourites();
+                    break;
+                case '/bookmarks':
+                    this.games = await this.userBookmarkFavouriteService.fetchAllBookmarks();
+                    break;
+            }
         }
     }
 
@@ -34,18 +44,6 @@ export class GamesGridComponent {
             state: {game: (await this.gameService.translateGameInfo([game]))[0]},
             queryParams: {id: game.id},
         });
-    }
-
-    private async fetchGames(): Promise<void> {
-        this.multiPage = false;
-        switch (this.router.url) {
-            case '/favourites':
-                this.games = await this.userBookmarkFavouriteService.fetchAllFavourites();
-                break;
-            case '/bookmarks':
-                this.games = await this.userBookmarkFavouriteService.fetchAllBookmarks();
-                break;
-        }
     }
 
     public isInBookmarks(game: Game): boolean {
