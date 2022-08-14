@@ -3,7 +3,7 @@
         <li *ngFor="let game of games" (click)="openGamePage(game)">
             <div class="image">
                 <img
-                    [src]="game.cover.getScreenShotUrl(ImageType._720P)"
+                    [src]="game.cover.getScreenShotUrl(ImageType.COVER_BIG)"
                     [alt]="'تصویر کاور ' + game.name"
                     loading="lazy"
                 />
