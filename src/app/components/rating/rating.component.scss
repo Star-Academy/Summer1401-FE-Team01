@@ -7,21 +7,11 @@
 
     inline-size: fit-content;
 
-    cursor: pointer;
-
     &.dark {
         color: var(--color-background-75);
-
-        &:hover {
-            color: var(--color-background-85);
-        }
     }
 
     &.light {
         color: var(--color-star);
-
-        &:hover {
-            color: var(--color-star-lighter);
-        }
     }
 }

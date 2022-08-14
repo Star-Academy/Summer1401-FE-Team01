@@ -11,6 +11,7 @@ import {
 } from '../utils/api.utils';
 import {Game} from '../models/game.model';
 import {Router} from '@angular/router';
+import {Sort} from '../enums/sort.enum';
 
 @Injectable({
     providedIn: 'root',
@@ -71,7 +72,7 @@ export class SearchService {
     public async fetchCheckListItems(key: string, url: string): Promise<Array<ChecklistItem>> {
         let items = JSON.parse(localStorage.getItem(key) || '{}') as Array<ChecklistItem>;
 
-        if (Object.keys(items).length == 0) {
+        if (Object.keys(items).length === 0) {
             items = (await this.apiService.getRequest<Array<ChecklistItem>>({url})) || [];
         }
 
@@ -114,7 +115,7 @@ export class SearchService {
         this.playerPerspectives = this.playerPerspectives.map(({id, name}) => new ChecklistItem(id, name, false));
         this.themes = this.themes.map(({id, name}) => new ChecklistItem(id, name, false));
 
-        this.sort = 1;
+        this.sort = Sort.POPULAR;
     }
 }
 

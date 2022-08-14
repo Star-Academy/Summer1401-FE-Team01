@@ -9,6 +9,7 @@ import {SearchService} from '../../../../services/search.service';
 })
 export class SearchBoxComponent {
     @Input() public searchPhrase: string = '';
+
     @Output() public searchPhraseChange = new EventEmitter<string>();
 
     public constructor(private router: Router, private searchService: SearchService) {}

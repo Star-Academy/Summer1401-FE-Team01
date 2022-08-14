@@ -48,20 +48,18 @@ export class GameService {
     }
 
     public async translateGameInfo(games: Array<Game>): Promise<Array<Game>> {
-        const translatables = [];
-
-        for (let i = 0; i < games.length; i++) {
-            let game = games[i];
+        const translatables: Array<string> = [];
+        games.forEach((game) => {
             translatables.push(game.summary || '', game.storyline || '');
-        }
+        });
 
         const translationsResponse = await this.translateService.translateStrings(translatables);
 
         if (!!translationsResponse) {
-            for (let i = 0; i < games.length; i++) {
-                games[i].summary = translationsResponse[2 * i];
-                games[i].storyline = translationsResponse[2 * i + 1];
-            }
+            games.forEach((game, i) => {
+                game.summary = translationsResponse[2 * i];
+                game.storyline = translationsResponse[2 * i + 1];
+            });
         }
 
         return games;

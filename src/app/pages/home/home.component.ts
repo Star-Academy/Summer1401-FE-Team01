@@ -3,6 +3,7 @@ import {Game} from '../../models/game.model';
 import {GameService} from '../../services/game.service';
 import {Router} from '@angular/router';
 import {SearchService} from '../../services/search.service';
+import {Sort} from '../../enums/sort.enum';
 
 @Component({
     selector: 'app-home',
@@ -27,7 +28,7 @@ export class HomeComponent {
         await this.searchService.search();
         this.popularGames = this.searchService.games;
 
-        this.searchService.sort = 2;
+        this.searchService.sort = Sort.BEST_SELLER;
         await this.searchService.search();
         this.bestSellerGames = this.searchService.games;
 
