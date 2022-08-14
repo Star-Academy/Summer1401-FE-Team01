@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {v4 as uuid} from 'uuid';
 import {SpinnerService} from '../../services/spinner.service';
+
 @Component({
     selector: 'app-spinner',
     templateUrl: './spinner.component.html',
@@ -21,8 +22,7 @@ export class SpinnerComponent {
     }
 
     public hide(id: string): void {
-        const index = this.ids.findIndex((x) => x === id);
-        if (index !== -1) this.ids.splice(index, 1);
+        this.ids = this.ids.filter((i) => i !== id);
     }
 
     public hideAll(): void {
