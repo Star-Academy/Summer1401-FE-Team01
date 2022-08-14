@@ -8,6 +8,7 @@ import {Component, Input} from '@angular/core';
 export class ButtonComponent {
     @Input() public text?: string;
     @Input() public iconClasses?: string;
+    @Input() public iconTitle?: string;
     @Input() public theme: 'text' | 'outline' | 'contained' = 'contained';
     @Input() public buttonType!: string;
 }
