@@ -99,7 +99,7 @@ export class UserBookmarkFavouriteService {
     public async removeFromBookmarks(gameId: number): Promise<void> {
         const res = await this.remove(API_BOOKMARKS_REMOVE, gameId);
         if (res) {
-            this.cachedFaveIds = this.cachedFaveIds?.filter((gId) => gId !== gameId) || [];
+            this.cachedBookmarkIds = this.cachedBookmarkIds?.filter((gId) => gId !== gameId) || [];
             this.snackbarService.show({
                 theme: SnackbarTheme.SUCCESS,
                 text: 'بازی با موفقیت از بوکمارک‌های شما حذف شد',
