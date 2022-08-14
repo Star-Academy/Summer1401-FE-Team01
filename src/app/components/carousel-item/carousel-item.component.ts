@@ -3,6 +3,7 @@ import {Game, ImageType} from '../../models/game.model';
 import {AuthService} from '../../services/auth.service';
 import {UserBookmarkFavouriteService} from '../../services/user-bookmark-favourite.service';
 import {Router} from '@angular/router';
+import {GameService} from '../../services/game.service';
 
 @Component({
     selector: 'app-carousel-item',
@@ -16,12 +17,13 @@ export class CarouselItemComponent {
     public constructor(
         private router: Router,
         private authService: AuthService,
+        private gameService: GameService,
         private userBookmarkFavouriteService: UserBookmarkFavouriteService
     ) {}
 
     public async openGamePage(): Promise<void> {
         await this.router.navigate(['/game'], {
-            state: {game: this.game},
+            state: {game: (await this.gameService.translateGameInfo([this.game]))[0]},
             queryParams: {id: this.game.id},
         });
     }

@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Game, ImageType} from '../../../../models/game.model';
 import {Router} from '@angular/router';
 import {UserBookmarkFavouriteService} from '../../../../services/user-bookmark-favourite.service';
+import {GameService} from '../../../../services/game.service';
 
 @Component({
     selector: 'app-games-grid',
@@ -18,7 +19,11 @@ export class GamesGridComponent {
 
     public ImageType = ImageType;
 
-    public constructor(private router: Router, private userBookmarkFavouriteService: UserBookmarkFavouriteService) {
+    public constructor(
+        private router: Router,
+        private gameService: GameService,
+        private userBookmarkFavouriteService: UserBookmarkFavouriteService
+    ) {
         if (!this.games) {
             this.fetchGames().then();
         }
@@ -26,7 +31,7 @@ export class GamesGridComponent {
 
     public async openGamePage(game: Game): Promise<void> {
         await this.router.navigate(['/game'], {
-            state: {game: game},
+            state: {game: (await this.gameService.translateGameInfo([game]))[0]},
             queryParams: {id: game.id},
         });
     }

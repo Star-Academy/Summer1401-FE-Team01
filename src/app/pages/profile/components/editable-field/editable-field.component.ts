@@ -23,9 +23,4 @@ export class EditableFieldComponent {
             this.editable = !this.editable;
         }
     }
-
-    public toggleEditable(): void {
-        console.log('toggleEditable');
-        this.editable = !this.editable;
-    }
 }

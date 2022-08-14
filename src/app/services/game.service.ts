@@ -19,13 +19,16 @@ export class GameService {
             )?.games?.map((game) => new Game(game)) || [];
 
         if (!!gamesResponse) {
-            // todo: uncomment
-            // gamesResponse = await this.translateGameInfo(gamesResponse);
+            for (let i = 0; i < gamesResponse.length; i += 10) {
+                const translations = await this.translateGameInfo(gamesResponse.slice(i, i + 10));
+                for (let j = 0; j < translations.length; j++) {
+                    gamesResponse[i + j].summary = translations[j].summary;
+                    gamesResponse[i + j].storyline = translations[j].storyline;
+                }
+            }
         }
 
-        console.log(gamesResponse);
-
-        return gamesResponse || [];
+        return gamesResponse;
     }
 
     public async fetchGame(gameId: number): Promise<Game | null> {
@@ -38,16 +41,13 @@ export class GameService {
 
         if (!!gameResponse) {
             gameResponse = new Game(gameResponse);
-            // todo: uncomment
-            // gameResponse = (await this.translateGameInfo([gameResponse]))[0];
+            gameResponse = (await this.translateGameInfo([gameResponse]))[0];
         }
-
-        console.log(gameResponse);
 
         return gameResponse;
     }
 
-    private async translateGameInfo(games: Array<Game>): Promise<Array<Game>> {
+    public async translateGameInfo(games: Array<Game>): Promise<Array<Game>> {
         const translatables = [];
 
         for (let i = 0; i < games.length; i++) {

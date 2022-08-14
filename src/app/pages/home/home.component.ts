@@ -19,7 +19,7 @@ export class HomeComponent {
     }
 
     public async initGames(): Promise<void> {
-        this.gameService.fetchSlideshowGames().then((games) => (this.suggestionGames = games || []));
+        this.suggestionGames = (await this.gameService.fetchSlideshowGames()) || [];
 
         this.searchService.searchPhrase = '';
         this.searchService.resetFilters();
