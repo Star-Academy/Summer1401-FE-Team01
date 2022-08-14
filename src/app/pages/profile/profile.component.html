@@ -57,7 +57,7 @@
             name="date"
             type="date"
             direction="ltr"
-            [value]="user.dateOfBirth"
+            [value]="user.dateOfBirth.slice(0, 10)"
             [onValueChanged]="editField"
         ></app-editable-field>
     </main>
