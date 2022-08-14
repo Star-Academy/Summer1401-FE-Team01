@@ -1,5 +1,6 @@
 import {GamesRowComponent} from './games-row.component';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('CategoriesComponent', () => {
     let fixture: ComponentFixture<GamesRowComponent>;
@@ -9,6 +10,7 @@ describe('CategoriesComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [GamesRowComponent],
+            imports: [RouterTestingModule],
         }).compileComponents();
     });
 
