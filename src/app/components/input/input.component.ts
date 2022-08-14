@@ -11,6 +11,8 @@ export class InputComponent {
     @Input() public label!: string;
     @Input() public required: boolean = false;
     @Input() public direction: 'rtl' | 'ltr' = 'rtl';
+    @Input() public pattern!: string;
+    @Input() public placeholder?: string;
     @Input() public value!: string;
 
     @Output() public valueChange = new EventEmitter<string>();

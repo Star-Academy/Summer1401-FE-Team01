@@ -10,7 +10,7 @@
         grid-template-areas:
             "hello hello ."
             "profile-picture username birth-date"
-            "profile-picture email email"
+            "profile-picture email phone"
             "profile-picture first-name last-name";
         grid-template-columns: auto repeat(2, 1fr);
         align-items: center;
@@ -83,8 +83,10 @@
 
         #email {
             grid-area: email;
+        }
 
-            max-inline-size: 75%;
+        #phone {
+            grid-area: phone;
         }
 
         #first-name {

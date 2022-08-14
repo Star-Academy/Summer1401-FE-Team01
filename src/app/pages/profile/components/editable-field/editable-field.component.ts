@@ -12,6 +12,8 @@ export class EditableFieldComponent {
     @Input() public type!: string;
     @Input() public name!: string;
     @Input() public direction: 'rtl' | 'ltr' = 'rtl';
+    @Input() public pattern!: string;
+    @Input() public placeholder?: string;
 
     @Input() public value!: string;
     @Input() public onValueChanged!: (title: string, newValue: string) => Promise<boolean>;
