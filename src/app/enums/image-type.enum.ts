@@ -1,12 +1,12 @@
 export enum ImageType {
-    COVER_SMALL = 'cover_small',
-    SCREENSHOT_MED = 'screenshot_med',
     COVER_BIG = 'cover_big',
-    LOGO_MED = 'logo_med',
+    COVER_SMALL = 'cover_small',
+    FULL_HD = '1080p',
+    HD = '720p',
+    LOGO_MEDIUM = 'logo_med',
+    MICRO = 'micro',
     SCREENSHOT_BIG = 'screenshot_big',
     SCREENSHOT_HUGE = 'screenshot_huge',
+    SCREENSHOT_MEDIUM = 'screenshot_med',
     THUMB = 'thumb',
-    MICRO = 'micro',
-    _720P = '720p',
-    _1080P = '1080p',
 }

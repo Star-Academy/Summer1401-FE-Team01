@@ -8,7 +8,7 @@ export class User {
     public firstName!: string;
     public lastName!: string;
 
-    public dateOfBirth!: string; // YYYY-MM-DD
+    public dateOfBirth!: string;
     public avatar!: string;
 
     public credit!: number;
