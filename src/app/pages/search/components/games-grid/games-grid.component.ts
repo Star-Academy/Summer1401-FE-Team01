@@ -46,38 +46,4 @@ export class GamesGridComponent implements AfterViewInit {
             queryParams: {id: game.id},
         });
     }
-
-    public isInBookmarks(game: Game): boolean {
-        return (this.userBookmarkFavouriteService.cachedBookmarkIds || []).includes(game.id);
-    }
-
-    public async removeFromBookmark(game: Game, event: MouseEvent): Promise<void> {
-        event.stopPropagation();
-        const response = await this.userBookmarkFavouriteService.removeFromBookmarks(game.id);
-        if (this.router.url == '/bookmark' && response) {
-            this.games = this.games.filter((g) => g.id !== game.id);
-        }
-    }
-
-    public async addToBookmarks(game: Game, event: MouseEvent): Promise<void> {
-        event.stopPropagation();
-        await this.userBookmarkFavouriteService.addToBookmarks(game.id);
-    }
-
-    public isInFavourites(game: Game): boolean {
-        return (this.userBookmarkFavouriteService.cachedFaveIds || []).includes(game.id);
-    }
-
-    public async removeFromFavourites(game: Game, event: MouseEvent): Promise<void> {
-        event.stopPropagation();
-        const response = await this.userBookmarkFavouriteService.removeFromFaves(game.id);
-        if (this.router.url == '/favourite' && response) {
-            this.games = this.games.filter((g) => g.id !== game.id);
-        }
-    }
-
-    public async addToFavourites(game: Game, event: MouseEvent): Promise<void> {
-        event.stopPropagation();
-        await this.userBookmarkFavouriteService.addToFaves(game.id);
-    }
 }

@@ -10,38 +10,7 @@
                     loading="lazy"
                 />
                 <div class="overlay">
-                    <ng-container *ngIf="isInBookmarks(game); else addBookmark">
-                        <app-button
-                            iconClasses="fas fa-bookmark"
-                            iconTitle="حذف بوکمارک"
-                            theme="contained"
-                            (click)="removeFromBookmark(game, $event)"
-                        ></app-button>
-                    </ng-container>
-                    <ng-template #addBookmark>
-                        <app-button
-                            iconClasses="far fa-bookmark"
-                            iconTitle="افزودن بوکمارک"
-                            theme="contained"
-                            (click)="addToBookmarks(game, $event)"
-                        ></app-button>
-                    </ng-template>
-                    <ng-container *ngIf="isInFavourites(game); else addFave">
-                        <app-button
-                            iconClasses="fas fa-heart"
-                            iconTitle="حذف علاقه‌مندی"
-                            theme="contained"
-                            (click)="removeFromFavourites(game, $event)"
-                        ></app-button>
-                    </ng-container>
-                    <ng-template #addFave>
-                        <app-button
-                            iconClasses="far fa-heart"
-                            iconTitle="افزودن علاقه‌مندی"
-                            theme="contained"
-                            (click)="addToFavourites(game, $event)"
-                        ></app-button>
-                    </ng-template>
+                    <app-fave-bookmark-buttons [game]="game" buttonTheme="contained"></app-fave-bookmark-buttons>
                 </div>
             </div>
 

@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Game} from '../../models/game.model';
 import {AuthService} from '../../services/auth.service';
-import {UserBookmarkFavouriteService} from '../../services/user-bookmark-favourite.service';
 import {Router} from '@angular/router';
 import {GameService} from '../../services/game.service';
 import {ImageType} from '../../enums/image-type.enum';
@@ -15,12 +14,7 @@ export class CarouselItemComponent {
     @Input() public game!: Game;
     @Input() public currentIndex!: number;
 
-    public constructor(
-        private router: Router,
-        public authService: AuthService,
-        private gameService: GameService,
-        private userBookmarkFavouriteService: UserBookmarkFavouriteService
-    ) {}
+    public constructor(private router: Router, public authService: AuthService, private gameService: GameService) {}
 
     public async openGamePage(): Promise<void> {
         await this.router.navigate(['/game'], {
@@ -44,30 +38,6 @@ export class CarouselItemComponent {
             }
         }
         return '';
-    }
-
-    public get isInBookmarks(): boolean {
-        return (this.userBookmarkFavouriteService.cachedBookmarkIds || []).includes(this.game.id);
-    }
-
-    public async removeFromBookmark(): Promise<void> {
-        await this.userBookmarkFavouriteService.removeFromBookmarks(this.game.id);
-    }
-
-    public async addToBookmarks(): Promise<void> {
-        await this.userBookmarkFavouriteService.addToBookmarks(this.game.id);
-    }
-
-    public get isInFavourites(): boolean {
-        return (this.userBookmarkFavouriteService.cachedFaveIds || []).includes(this.game.id);
-    }
-
-    public async removeFromFavourites(): Promise<void> {
-        await this.userBookmarkFavouriteService.removeFromFaves(this.game.id);
-    }
-
-    public async addToFavourites(): Promise<void> {
-        await this.userBookmarkFavouriteService.addToFaves(this.game.id);
     }
 
     public toString(longNumber: number): string {

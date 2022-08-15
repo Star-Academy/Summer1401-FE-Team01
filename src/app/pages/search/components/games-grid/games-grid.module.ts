@@ -3,13 +3,14 @@ import {CommonModule} from '@angular/common';
 import {GamesGridComponent} from './games-grid.component';
 import {TomanModule} from '../../../../components/toman/toman.module';
 import {PageNumberSelectorComponent} from './components/page-number-selector/page-number-selector.component';
-import {CarouselItemModule} from '../../../../components/carousel-item/carousel-item.module';
 import {RoundNumberToHalfPipe} from './pipes/round-number-to-half.pipe';
+import {ButtonModule} from '../../../../components/button/button.module';
+import {FaveBookmarkButtonsModule} from '../../../../components/fave-bookmark-buttons/fave-bookmark-buttons.module';
 
 @NgModule({
     declarations: [GamesGridComponent, PageNumberSelectorComponent, RoundNumberToHalfPipe],
     exports: [GamesGridComponent, RoundNumberToHalfPipe],
-    imports: [CommonModule, TomanModule, CarouselItemModule],
+    imports: [CommonModule, TomanModule, ButtonModule, FaveBookmarkButtonsModule],
     providers: [RoundNumberToHalfPipe],
 })
 export class GamesGridModule {}

@@ -15,10 +15,6 @@
         gap: 1.5rem;
 
         li {
-            background-color: var(--color-background-15);
-
-            overflow: hidden;
-
             display: grid;
             grid-template-areas:
                 "img img img"
@@ -27,6 +23,7 @@
                 "price-on-sale price-before-sale percentage"
                 "price price price";
             grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
             justify-items: end;
 
             padding-block-end: 0.8rem;
@@ -36,7 +33,7 @@
             cursor: pointer;
 
             & > *:not(.image, .price-before-sale) {
-                margin-inline: 1rem;
+                margin-inline: 0.5rem;
             }
 
             .image {

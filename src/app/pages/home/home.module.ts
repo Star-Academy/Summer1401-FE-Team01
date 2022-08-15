@@ -7,7 +7,8 @@ import {RouterModule} from '@angular/router';
 import {CarouselModule} from '../../components/carousel/carousel.module';
 import {GamesGridModule} from '../search/components/games-grid/games-grid.module';
 import {TomanModule} from '../../components/toman/toman.module';
-import {CarouselItemModule} from '../../components/carousel-item/carousel-item.module';
+import {ButtonModule} from '../../components/button/button.module';
+import {FaveBookmarkButtonsModule} from '../../components/fave-bookmark-buttons/fave-bookmark-buttons.module';
 
 @NgModule({
     declarations: [HomeComponent, GamesRowComponent],
@@ -18,7 +19,8 @@ import {CarouselItemModule} from '../../components/carousel-item/carousel-item.m
         CarouselModule,
         GamesGridModule,
         TomanModule,
-        CarouselItemModule,
+        ButtonModule,
+        FaveBookmarkButtonsModule,
     ],
 })
 export class HomeModule {}

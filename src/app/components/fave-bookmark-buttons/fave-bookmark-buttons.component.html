@@ -1,0 +1,22 @@
+<div class="row">
+    <app-toggle-button
+        trueIconClasses="fas fa-bookmark"
+        falseIconClasses="far fa-bookmark"
+        trueButtonTitle="حذف بوکمارک"
+        falseButtonTitle="افزودن بوکمارک"
+        [buttonTheme]="buttonTheme"
+        [value]="isInBookmarks"
+        (click)="toggleBookmark($event)"
+    >
+    </app-toggle-button>
+    <app-toggle-button
+        trueIconClasses="fas fa-heart"
+        falseIconClasses="far fa-heart"
+        trueButtonTitle="حذف علاقه‌مندی"
+        falseButtonTitle="افزودن علاقه‌مندی"
+        [buttonTheme]="buttonTheme"
+        [value]="isInFavourites"
+        (click)="toggleFavourite($event)"
+    >
+    </app-toggle-button>
+</div>
