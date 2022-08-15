@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {User} from '../../models/user.model';
 import {SnackbarService} from '../../services/snackbar.service';
 import {SnackbarTheme} from '../../enums/snackbar-theme.enum';
+import {UserService} from '../../services/user.service';
 
 @Component({
     selector: 'app-profile',
@@ -18,7 +19,8 @@ export class ProfileComponent {
     public constructor(
         private router: Router,
         private authService: AuthService,
-        private snackbarService: SnackbarService
+        private snackbarService: SnackbarService,
+        private userService: UserService
     ) {
         this.user = authService.cachedUser!;
     }
