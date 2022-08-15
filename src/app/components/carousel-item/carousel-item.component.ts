@@ -24,19 +24,20 @@ export class CarouselItemComponent {
     }
 
     public get sliderCoverImage(): string {
-        if (this.game) {
-            if (this.game.artworks && this.game.artworks[0]) {
-                return this.game.artworks[0].getScreenShotUrl(ImageType.FULL_HD);
-            }
+        if (!this.game) return '';
 
-            if (this.game.screenshots && this.game.screenshots[0]) {
-                return this.game.screenshots[0].getScreenShotUrl(ImageType.FULL_HD);
-            }
-
-            if (this.game.cover) {
-                return this.game.cover.getScreenShotUrl(ImageType.FULL_HD);
-            }
+        if (this.game.artworks && this.game.artworks[0]) {
+            return this.game.artworks[0].getScreenShotUrl(ImageType.FULL_HD);
         }
+
+        if (this.game.screenshots && this.game.screenshots[0]) {
+            return this.game.screenshots[0].getScreenShotUrl(ImageType.FULL_HD);
+        }
+
+        if (this.game.cover) {
+            return this.game.cover.getScreenShotUrl(ImageType.FULL_HD);
+        }
+
         return '';
     }
 
