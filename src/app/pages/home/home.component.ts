@@ -20,18 +20,23 @@ export class HomeComponent {
     }
 
     public async initGames(): Promise<void> {
-        this.suggestionGames = (await this.gameService.fetchSlideshowGames()) || [];
-
         this.searchService.searchPhrase = '';
         this.searchService.resetFilters();
 
-        await this.searchService.search();
-        this.popularGames = this.searchService.games;
+        Promise.all([
+            this.gameService.fetchSlideshowGames().then((games) => (this.suggestionGames = games || [])),
 
-        this.searchService.sort = Sort.BEST_SELLER;
-        await this.searchService.search();
-        this.bestSellerGames = this.searchService.games;
+            Promise.resolve().then(async () => {
+                this.searchService.sort = Sort.POPULAR;
+                this.popularGames = await this.searchService.search();
+            }),
 
-        this.searchService.resetFilters();
+            Promise.resolve().then(async () => {
+                this.searchService.sort = Sort.BEST_SELLER;
+                this.bestSellerGames = await this.searchService.search();
+            }),
+        ]).then(() => {
+            this.searchService.resetFilters();
+        });
     }
 }

@@ -91,7 +91,7 @@ export class SearchService {
         return items;
     }
 
-    public async search(): Promise<void> {
+    public async search(): Promise<Array<Game>> {
         const response = await this.apiService.postRequest<{count: number; games: Array<Game>}>({
             url: API_GAME_SEARCH,
             body: {
@@ -111,8 +111,12 @@ export class SearchService {
                 },
             },
         });
-        this.games = (response?.games || []).map((game) => new Game(game));
+        const gamesResponse = (response?.games || []).map((game) => new Game(game));
+
+        this.games = gamesResponse;
         this.totalGameCount = response?.count || 0;
+
+        return gamesResponse;
     }
 
     public resetFilters(): void {
