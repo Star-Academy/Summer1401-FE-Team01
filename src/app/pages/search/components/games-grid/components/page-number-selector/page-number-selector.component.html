@@ -11,7 +11,7 @@
         <ng-container *ngFor="let page of pages">
             <li *ngIf="page === maxPage && searchService.pageNumber !== maxPage" class="ellipsis">...</li>
             <li [ngClass]="{current: page === searchService.pageNumber}" (click)="setCurrentPage(page)">
-                {{ page + 1 }}
+                {{ page + 1 | toPersian }}
             </li>
             <li *ngIf="page === minPage && searchService.pageNumber !== minPage" class="ellipsis">...</li>
         </ng-container>

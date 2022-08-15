@@ -6,11 +6,12 @@ import {PageNumberSelectorComponent} from './components/page-number-selector/pag
 import {RoundNumberToHalfPipe} from './pipes/round-number-to-half.pipe';
 import {ButtonModule} from '../../../../components/button/button.module';
 import {FaveBookmarkButtonsModule} from '../../../../components/fave-bookmark-buttons/fave-bookmark-buttons.module';
+import {GamePageModule} from '../../../game-page/game-page.module';
 
 @NgModule({
     declarations: [GamesGridComponent, PageNumberSelectorComponent, RoundNumberToHalfPipe],
     exports: [GamesGridComponent, RoundNumberToHalfPipe],
-    imports: [CommonModule, TomanModule, ButtonModule, FaveBookmarkButtonsModule],
+    imports: [CommonModule, TomanModule, ButtonModule, FaveBookmarkButtonsModule, GamePageModule],
     providers: [RoundNumberToHalfPipe],
 })
 export class GamesGridModule {}

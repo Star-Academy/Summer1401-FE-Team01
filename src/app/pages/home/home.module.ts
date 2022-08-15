@@ -9,6 +9,7 @@ import {GamesGridModule} from '../search/components/games-grid/games-grid.module
 import {TomanModule} from '../../components/toman/toman.module';
 import {ButtonModule} from '../../components/button/button.module';
 import {FaveBookmarkButtonsModule} from '../../components/fave-bookmark-buttons/fave-bookmark-buttons.module';
+import {GamePageModule} from '../game-page/game-page.module';
 
 @NgModule({
     declarations: [HomeComponent, GamesRowComponent],
@@ -21,6 +22,7 @@ import {FaveBookmarkButtonsModule} from '../../components/fave-bookmark-buttons/
         TomanModule,
         ButtonModule,
         FaveBookmarkButtonsModule,
+        GamePageModule,
     ],
 })
 export class HomeModule {}

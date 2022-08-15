@@ -7,11 +7,11 @@
         <p>{{ game.summary }}</p>
         <div class="rating-bar">
             <div>
-                <strong>{{ (game.rating / 20).toFixed(1) }}</strong>
+                <strong>{{ game.rating / 20 | roundNumberToHalf | toPersian }}</strong>
                 <i class="fas fa-star"></i>
             </div>
             <div>
-                <strong>{{ toString(game.ratingCount * 100) }}</strong>
+                <strong>{{ game.ratingCount * 100 | toPersian }}</strong>
                 نظر
             </div>
         </div>

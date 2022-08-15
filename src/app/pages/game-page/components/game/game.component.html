@@ -28,7 +28,7 @@
 
     <div class="rating">
         <app-rating [value]="game.rating / 20"></app-rating>
-        <p>{{ toString(game.ratingCount * 100) }} نظر</p>
+        <p>{{ game.ratingCount * 100 | toPersian }} نظر</p>
     </div>
 
     <ng-container *ngIf="game.videos.length > 0">
