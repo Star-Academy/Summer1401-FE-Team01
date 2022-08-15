@@ -7,20 +7,12 @@ import {SpinnerComponent} from '../components/spinner/spinner.component';
 export class SpinnerService {
     private spinnerComponent!: SpinnerComponent;
 
-    public initComponent(spinnerComponent: SpinnerComponent): void {
-        this.spinnerComponent = spinnerComponent;
+    public get ids(): Array<string> {
+        return this.spinnerComponent.ids;
     }
 
-    public async wrapAsync<T>(callback: () => T): Promise<T> {
-        if (!this.spinnerComponent) return callback();
-
-        const spinnerId = this.show();
-
-        try {
-            return await callback();
-        } finally {
-            this.hide(spinnerId);
-        }
+    public initComponent(spinnerComponent: SpinnerComponent): void {
+        this.spinnerComponent = spinnerComponent;
     }
 
     public show(): string {
