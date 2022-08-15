@@ -12,9 +12,10 @@ import {TomanModule} from '../../components/toman/toman.module';
 import {ButtonModule} from '../../components/button/button.module';
 import {FaveBookmarkButtonsModule} from '../../components/fave-bookmark-buttons/fave-bookmark-buttons.module';
 import {ToPersianPipe} from './pipes/to-persian.pipe';
+import {ImageUrlPipe} from '../../pipes/image-url.pipe';
 
 @NgModule({
-    declarations: [GamePageComponent, GameComponent, SideMenuComponent, IncludePipe, ToPersianPipe],
+    declarations: [GamePageComponent, GameComponent, SideMenuComponent, IncludePipe, ToPersianPipe, ImageUrlPipe],
     imports: [
         CommonModule,
         HeaderModule,
@@ -25,6 +26,6 @@ import {ToPersianPipe} from './pipes/to-persian.pipe';
         ButtonModule,
         FaveBookmarkButtonsModule,
     ],
-    exports: [ToPersianPipe],
+    exports: [ToPersianPipe, ImageUrlPipe],
 })
 export class GamePageModule {}

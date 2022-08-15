@@ -3,6 +3,7 @@ import {Game} from '../../models/game.model';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {ImageType} from '../../enums/image-type.enum';
+import {ImageUrlPipe} from '../../pipes/image-url.pipe';
 
 @Component({
     selector: 'app-carousel-item',
@@ -13,7 +14,7 @@ export class CarouselItemComponent {
     @Input() public game!: Game;
     @Input() public currentIndex!: number;
 
-    public constructor(private router: Router, public authService: AuthService) {}
+    public constructor(private router: Router, public authService: AuthService, private imageUrlPipe: ImageUrlPipe) {}
 
     public async openGamePage(): Promise<void> {
         await this.router.navigate(['/game'], {queryParams: {id: this.game.id}});
@@ -23,15 +24,15 @@ export class CarouselItemComponent {
         if (!this.game) return '';
 
         if (this.game.artworks && this.game.artworks[0]) {
-            return this.game.artworks[0].getScreenShotUrl(ImageType.FULL_HD);
+            return this.imageUrlPipe.transform(this.game.artworks[0], ImageType.FULL_HD);
         }
 
         if (this.game.screenshots && this.game.screenshots[0]) {
-            return this.game.screenshots[0].getScreenShotUrl(ImageType.FULL_HD);
+            return this.imageUrlPipe.transform(this.game.screenshots[0], ImageType.FULL_HD);
         }
 
         if (this.game.cover) {
-            return this.game.cover.getScreenShotUrl(ImageType.FULL_HD);
+            return this.imageUrlPipe.transform(this.game.cover, ImageType.FULL_HD);
         }
 
         return '';

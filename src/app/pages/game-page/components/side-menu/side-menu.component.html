@@ -1,5 +1,5 @@
 <div class="container">
-    <img [src]="game.cover.getScreenShotUrl(ImageType.HD)" alt="کاور بازی" loading="lazy" />
+    <img [src]="game.cover | imageUrl: ImageType.HD" alt="کاور بازی" loading="lazy" />
 
     <div class="wrapper">
         <div class="price-info">
