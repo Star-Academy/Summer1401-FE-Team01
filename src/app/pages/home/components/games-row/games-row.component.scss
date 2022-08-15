@@ -50,7 +50,7 @@
 
             cursor: pointer;
 
-            & > *:not(.image) {
+            > *:not(.image) {
                 margin-inline: 1rem;
             }
 

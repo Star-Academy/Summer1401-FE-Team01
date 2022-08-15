@@ -34,7 +34,7 @@
 
             cursor: pointer;
 
-            & > *:not(.image, .price-before-sale) {
+            > *:not(.image, .price-before-sale) {
                 margin-inline: 0.5rem;
             }
 
