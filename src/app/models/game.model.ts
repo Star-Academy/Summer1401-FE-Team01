@@ -56,8 +56,8 @@ export class Game {
         this.summary = game.summary || '';
     }
 
-    public get persianReleaseDate(): string {
-        return new Date(this.releaseDate).toLocaleDateString('fa-IR');
+    public get releaseDateType(): Date {
+        return new Date(this.releaseDate);
     }
 
     public get salePercentage(): number | null {

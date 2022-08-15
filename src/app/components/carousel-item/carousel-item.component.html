@@ -3,7 +3,7 @@
 
     <div class="details">
         <h2 class="name">{{ game.name }}</h2>
-        <h2 class="release-date">{{ game.persianReleaseDate }}</h2>
+        <h2 class="release-date">{{ game.releaseDateType | toPersian }}</h2>
         <p>{{ game.summary }}</p>
         <div class="rating-bar">
             <div>

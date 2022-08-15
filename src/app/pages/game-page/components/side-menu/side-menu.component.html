@@ -30,9 +30,9 @@
             <span>{{ publisherCompanies }}</span>
         </div>
 
-        <div class="row" *ngIf="game.persianReleaseDate">
+        <div class="row" *ngIf="game.releaseDateType | toPersian">
             <span class="title">تاریخ انتشار</span>
-            <span>{{ game.persianReleaseDate }}</span>
+            <span>{{ game.releaseDateType | toPersian }}</span>
         </div>
     </div>
 </div>
