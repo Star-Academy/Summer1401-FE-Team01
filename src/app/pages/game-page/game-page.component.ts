@@ -13,9 +13,9 @@ export class GamePageComponent {
     public game!: Game;
 
     public constructor(
+        public gameService: GameService,
         private router: Router,
         private route: ActivatedRoute,
-        public gameService: GameService,
         private sanitizer: DomSanitizer
     ) {
         this.setupGame();

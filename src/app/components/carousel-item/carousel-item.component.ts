@@ -14,7 +14,7 @@ export class CarouselItemComponent {
     @Input() public game!: Game;
     @Input() public currentIndex!: number;
 
-    public constructor(private router: Router, public authService: AuthService, private imageUrlPipe: ImageUrlPipe) {}
+    public constructor(public authService: AuthService, private router: Router, private imageUrlPipe: ImageUrlPipe) {}
 
     public async openGamePage(): Promise<void> {
         await this.router.navigate(['/game'], {queryParams: {id: this.game.id}});
