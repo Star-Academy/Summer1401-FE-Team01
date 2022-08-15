@@ -10,6 +10,13 @@ import {SpinnerService} from '../../services/spinner.service';
 export class SpinnerComponent {
     public ids: string[] = [];
 
+    private readonly COUNT: number = 16;
+
+    public readonly DURATION: number = 2;
+    public readonly DELAYS: number[] = Array(this.COUNT)
+        .fill(0)
+        .map((x, i) => -1 * (this.DURATION / this.COUNT) * Math.floor(i / 2));
+
     public constructor(private changeDetectorRef: ChangeDetectorRef, private spinnerService: SpinnerService) {
         this.spinnerService.initComponent(this);
     }
