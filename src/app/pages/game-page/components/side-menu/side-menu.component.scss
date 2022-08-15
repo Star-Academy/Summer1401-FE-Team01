@@ -31,7 +31,7 @@
 
         inline-size: 100%;
 
-        padding: 1rem;
+        padding: 0.5rem 1rem;
 
         h5 {
             align-self: flex-end;
@@ -54,7 +54,7 @@
             flex-direction: row-reverse;
             gap: 0.5rem;
 
-            margin-block: 1rem;
+            margin-block-end: 1rem;
 
             app-button:first-of-type {
                 inline-size: 100%;
@@ -135,12 +135,15 @@
             .price {
                 grid-area: price;
                 justify-self: start;
+
+                font-size: 1.5rem;
             }
 
             .price-on-sale,
             .price-before-sale,
             .price {
                 display: flex;
+                gap: 0.25rem;
             }
         }
     }

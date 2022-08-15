@@ -79,6 +79,8 @@
         justify-self: end;
 
         color: var(--color-gray-98);
+
+        direction: ltr;
     }
 
     .rating {
@@ -92,6 +94,8 @@
 
         p {
             color: var(--color-gray-98);
+
+            white-space: nowrap;
         }
     }
 
