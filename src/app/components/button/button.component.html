@@ -1,4 +1,4 @@
-<button [class]="theme" [type]="buttonType" [style.--aspect-ratio]="!!text ? '0' : '1'">
-    <p *ngIf="!!text">{{ text }}</p>
-    <i *ngIf="!!iconClasses" [class]="iconClasses" [title]="iconTitle"></i>
+<button [class]="theme" [type]="buttonType" [style.--aspect-ratio]="text ? '0' : '1'">
+    <p *ngIf="text">{{ text }}</p>
+    <i *ngIf="iconClasses" [class]="iconClasses" [title]="iconTitle"></i>
 </button>

@@ -23,7 +23,7 @@ export class GamePageComponent {
 
     public setupGame(): void {
         this.game = this.router.getCurrentNavigation()?.extras?.state?.game;
-        if (!!this.game) {
+        if (this.game) {
             this.setupGameVideoUrls();
         } else {
             this.route.queryParams.subscribe(async ({id}) => {

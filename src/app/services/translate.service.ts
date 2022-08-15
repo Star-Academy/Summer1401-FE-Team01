@@ -24,7 +24,7 @@ export class TranslateService {
 
         const response = await this.apiService.fetchRequest<Array<string>>(options, init);
 
-        if (!!response) {
+        if (response) {
             return response.map((s) => this.removeEnglish(s));
         }
 

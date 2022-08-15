@@ -64,7 +64,7 @@ export class AuthService {
     }
 
     private async saveCache(token: string | null, isLoggedIn: boolean, userId: number | null): Promise<void> {
-        if (!!token) localStorage.setItem('token', token);
+        if (token) localStorage.setItem('token', token);
         else localStorage.removeItem('token');
 
         this.cachedIsLoggedIn = isLoggedIn;

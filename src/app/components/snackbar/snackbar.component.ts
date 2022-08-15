@@ -34,7 +34,7 @@ export class SnackbarComponent implements OnDestroy {
     }
 
     public stopHideTimer(): void {
-        if (!!this.timeoutId) {
+        if (this.timeoutId) {
             clearTimeout(this.timeoutId);
             this.timeoutId = null;
         }

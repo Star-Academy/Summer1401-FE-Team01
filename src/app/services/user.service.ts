@@ -27,7 +27,7 @@ export class UserService {
             body: {token: this.token, [alteredField]: newValue},
         });
 
-        if (!!response) {
+        if (response) {
             this.snackbarService.show({text: 'تغییر با موفقیت انجام شد', theme: SnackbarTheme.SUCCESS});
         }
 

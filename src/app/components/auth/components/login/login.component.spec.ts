@@ -87,7 +87,7 @@ describe('LoginComponent', () => {
     // [SECTION] Utility Functions
 
     const testLoginWithEmail = (loginWithEmail: boolean = false, form: Partial<User> = {}): void => {
-        if (!!form) {
+        if (form) {
             component.username = form.username as string;
             component.password = form.password as string;
             component.email = form.email as string;

@@ -20,7 +20,7 @@ export class GameService {
                 ?.map((game) => new Game(game))
                 ?.slice(0, 7) || [];
 
-        if (!!gamesResponse) {
+        if (gamesResponse) {
             const translations = await this.translateGameInfo(gamesResponse);
             translations.forEach((t, i) => {
                 gamesResponse[i].summary = t.summary;
@@ -39,7 +39,7 @@ export class GameService {
                 })
             )?.game || null;
 
-        if (!!gameResponse) {
+        if (gameResponse) {
             gameResponse = new Game(gameResponse);
             gameResponse = (await this.translateGameInfo([gameResponse]))[0];
         }
@@ -55,7 +55,7 @@ export class GameService {
 
         const translationsResponse = await this.translateService.translateStrings(translatables);
 
-        if (!!translationsResponse) {
+        if (translationsResponse) {
             games.forEach((game, i) => {
                 game.summary = translationsResponse[2 * i];
                 game.storyline = translationsResponse[2 * i + 1];

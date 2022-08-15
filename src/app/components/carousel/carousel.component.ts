@@ -46,7 +46,7 @@ export class CarouselComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     public clearInterval(): void {
-        if (!!this.autoNextInterval) {
+        if (this.autoNextInterval) {
             clearInterval(this.autoNextInterval);
             this.autoNextInterval = null;
         }
@@ -82,7 +82,7 @@ export class CarouselComponent implements AfterViewInit, OnChanges, OnDestroy {
     private playBulletAnimation(index: number, addClass: boolean): void {
         const bullet = this.bullets.get(index)?.nativeElement;
 
-        if (!!bullet) {
+        if (bullet) {
             const first = bullet.getBoundingClientRect();
 
             if (addClass) bullet.classList.add('current');

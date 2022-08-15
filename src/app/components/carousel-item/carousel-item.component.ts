@@ -34,16 +34,16 @@ export class CarouselItemComponent {
     }
 
     public get sliderCoverImage(): string {
-        if (!!this.game) {
-            if (!!this.game.artworks && !!this.game.artworks[0]) {
+        if (this.game) {
+            if (this.game.artworks && this.game.artworks[0]) {
                 return this.game.artworks[0].getScreenShotUrl(ImageType._1080P);
             }
 
-            if (!!this.game.screenshots && !!this.game.screenshots[0]) {
+            if (this.game.screenshots && this.game.screenshots[0]) {
                 return this.game.screenshots[0].getScreenShotUrl(ImageType._1080P);
             }
 
-            if (!!this.game.cover) {
+            if (this.game.cover) {
                 return this.game.cover.getScreenShotUrl(ImageType._1080P);
             }
         }

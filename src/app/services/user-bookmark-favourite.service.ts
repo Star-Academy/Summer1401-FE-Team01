@@ -31,7 +31,7 @@ export class UserBookmarkFavouriteService {
 
     public async fetchAllFavourites(): Promise<Array<Game>> {
         const res = await this.fetchAll(API_FAVES_ALL);
-        if (!!res) {
+        if (res) {
             this.cachedFaveIds = res.map((g) => g.id);
         }
         return res;
@@ -39,7 +39,7 @@ export class UserBookmarkFavouriteService {
 
     public async fetchAllBookmarks(): Promise<Array<Game>> {
         const res = await this.fetchAll(API_BOOKMARKS_ALL);
-        if (!!res) {
+        if (res) {
             this.cachedBookmarkIds = res.map((g) => g.id);
         }
         return res;

@@ -41,7 +41,7 @@ describe('ButtonComponent', () => {
     // [SECTION] Utility Functions
     const testType = (theme?: 'text' | 'outline' | 'contained'): void => {
         const button = host.querySelector('button');
-        if (!!theme) {
+        if (theme) {
             component.theme = theme;
             fixture.detectChanges();
         }

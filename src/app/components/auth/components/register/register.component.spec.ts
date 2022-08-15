@@ -78,10 +78,10 @@ describe('RegisterComponent', () => {
 
         const user = component.user;
 
-        if (!!firstName) expect(user.firstName).toBe(firstName);
+        if (firstName) expect(user.firstName).toBe(firstName);
         else expect(user.firstName).toBeUndefined();
 
-        if (!!lastName) expect(user.lastName).toBe(lastName);
+        if (lastName) expect(user.lastName).toBe(lastName);
         else expect(user.lastName).toBeUndefined();
     };
 });
