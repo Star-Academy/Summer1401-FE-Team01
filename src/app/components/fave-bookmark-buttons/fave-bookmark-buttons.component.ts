@@ -17,11 +17,11 @@ export class FaveBookmarkButtonsComponent {
     public constructor(private router: Router, private userBookmarkFavouriteService: UserBookmarkFavouriteService) {}
 
     public get isInBookmarks(): boolean {
-        return (this.userBookmarkFavouriteService.cachedBookmarkIds || []).includes(this.game.id);
+        return (this.userBookmarkFavouriteService.cachedBookmarkIds || []).includes(this.game.id || 0);
     }
 
     public get isInFavourites(): boolean {
-        return (this.userBookmarkFavouriteService.cachedFaveIds || []).includes(this.game.id);
+        return (this.userBookmarkFavouriteService.cachedFaveIds || []).includes(this.game.id || 0);
     }
 
     public async toggleBookmark(event: MouseEvent): Promise<void> {

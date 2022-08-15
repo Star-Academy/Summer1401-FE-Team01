@@ -14,7 +14,7 @@ import {UserService} from '../../services/user.service';
 export class ProfileComponent {
     public user!: User;
 
-    public readonly PFP_MAX_SIZE = 76_800; // 75KB
+    public readonly IMAGE_MAX_SIZE = 5 * 1024 * 1024; // 5MB
 
     public constructor(
         private router: Router,
@@ -35,8 +35,11 @@ export class ProfileComponent {
 
     public submitPhoto(event: Event): void {
         const file = (event.target as HTMLInputElement)!.files!.item(0)!;
-        if (file.size > this.PFP_MAX_SIZE) {
-            this.snackbarService.show({text: 'اندازه فایل باید کمتر از 75KB باشد', theme: SnackbarTheme.DANGER});
+        if (file.size > this.IMAGE_MAX_SIZE) {
+            this.snackbarService.show({
+                text: `اندازه فایل باید کمتر از ${this.IMAGE_MAX_SIZE / (1024 * 1024)}MB باشد`,
+                theme: SnackbarTheme.DANGER,
+            });
             return;
         }
         const reader = new FileReader();
