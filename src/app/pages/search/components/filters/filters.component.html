@@ -1,0 +1,15 @@
+<div class="filters-wrapper">
+    <h1>فیلتر</h1>
+    <app-button id="submit-filters" text="ثبت" theme="contained" (click)="searchService.search()"></app-button>
+    <app-button id="clear-filters" text="حذف فیلتر‌ها" theme="text" (click)="searchService.resetFilters()"></app-button>
+
+    <div id="filters">
+        <app-expansion-list title="پلتفرم" [(items)]="searchService.platforms"></app-expansion-list>
+        <app-expansion-list
+            title="نقطهٔ‌دیدگاه بازیکن"
+            [(items)]="searchService.playerPerspectives"
+        ></app-expansion-list>
+        <app-expansion-list title="دسته‌بندی" [(items)]="searchService.themes"></app-expansion-list>
+        <app-expansion-list title="نوع بازی" [(items)]="searchService.gameModes"></app-expansion-list>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        li {
+            color: var(--color-gray-98);
+
+            display: grid;
+            place-items: center;
+
+            block-size: 2.5rem;
+            aspect-ratio: 1;
+
+            border-radius: 50%;
+
+            &:not(.ellipsis, .current):hover {
+                background-color: var(--color-background-30);
+
+                cursor: pointer;
+            }
+
+            &.current {
+                background-color: var(--primary-color);
+
+                font-weight: bold;
+            }
+        }
+    }
+
+    app-button {
+        --font-size: 0.85rem;
+
+        &.disabled {
+            visibility: hidden;
+        }
+
+        &:first-of-type {
+            margin-inline-start: auto;
+        }
+
+        &:last-of-type {
+            margin-inline-start: auto;
+        }
+    }
+}

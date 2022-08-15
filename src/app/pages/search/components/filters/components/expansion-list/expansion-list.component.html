@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div class="title" (click)="isExpanded = !isExpanded">
+        <h3>{{ title }}</h3>
+        <i class="far fa-angle-down" [ngClass]="{expanded: isExpanded}"></i>
+    </div>
+    <ul *ngIf="isExpanded">
+        <li #item *ngFor="let item of items; index as index">
+            <label>
+                <input type="checkbox" [checked]="item.isSelected" (change)="onToggleItemSelect(index)" />
+                <p dir="ltr">{{ item.name }}</p>
+            </label>
+        </li>
+    </ul>
+</div>

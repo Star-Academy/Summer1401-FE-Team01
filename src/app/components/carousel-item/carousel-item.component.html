@@ -1,12 +1,26 @@
 <div class="slide" [style.--current-index]="currentIndex">
-    <img class="image" [src]="game?.sliderCoverImage || ''" [alt]="game?.title || 'نصویر کاور بازی'" />
+    <img [src]="sliderCoverImage" [alt]="game.name" (click)="openGamePage()" loading="lazy" />
+
     <div class="details">
-        <div class="description">
-            <span>{{ game?.description || '' }}</span>
+        <h2 class="name">{{ game.name }}</h2>
+        <h2 class="release-date">{{ game.releaseDateType | toPersian }}</h2>
+        <p>{{ game.summary }}</p>
+        <div class="rating-bar">
+            <div>
+                <strong>{{ game.rating / 20 | roundNumberToHalf | toPersian }}</strong>
+                <i class="fas fa-star"></i>
+            </div>
+            <div>
+                <strong>{{ game.ratingCount * 100 | toPersian }}</strong>
+                نظر
+            </div>
         </div>
-        <app-button text="افزودن به سبد خرید" iconClasses="far fa-cart-circle-plus"> </app-button>
-    </div>
-    <div class="rating">
-        {{ game?.averageRating || '' }}
+
+        <div *ngIf="this.authService.cachedIsLoggedIn!" class="button-bar">
+            <app-fave-bookmark-buttons [game]="game"></app-fave-bookmark-buttons>
+
+            <app-button text="افزودن به سبد خرید" iconTitle="افزودن به سبد خرید" iconClasses="far fa-cart-circle-plus">
+            </app-button>
+        </div>
     </div>
 </div>

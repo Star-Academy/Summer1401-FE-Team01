@@ -1,0 +1,178 @@
+@import "src/styles";
+
+.content-wrapper {
+    --spacing: 2.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+
+    padding-block: 2rem;
+
+    text-align: center;
+
+    h2 {
+        color: var(--primary-color);
+
+        padding-block-end: 1rem;
+
+        border-block-end: var(--primary-color) solid;
+    }
+
+    ul {
+        color: var(--color-gray-98);
+
+        overflow-x: scroll;
+
+        display: flex;
+        align-items: stretch;
+        gap: 1.5rem;
+
+        padding-block-end: 1rem;
+
+        li {
+            background-color: var(--color-background-15);
+
+            display: grid;
+            grid-template-areas:
+                "img img"
+                "title title"
+                "rating rating"
+                "price-on-sale percentage"
+                "price-before-sale percentage"
+                "price price";
+            grid-template-columns: auto auto;
+            justify-items: end;
+
+            padding-block-end: 0.5rem;
+
+            border-radius: var(--border-radius-small);
+
+            cursor: pointer;
+
+            > *:not(.image) {
+                margin-inline: 1rem;
+            }
+
+            .image {
+                grid-area: img;
+
+                position: relative;
+
+                inline-size: 12rem;
+                aspect-ratio: 2 / 2.5;
+
+                margin-block-end: 0.5rem;
+
+                border-radius: var(--border-radius-super-small);
+
+                img {
+                    block-size: 100%;
+                    inline-size: 100%;
+                    object-fit: cover;
+
+                    border-start-start-radius: var(--border-radius-small);
+                    border-start-end-radius: var(--border-radius-small);
+                }
+
+                .overlay {
+                    background-color: var(--color-overlay);
+                    opacity: 0;
+
+                    position: absolute;
+                    inset: 0;
+
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: end;
+                    gap: 1rem;
+
+                    block-size: 100%;
+                    inline-size: 100%;
+
+                    padding: 0.5rem;
+
+                    transition: opacity 100ms ease-in-out;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .title {
+                grid-area: title;
+
+                direction: ltr;
+
+                margin-block-end: 0.5rem;
+
+                text-align: start;
+
+                @include max-lines(1);
+            }
+
+            .rating {
+                grid-area: rating;
+
+                display: flex;
+                align-items: stretch;
+                gap: 0.2rem;
+
+                i {
+                    color: var(--color-star);
+                }
+            }
+
+            .price-on-sale {
+                grid-area: price-on-sale;
+            }
+
+            .percentage {
+                grid-area: percentage;
+                align-self: center;
+
+                background-color: var(--primary-color-darker);
+
+                display: grid;
+                place-items: center;
+
+                block-size: 75%;
+                inline-size: 50%;
+
+                border-radius: var(--border-radius-small);
+
+                text-align: center;
+            }
+
+            .price-before-sale {
+                grid-area: price-before-sale;
+
+                opacity: 0.7;
+
+                font-size: 0.8rem;
+
+                text-decoration: line-through;
+            }
+
+            .price {
+                grid-area: price;
+            }
+
+            .price-on-sale,
+            .price-before-sale,
+            .price {
+                justify-self: start;
+
+                display: flex;
+            }
+
+            .price-on-sale,
+            .price,
+            .percentage {
+                font-size: 0.9rem;
+                font-weight: bold;
+            }
+        }
+    }
+}

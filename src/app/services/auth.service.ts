@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {API_USER_AUTH, API_USER_LOGIN, API_USER_ONE, API_USER_REGISTER} from '../utils/api.utils';
+import {API_USER_AUTH, API_USER_LOGIN, API_USER_REGISTER} from '../utils/api.utils';
 import {ApiService} from './api.service';
 import {TokenObject} from '../models/token-object.model';
 import {User} from '../models/user.model';
 import {Router} from '@angular/router';
+import {UserService} from './user.service';
 
 @Injectable({
     providedIn: 'root',
@@ -13,7 +14,7 @@ export class AuthService {
     public cachedUserId: number | null = null;
     public cachedUser: User | null = null;
 
-    public constructor(private router: Router, private apiService: ApiService) {
+    public constructor(private router: Router, private apiService: ApiService, private userService: UserService) {
         this.auth().then();
     }
 
@@ -43,8 +44,7 @@ export class AuthService {
     }
 
     public async fetchLoggedInUserInfo(): Promise<User | null> {
-        const response = await this.apiService.getRequest<{user: User}>({url: `${API_USER_ONE}/${this.cachedUserId}`});
-        return response?.user || null;
+        return this.userService.getUserInfo(this.cachedUserId);
     }
 
     public async logout(): Promise<void> {
@@ -64,7 +64,7 @@ export class AuthService {
     }
 
     private async saveCache(token: string | null, isLoggedIn: boolean, userId: number | null): Promise<void> {
-        if (!!token) localStorage.setItem('token', token);
+        if (token) localStorage.setItem('token', token);
         else localStorage.removeItem('token');
 
         this.cachedIsLoggedIn = isLoggedIn;

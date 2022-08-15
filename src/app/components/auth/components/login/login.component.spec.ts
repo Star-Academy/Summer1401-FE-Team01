@@ -6,7 +6,7 @@ import {SnackbarService} from '../../../../services/snackbar.service';
 import {SnackbarServiceMock} from '../../../../mocks/snackbar-service.mock';
 import {FetchMock} from '../../../../mocks/fetch.mock';
 import {AuthComponent} from '../../auth.component';
-import {ProfileComponent} from '../../../profile/profile.component';
+import {ProfileComponent} from '../../../../pages/profile/profile.component';
 
 describe('LoginComponent', () => {
     let fixture: ComponentFixture<LoginComponent>;
@@ -87,7 +87,7 @@ describe('LoginComponent', () => {
     // [SECTION] Utility Functions
 
     const testLoginWithEmail = (loginWithEmail: boolean = false, form: Partial<User> = {}): void => {
-        if (!!form) {
+        if (form) {
             component.username = form.username as string;
             component.password = form.password as string;
             component.email = form.email as string;

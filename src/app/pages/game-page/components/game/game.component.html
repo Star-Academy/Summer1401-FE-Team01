@@ -1,0 +1,67 @@
+<div class="container">
+    <h1>{{ game.name }}</h1>
+    <div class="categories">
+        <div class="modes">
+            <p>ویژگی‌ها</p>
+
+            <ul>
+                <li *ngFor="let gameMode of game.gameModes">
+                    <a (click)="searchService.goToSearchPageWithFilter({gameModes: [gameMode.id]})">
+                        {{ gameMode.name }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="genres">
+            <p>ژانر‌ها</p>
+
+            <ul>
+                <li *ngFor="let theme of game.themes">
+                    <a (click)="searchService.goToSearchPageWithFilter({genres: [theme.id]})">{{ theme.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="summary">{{ game.summary }}</p>
+    <p *ngIf="game.storyline" class="story">{{ game.storyline }}</p>
+
+    <div class="rating">
+        <app-rating [value]="game.rating / 20"></app-rating>
+        <p>{{ game.ratingCount * 100 | toPersian }} نظر</p>
+    </div>
+
+    <ng-container *ngIf="game.videos.length > 0">
+        <iframe
+            width="560"
+            height="315"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            [src]="game.videos[0].safeUrl"
+            [title]="game.videos[0].name"
+        ></iframe>
+    </ng-container>
+
+    <ul class="screenshot">
+        <li
+            *ngFor="let photo of game.screenshots | slice: 0:3; index as index; count as count"
+            [ngClass]="{large: count % 3 !== 2 && index % 3 === 0}"
+        >
+            <img [src]="photo | imageUrl: ImageType.FULL_HD" alt="عکس از بازی" loading="lazy" />
+        </li>
+    </ul>
+
+    <ul class="more-screenshot">
+        <li
+            *ngFor="
+                let photo of game.screenshots | slice: 3:Math.floor(game.screenshots.length / 3) * 3;
+                index as index;
+                count as count
+            "
+            [ngClass]="{large: count % 3 !== 2 && index % 3 === 0}"
+        >
+            <img [src]="photo | imageUrl: ImageType.FULL_HD" alt="عکس از بازی" loading="lazy" />
+        </li>
+    </ul>
+</div>

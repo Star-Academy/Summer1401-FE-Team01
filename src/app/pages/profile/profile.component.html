@@ -1,0 +1,77 @@
+<div class="wrapper">
+    <main>
+        <h1>سلام {{ user.firstName || user.username }}!</h1>
+        <label id="profile-picture">
+            <div class="overlay">
+                <p>برای تغییر عکس کلیک کنید!</p>
+            </div>
+            <img [src]="profilePhotoSrc" alt="عکس کاربر" loading="lazy" />
+            <input type="file" accept="image/*" (change)="submitPhoto($event)" />
+        </label>
+
+        <app-editable-field
+            id="username"
+            title="username"
+            titlePersian="نام کاربری"
+            name="username"
+            type="text"
+            direction="ltr"
+            [value]="user.username"
+            (valueChange)="editField('username', $event)"
+        ></app-editable-field>
+
+        <app-editable-field
+            id="email"
+            title="email"
+            titlePersian="ایمیل"
+            name="email"
+            type="email"
+            direction="ltr"
+            [value]="user.email"
+            (valueChange)="editField('email', $event)"
+        ></app-editable-field>
+
+        <app-editable-field
+            id="phone"
+            title="phone"
+            titlePersian="تلفن‌همراه"
+            name="phone"
+            type="tel"
+            pattern="+98 9[0-9]{2} [0-9]{3} [0-9]{4}"
+            placeholder="+98 9XX XXX XXXX"
+            direction="ltr"
+            [value]="user.phone"
+            (valueChange)="editField('phone', $event)"
+        ></app-editable-field>
+
+        <app-editable-field
+            id="first-name"
+            title="firstName"
+            titlePersian="نام"
+            name="given-name"
+            type="given-name"
+            [value]="user.firstName"
+            (valueChange)="editField('firstName', $event)"
+        ></app-editable-field>
+        <app-editable-field
+            id="last-name"
+            title="lastName"
+            titlePersian="نام‌خانوادگی"
+            name="family-name"
+            type="family-name"
+            [value]="user.lastName"
+            (valueChange)="editField('lastName', $event)"
+        ></app-editable-field>
+
+        <app-editable-field
+            id="birth-date"
+            title="dateOfBirth"
+            titlePersian="تاریخ‌تولد"
+            name="date"
+            type="date"
+            direction="ltr"
+            [value]="user.dateOfBirth | slice: 0:10"
+            (valueChange)="editField('dateOfBirth', $event)"
+        ></app-editable-field>
+    </main>
+</div>

@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HeaderModule} from './components/header/header.module';
 import {HomeModule} from './pages/home/home.module';
 import {AuthModule} from './components/auth/auth.module';
-import {ProfileModule} from './components/profile/profile.module';
+import {ProfileModule} from './pages/profile/profile.module';
 import {NgxPopperjsModule} from 'ngx-popperjs';
 import {TestBed} from '@angular/core/testing';
 

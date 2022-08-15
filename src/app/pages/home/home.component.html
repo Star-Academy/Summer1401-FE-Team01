@@ -1,9 +1,3 @@
-<div class="wrapper">
-    <app-header></app-header>
-    <main>
-        <app-carousel [games]="suggestionGames"></app-carousel>
-        <app-categories></app-categories>
-        <router-outlet></router-outlet>
-    </main>
-</div>
-<app-footer></app-footer>
+<app-carousel *ngIf="upcomingGames.length > 0" [games]="upcomingGames"></app-carousel>
+<app-games-row *ngIf="popularGames.length > 0" title="بازی‌های پرطرفدار" [games]="popularGames"></app-games-row>
+<app-games-row *ngIf="bestSellerGames.length > 0" title="بازی‌های پرفروش" [games]="bestSellerGames"></app-games-row>

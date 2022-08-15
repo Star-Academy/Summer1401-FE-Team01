@@ -6,7 +6,7 @@ import {AuthService} from '../services/auth.service';
     providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-    public constructor(private router: Router, public authService: AuthService) {}
+    public constructor(public authService: AuthService, private router: Router) {}
 
     public async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
         const isLoggedIn = await this.authService.isLoggedIn();

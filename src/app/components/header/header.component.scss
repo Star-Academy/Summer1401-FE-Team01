@@ -46,6 +46,10 @@ header {
             }
         }
 
+        app-button {
+            --font-size: 0.9rem;
+        }
+
         app-search-box {
             min-inline-size: 5rem;
             inline-size: 40%;

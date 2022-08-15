@@ -1,0 +1,25 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-block-size: 100%;
+    inline-size: 100%;
+
+    app-header {
+        padding-inline: 4rem;
+    }
+
+    main {
+        padding: 2rem 4rem;
+    }
+}
+
+app-spinner {
+    position: fixed;
+    inset: 0;
+
+    &.hidden {
+        display: none;
+    }
+}

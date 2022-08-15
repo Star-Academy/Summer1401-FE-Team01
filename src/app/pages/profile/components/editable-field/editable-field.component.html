@@ -1,0 +1,23 @@
+<label>
+    <h5>
+        {{ titlePersian }}
+    </h5>
+    <div class="row">
+        <ng-container *ngIf="editable; else notEditable">
+            <app-input
+                [type]="type"
+                [name]="name"
+                [direction]="direction"
+                [pattern]="pattern"
+                [placeholder]="placeholder"
+                [(value)]="value"
+            ></app-input>
+            <app-button iconClasses="far fa-check" theme="text" (click)="onEditSubmit()"></app-button>
+            <app-button iconClasses="far fa-xmark" theme="text" (click)="editable = false"></app-button>
+        </ng-container>
+        <ng-template #notEditable>
+            <p [dir]="direction">{{ value || '-' }}</p>
+            <app-button iconClasses="far fa-pen" theme="text" (click)="editable = true"></app-button>
+        </ng-template>
+    </div>
+</label>

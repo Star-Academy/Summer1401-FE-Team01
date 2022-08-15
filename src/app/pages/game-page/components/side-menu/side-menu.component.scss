@@ -1,0 +1,165 @@
+.container {
+    --gap: 0.5rem;
+
+    background-color: transparent;
+    color: var(--color-gray-80);
+
+    position: sticky;
+    inset-block-start: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+
+    block-size: fit-content;
+
+    border-radius: var(--border-radius-medium);
+
+    app-toman {
+        --fill: currentcolor;
+    }
+
+    img {
+        block-size: fit-content;
+        inline-size: 100%;
+        object-fit: cover;
+
+        border-radius: var(--border-radius-small);
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+
+        inline-size: 100%;
+
+        padding: 0.5rem 1rem;
+
+        h5 {
+            align-self: flex-end;
+
+            color: var(--color-background-75);
+
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 0.15rem;
+
+            app-toman {
+                --fill: currentcolor;
+                font-size: 1rem;
+            }
+        }
+
+        .button-bar {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 0.5rem;
+
+            margin-block-end: 1rem;
+
+            app-button:first-of-type {
+                inline-size: 100%;
+            }
+        }
+
+        .row {
+            color: var(--color-background-85);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-block-end: 0.1rem solid var(--color-fader);
+
+            gap: 2rem;
+
+            padding-block-end: 0.5rem;
+
+            .title {
+                color: var(--color-background-55);
+
+                font-size: 0.9rem;
+
+                white-space: nowrap;
+            }
+
+            span:not(.title) {
+                direction: ltr;
+            }
+
+            ul {
+                display: flex;
+                gap: 0.25rem;
+
+                li {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .price-info {
+            display: grid;
+            grid-template-areas:
+                " percentage  price-before-sale price-on-sale"
+                "price price price";
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            justify-items: center;
+
+            .price-on-sale {
+                grid-area: price-on-sale;
+            }
+
+            .percentage {
+                grid-area: percentage;
+                justify-self: start;
+
+                background-color: var(--primary-color-darker);
+                color: var(--color-gray-98);
+
+                inline-size: 75%;
+
+                padding-top: 0.2rem;
+
+                border-radius: var(--border-radius-small);
+
+                text-align: center;
+            }
+
+            .price-before-sale {
+                grid-area: price-before-sale;
+
+                opacity: 0.7;
+
+                font-size: 0.9rem;
+
+                text-decoration: line-through;
+            }
+
+            .price {
+                grid-area: price;
+                justify-self: end;
+            }
+
+            .price,
+            .price-on-sale {
+                font-size: 1.5rem;
+            }
+
+            .price-on-sale,
+            .price,
+            .percentage {
+                font-weight: bold;
+            }
+
+            .price-on-sale,
+            .price-before-sale,
+            .price {
+                display: flex;
+                gap: 0.25rem;
+            }
+        }
+    }
+}

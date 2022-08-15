@@ -6,15 +6,21 @@ button {
 
     position: relative;
 
-    min-inline-size: 7.5rem;
-    inline-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 
-    padding: 0.5rem 0.75rem;
+    block-size: 3em;
+    inline-size: 100%;
+    aspect-ratio: var(--aspect-ratio);
+
+    padding: 0.5em 0.75em;
 
     border: solid 1px var(--border-color);
-    border-radius: 0.25rem;
+    border-radius: 0.25em;
 
-    font-size: 1rem;
+    font-size: var(--font-size, 1rem);
     font-weight: bold;
 
     cursor: pointer;

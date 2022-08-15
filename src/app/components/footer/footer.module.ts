@@ -4,11 +4,11 @@ import {CommonModule} from '@angular/common';
 import {FooterComponent} from './footer.component';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from '../../app-routing.module';
-import {CarouselItemModule} from '../carousel-item/carousel-item.module';
+import {ButtonModule} from '../button/button.module';
 
 @NgModule({
     declarations: [FooterComponent],
     exports: [FooterComponent],
-    imports: [CommonModule, RouterModule, AppRoutingModule, CarouselItemModule],
+    imports: [CommonModule, RouterModule, AppRoutingModule, ButtonModule],
 })
 export class FooterModule {}

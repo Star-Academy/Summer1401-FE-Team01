@@ -27,8 +27,8 @@ export class RegisterComponent {
     public get user(): Partial<User> {
         const user: Partial<User> = {password: this.password, email: this.email, username: this.username};
 
-        if (!!this.firstName) user.firstName = this.firstName;
-        if (!!this.lastName) user.lastName = this.lastName;
+        if (this.firstName) user.firstName = this.firstName;
+        if (this.lastName) user.lastName = this.lastName;
 
         return user;
     }

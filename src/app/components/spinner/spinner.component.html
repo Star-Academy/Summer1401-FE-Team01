@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="overlay"></div>
+
+    <div class="infinity-particles" [style.--duration]="DURATION + 's'">
+        <i *ngFor="let delay of DELAYS" class="particle" [style.--delay]="delay + 's'"></i>
+    </div>
+</div>

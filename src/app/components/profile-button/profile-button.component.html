@@ -6,31 +6,31 @@
 <popper-content #popperContent>
     <div class="rows">
         <a routerLink="/profile">
-            <img src="assets/images/default-profile-picture.svg" alt="عکس پروفایل کاربر" />
+            <img [src]="profilePhotoSrc" alt="عکس پروفایل کاربر" loading="lazy" />
             <div class="bold">
                 {{ authService.cachedUser?.firstName }}
                 {{ authService.cachedUser?.lastName }}
             </div>
-            <i class="far fa-angle-left"></i>
+            <i class="far fa-arrow-left"></i>
         </a>
 
         <a routerLink="/profile">
             <i class="far fa-wallet"></i>
             <div>کیف پول</div>
             <div class="suffix">
-                <div class="number bold">0</div>
+                <div class="number bold">{{ authService.cachedUser?.credit || 0 }}</div>
                 <div class="fade">تومان</div>
             </div>
         </a>
 
-        <a routerLink="/wishlist">
+        <a routerLink="/favourite">
             <i class="far fa-heart"></i>
             <div>علاقه‌مندی‌ها</div>
         </a>
 
-        <a routerLink="/orders">
-            <i class="far fa-shopping-bag"></i>
-            <div>خریداری‌شده</div>
+        <a routerLink="/bookmark">
+            <i class="far fa-bookmark"></i>
+            <div>بوکمارک‌ها</div>
         </a>
 
         <button class="reset" (click)="logout()">

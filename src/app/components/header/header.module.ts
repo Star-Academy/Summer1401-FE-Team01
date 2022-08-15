@@ -5,9 +5,9 @@ import {HeaderComponent} from './header.component';
 import {RouterModule} from '@angular/router';
 import {SearchBoxComponent} from './components/search-box/search-box.component';
 import {LogoModule} from '../logo/logo.module';
-import {CarouselItemModule} from '../carousel-item/carousel-item.module';
 import {NgxPopperjsModule} from 'ngx-popperjs';
 import {ProfileButtonModule} from '../profile-button/profile-button.module';
+import {ButtonModule} from '../button/button.module';
 
 @NgModule({
     declarations: [HeaderComponent, SearchBoxComponent],
@@ -17,9 +17,9 @@ import {ProfileButtonModule} from '../profile-button/profile-button.module';
         RouterModule,
         FormsModule,
         LogoModule,
-        CarouselItemModule,
         NgxPopperjsModule,
         ProfileButtonModule,
+        ButtonModule,
     ],
 })
 export class HeaderModule {}

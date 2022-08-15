@@ -23,6 +23,12 @@ body {
     block-size: 100%;
 }
 
+a {
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
 input,
 label,
 select,

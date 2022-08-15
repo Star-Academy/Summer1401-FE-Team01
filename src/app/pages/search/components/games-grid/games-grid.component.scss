@@ -1,0 +1,180 @@
+@import "src/styles";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+
+    ul {
+        color: var(--color-gray-98);
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        align-items: stretch;
+        gap: 1.5rem;
+
+        li {
+            overflow: hidden;
+
+            display: grid;
+            grid-template-areas:
+                "img img img"
+                "title title title"
+                "rating rating rating"
+                "price-on-sale price-before-sale percentage"
+                "price price price";
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            justify-items: end;
+
+            padding-block-end: 0.8rem;
+
+            border-radius: var(--border-radius-small);
+
+            cursor: pointer;
+
+            > *:not(.image, .price-before-sale) {
+                margin-inline: 0.5rem;
+            }
+
+            .image {
+                grid-area: img;
+
+                position: relative;
+
+                block-size: 20rem;
+                inline-size: 100%;
+
+                margin-block-end: 1rem;
+
+                border-radius: var(--border-radius-super-small);
+
+                img {
+                    block-size: 100%;
+                    inline-size: 100%;
+                    object-fit: cover;
+                }
+
+                .overlay {
+                    background-color: var(--color-overlay);
+                    opacity: 0;
+
+                    position: absolute;
+                    inset: 0;
+
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: end;
+                    gap: 1rem;
+
+                    block-size: 100%;
+                    inline-size: 100%;
+
+                    padding: 0.5rem;
+
+                    transition: opacity 100ms ease-in-out;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .title {
+                grid-area: title;
+
+                direction: ltr;
+
+                margin-block-end: 1rem;
+
+                text-align: start;
+
+                @include max-lines(1);
+            }
+
+            .rating {
+                grid-area: rating;
+
+                display: flex;
+                align-items: stretch;
+                gap: 0.2rem;
+
+                margin-block-end: 1rem;
+
+                i {
+                    color: var(--color-star);
+                }
+            }
+
+            .price-on-sale {
+                grid-area: price-on-sale;
+            }
+
+            .percentage {
+                grid-area: percentage;
+
+                background-color: var(--primary-color-darker);
+
+                inline-size: 75%;
+
+                padding-block-start: 0.2rem;
+
+                border-radius: var(--border-radius-small);
+
+                text-align: center;
+            }
+
+            .price-before-sale {
+                grid-area: price-before-sale;
+                justify-self: center;
+
+                opacity: 0.7;
+
+                font-size: 0.8rem;
+
+                text-decoration: line-through;
+            }
+
+            .price {
+                grid-area: price;
+                justify-self: start;
+            }
+
+            .price-on-sale,
+            .price-before-sale,
+            .price {
+                display: flex;
+            }
+
+            .price-on-sale,
+            .price,
+            .percentage {
+                font-size: 0.9rem;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .empty {
+        block-size: 20rem;
+        object-fit: contain;
+    }
+
+    .empty-text {
+        color: var(--color-gray-98);
+    }
+
+    .empty,
+    .empty-text {
+        align-self: center;
+
+        opacity: 0.7;
+    }
+
+    app-page-number-selector {
+        align-self: center;
+
+        inline-size: 100%;
+    }
+}

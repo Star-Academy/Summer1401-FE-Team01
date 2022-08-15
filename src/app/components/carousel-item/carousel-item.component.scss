@@ -15,30 +15,36 @@
 
     transition: transform ease-in 300ms;
 
-    .image {
+    img {
         position: absolute;
 
+        min-block-size: 100%;
         block-size: 100%;
         inline-size: 100%;
         object-fit: cover;
         object-position: 50% 15%;
 
         border-radius: var(--border-radius-big);
+
+        cursor: pointer;
     }
 
     .details {
-        background: var(--color-gray-0);
+        background: hsl(0deg 0% 0% / 70%);
         color: var(--color-gray-98);
-        opacity: 0;
 
         position: absolute;
         inset-block-end: 0;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+        display: grid;
+        grid-template-areas:
+            "title release-date"
+            "summary summary"
+            "buttons rating";
+        grid-template-columns: 1fr auto;
         gap: 1rem;
 
+        min-block-size: 45%;
         inline-size: 100%;
 
         padding: 1.5rem 2rem;
@@ -49,48 +55,63 @@
 
         transition: opacity 400ms 50ms;
 
-        .description {
+        .name {
+            grid-area: title;
+
+            padding-block-end: 0.5rem;
+        }
+
+        .release-date {
+            grid-area: release-date;
+
+            color: var(--primary-color);
+        }
+
+        p {
+            grid-area: summary;
+
             min-inline-size: 0;
             inline-size: 100%;
 
-            span {
-                @include max-lines(2);
+            @include max-lines(2);
+        }
+
+        .rating-bar {
+            grid-area: rating;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            font-size: 0.8rem;
+
+            div {
+                display: flex;
+                align-items: baseline;
+                gap: 0.2rem;
+            }
+
+            .fa-star {
+                color: var(--color-star);
+            }
+
+            b,
+            .fa-star {
+                font-size: 1rem;
             }
         }
 
-        app-button {
-            align-self: end;
-        }
-    }
+        .button-bar {
+            --font-size: 0.8rem;
 
-    .rating {
-        background-color: var(--color-background-15);
-        color: var(--color-gray-98);
+            grid-area: buttons;
 
-        position: absolute;
-        inset-block-start: 0;
-        inset-inline-end: 0;
-        z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 1rem;
 
-        display: grid;
-        place-items: center;
-
-        block-size: 10rem;
-        inline-size: 10rem;
-
-        padding-block-start: 2.5%;
-
-        border-radius: 50%;
-
-        transform: translate(-30%, -30%);
-
-        font-size: 5rem;
-        font-weight: bold;
-    }
-
-    &:hover {
-        .details {
-            opacity: 1;
+            padding-inline-end: 2rem;
         }
     }
 }

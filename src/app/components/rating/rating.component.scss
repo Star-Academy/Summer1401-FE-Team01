@@ -1,0 +1,17 @@
+.wrapper {
+    color: var(--color);
+
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    inline-size: fit-content;
+
+    &.dark {
+        color: var(--color-background-75);
+    }
+
+    &.light {
+        color: var(--color-star);
+    }
+}

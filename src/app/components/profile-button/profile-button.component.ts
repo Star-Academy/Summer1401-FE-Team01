@@ -15,4 +15,8 @@ export class ProfileButtonComponent {
     public async logout(): Promise<void> {
         await this.authService.logout();
     }
+
+    public get profilePhotoSrc(): string {
+        return this.authService.cachedUser?.avatar || 'assets/images/default-profile-picture.svg';
+    }
 }

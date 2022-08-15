@@ -81,7 +81,7 @@ describe('SnackbarComponent', () => {
         expect(snackbar).toBeTruthy();
         expect(snackbar?.classList).toContain(options?.theme || SnackbarTheme.DEFAULT);
 
-        if (!!options?.text) expect(snackbar?.classList).not.toContain('hidden');
+        if (options?.text) expect(snackbar?.classList).not.toContain('hidden');
         else expect(snackbar?.classList).toContain('hidden');
     };
 
@@ -89,7 +89,7 @@ describe('SnackbarComponent', () => {
         const message = host.querySelector('.wrapper p');
 
         expect(message).toBeTruthy();
-        if (!!options?.text) expect(message?.textContent).toContain(options.text);
+        if (options?.text) expect(message?.textContent).toContain(options.text);
     };
 
     const testSnackbarIconButton = (): void => {

@@ -1,0 +1,26 @@
+<div class="container">
+    <app-button
+        dir="ltr"
+        iconClasses="far fa-angle-right"
+        text="صفحه قبل"
+        theme="text"
+        [ngClass]="{disabled: searchService.pageNumber === minPage}"
+        (click)="prevPage()"
+    ></app-button>
+    <ul>
+        <ng-container *ngFor="let page of pages">
+            <li *ngIf="page === maxPage && searchService.pageNumber !== maxPage" class="ellipsis">...</li>
+            <li [ngClass]="{current: page === searchService.pageNumber}" (click)="setCurrentPage(page)">
+                {{ page + 1 | toPersian }}
+            </li>
+            <li *ngIf="page === minPage && searchService.pageNumber !== minPage" class="ellipsis">...</li>
+        </ng-container>
+    </ul>
+    <app-button
+        text="صفحه بعد"
+        iconClasses="far fa-angle-left"
+        theme="text"
+        [ngClass]="{disabled: searchService.pageNumber === maxPage}"
+        (click)="nextPage()"
+    ></app-button>
+</div>

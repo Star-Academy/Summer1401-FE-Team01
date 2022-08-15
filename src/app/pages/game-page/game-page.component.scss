@@ -1,0 +1,26 @@
+.container {
+    --spacing: 2rem;
+
+    display: grid;
+    grid-template-areas: "main aside";
+    grid-template-columns: 1fr 20rem;
+    gap: var(--spacing);
+
+    inline-size: 100%;
+
+    margin-block-start: 1rem;
+    padding-block: var(--spacing);
+    padding-inline: 5rem;
+
+    h2 {
+        direction: ltr;
+    }
+
+    aside {
+        grid-area: aside;
+    }
+
+    main {
+        grid-area: main;
+    }
+}

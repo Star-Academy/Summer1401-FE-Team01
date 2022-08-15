@@ -35,26 +35,26 @@ div {
 
     &.primary {
         --snackbar-background-color: var(--color-primary-opposite);
-        --snackbar-color: var(--color-primary);
+        --snackbar-color: var(--color-primary-darker);
     }
 
     &.info {
         --snackbar-background-color: var(--color-info-opposite);
-        --snackbar-color: var(--color-info);
+        --snackbar-color: var(--color-info-darker);
     }
 
     &.success {
         --snackbar-background-color: var(--color-success-opposite);
-        --snackbar-color: var(--color-success);
+        --snackbar-color: var(--color-success-darker);
     }
 
     &.warning {
         --snackbar-background-color: var(--color-warning-opposite);
-        --snackbar-color: var(--color-warning);
+        --snackbar-color: var(--color-warning-darker);
     }
 
     &.danger {
         --snackbar-background-color: var(--color-danger-opposite);
-        --snackbar-color: var(--color-danger);
+        --snackbar-color: var(--color-danger-darker);
     }
 }

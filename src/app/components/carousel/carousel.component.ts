@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, QueryList, ViewChildren} from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    Input,
+    OnChanges,
+    OnDestroy,
+    QueryList,
+    SimpleChanges,
+    ViewChildren,
+} from '@angular/core';
 import {Game} from '../../models/game.model';
 
 @Component({
@@ -6,7 +16,7 @@ import {Game} from '../../models/game.model';
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss'],
 })
-export class CarouselComponent implements AfterViewInit, OnDestroy {
+export class CarouselComponent implements AfterViewInit, OnChanges, OnDestroy {
     @Input() public games: Array<Game> = [];
 
     @ViewChildren('bullet') public bullets!: QueryList<ElementRef>;
@@ -19,7 +29,12 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
     public ngAfterViewInit(): void {
         this.setupInterval();
-        this.setIndex(0);
+    }
+
+    public ngOnChanges(changes: SimpleChanges): void {
+        if (changes.games) {
+            this.setIndex(0);
+        }
     }
 
     public ngOnDestroy(): void {
@@ -31,7 +46,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     }
 
     public clearInterval(): void {
-        if (!!this.autoNextInterval) {
+        if (this.autoNextInterval) {
             clearInterval(this.autoNextInterval);
             this.autoNextInterval = null;
         }
@@ -67,7 +82,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     private playBulletAnimation(index: number, addClass: boolean): void {
         const bullet = this.bullets.get(index)?.nativeElement;
 
-        if (!!bullet) {
+        if (bullet) {
             const first = bullet.getBoundingClientRect();
 
             if (addClass) bullet.classList.add('current');

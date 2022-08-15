@@ -1,19 +1,28 @@
 import {Injectable} from '@angular/core';
-import {DEFAULT_POST_REQUEST_INIT} from '../utils/api.utils';
+import {DEFAULT_DELETE_REQUEST_INIT, DEFAULT_POST_REQUEST_INIT} from '../utils/api.utils';
 import {SnackbarService} from './snackbar.service';
 import {ApiError} from '../models/api-error.model';
 import {GetRequestOptions, PostRequestOptions, RequestOptions} from '../models/request-options.model';
 import {SnackbarTheme} from '../enums/snackbar-theme.enum';
+import {SpinnerService} from './spinner.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ApiService {
-    public constructor(private snackbarService: SnackbarService) {}
+    public constructor(private snackbarService: SnackbarService, private spinnerService: SpinnerService) {}
 
     private static generatePostRequestInit(options: PostRequestOptions): RequestInit {
         return {
             ...DEFAULT_POST_REQUEST_INIT,
+            body: JSON.stringify(options.body),
+            ...(options.init || {}),
+        };
+    }
+
+    private static generateDeleteRequestInit(options: PostRequestOptions): RequestInit {
+        return {
+            ...DEFAULT_DELETE_REQUEST_INIT,
             body: JSON.stringify(options.body),
             ...(options.init || {}),
         };
@@ -28,16 +37,34 @@ export class ApiService {
         return await this.fetchRequest<T>(options, init);
     }
 
-    private async fetchRequest<T>(options: RequestOptions, init?: RequestInit): Promise<T | null> {
-        const {url, showSnackbar = true} = options;
+    public async deleteRequest<T>(options: PostRequestOptions): Promise<T | null> {
+        const init = ApiService.generateDeleteRequestInit(options);
+        return await this.fetchRequest<T>(options, init);
+    }
 
-        const response = await fetch(url, init);
-        const data = await response.json();
+    public async fetchRequest<T>(options: RequestOptions, init?: RequestInit): Promise<T | null> {
+        const id = this.spinnerService.show();
 
-        if (response.ok) return data as T;
+        try {
+            const {url, showSnackbar = true} = options;
 
-        if (showSnackbar) this.snackbarService.show({text: (data as ApiError).message, theme: SnackbarTheme.DANGER});
+            const response = await fetch(url, init);
 
-        return null;
+            let data;
+            try {
+                data = await response.json();
+            } catch (e) {
+                data = {};
+            }
+
+            if (response.ok) return data as T;
+
+            if (showSnackbar)
+                this.snackbarService.show({text: (data as ApiError).message, theme: SnackbarTheme.DANGER});
+
+            return null;
+        } finally {
+            this.spinnerService.hide(id);
+        }
     }
 }

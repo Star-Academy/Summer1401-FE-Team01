@@ -1,0 +1,16 @@
+<ng-container *ngIf="value; else falseButton">
+    <app-button
+        [text]="trueText"
+        [iconClasses]="trueIconClasses"
+        [iconTitle]="trueButtonTitle"
+        [theme]="buttonTheme"
+    ></app-button>
+</ng-container>
+<ng-template #falseButton>
+    <app-button
+        [text]="falseText"
+        [iconClasses]="falseIconClasses"
+        [iconTitle]="falseButtonTitle"
+        [theme]="buttonTheme"
+    ></app-button>
+</ng-template>

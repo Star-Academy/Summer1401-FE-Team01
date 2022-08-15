@@ -15,25 +15,28 @@
     --color-gray-2: hsl(0deg 0% 2%);
     --color-gray-0: hsl(0deg 0% 0%/ 50%);
 
-    --color-primary: hsl(353deg 84% 58%);
-    --color-primary-darker: hsl(353deg 84% 50%);
+    --color-primary: hsl(353deg 84% 48%);
+    --color-primary-darker: hsl(353deg 84% 40%);
     --color-primary-opposite: var(--color-gray-98);
 
-    --color-info: hsl(200deg 84% 58%);
-    --color-info-darker: hsl(200deg 84% 50%);
+    --color-info: hsl(200deg 84% 48%);
+    --color-info-darker: hsl(200deg 84% 40%);
     --color-info-opposite: var(--color-gray-98);
 
-    --color-success: hsl(130deg 60% 58%);
-    --color-success-darker: hsl(130deg 60% 50%);
+    --color-success: hsl(130deg 60% 48%);
+    --color-success-darker: hsl(130deg 60% 40%);
     --color-success-opposite: var(--color-gray-98);
 
-    --color-warning: hsl(30deg 90% 58%);
-    --color-warning-darker: hsl(30deg 90% 50%);
+    --color-warning: hsl(30deg 90% 48%);
+    --color-warning-darker: hsl(30deg 90% 40%);
     --color-warning-opposite: var(--color-gray-98);
 
-    --color-danger: hsl(0deg 100% 58%);
-    --color-danger-darker: hsl(0deg 100% 50%);
+    --color-danger: hsl(0deg 100% 48%);
+    --color-danger-darker: hsl(0deg 100% 40%);
     --color-danger-opposite: var(--color-gray-98);
+
+    --color-star: hsl(41deg 90% 60%);
+    --color-star-lighter: hsl(41deg 90% 70%);
 
     --color-default-background: var(--color-gray-98);
     --color-default-foreground: var(--color-gray-10);
@@ -41,12 +44,20 @@
     --color-body-background: var(--color-default-background);
     --color-body-foreground: var(--color-default-foreground);
 
-    --color-background-5: hsl(226deg 60% 5%);
-    --color-background-8: hsl(226deg 60% 8%);
-    --color-background-10: hsl(226deg 60% 10%);
-    --color-background-15: hsl(226deg 60% 15%);
-    --color-background-20: hsl(226deg 60% 20%);
-    --color-background-85: hsl(226deg 60% 85%);
+    --color-background-5: hsl(226deg 30% 5%);
+    --color-background-8: hsl(226deg 30% 8%);
+    --color-background-10: hsl(226deg 30% 10%);
+    --color-background-15: hsl(226deg 30% 15%);
+    --color-background-20: hsl(226deg 30% 20%);
+    --color-background-30: hsl(226deg 30% 30%);
+    --color-background-55: hsl(226deg 30% 55%);
+    --color-background-75: hsl(226deg 30% 75%);
+    --color-background-85: hsl(226deg 30% 85%);
+    --color-background-90: hsl(226deg 30% 90%);
+    --color-background-95: hsl(226deg 30% 95%);
+    --color-fade: hsl(0deg 0% 50%);
+    --color-fader: hsl(0deg 0% 25%);
+    --color-overlay: hsla(0deg 0% 0% / 70%);
 
     --primary-color: hsl(16deg 90% 55%);
     --primary-color-darker: hsl(16deg 90% 50%);
@@ -59,6 +70,7 @@
 
     --minimum-inline-padding: 4rem;
 
+    --border-radius-super-small: 0.15rem;
     --border-radius-small: 0.25rem;
     --border-radius-medium: 0.5rem;
     --border-radius-big: 1rem;

@@ -1,0 +1,5 @@
+<div #rating class="wrapper" [ngClass]="{dark: darkMode, light: !darkMode}">
+    <i *ngFor="let star of emptyStars" class="far fa-star empty"></i>
+    <i *ngIf="hasHalfStar" class="fas fa-star-half-stroke half"></i>
+    <i *ngFor="let star of fullStars" class="fas fa-star full"></i>
+</div>

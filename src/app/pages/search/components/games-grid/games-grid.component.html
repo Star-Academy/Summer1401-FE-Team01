@@ -1,0 +1,42 @@
+<div class="container">
+    <ul *ngIf="(games || []).length > 0">
+        <li *ngFor="let game of games" (click)="openGamePage(game)">
+            <div class="image">
+                <img
+                    [src]="game.cover | imageUrl: ImageType.COVER_BIG"
+                    [alt]="'تصویر کاور ' + game.name"
+                    loading="lazy"
+                />
+                <div class="overlay">
+                    <app-fave-bookmark-buttons [game]="game" buttonTheme="contained"></app-fave-bookmark-buttons>
+                </div>
+            </div>
+            <h4 class="title">{{ game.name }}</h4>
+
+            <div class="rating">
+                <i class="fas fa-stars"></i>
+                <p>{{ game.rating / 20 | roundNumberToHalf | toPersian }}</p>
+            </div>
+
+            <ng-container class="on-sale" *ngIf="game.salePercentage; else noSale">
+                <p class="price-on-sale">{{ game.priceOnSale | toPersian }}<app-toman></app-toman></p>
+                <p class="percentage">{{ game.salePercentage | toPersian }}%</p>
+                <p class="price-before-sale">{{ game.price | toPersian }}<app-toman></app-toman></p>
+            </ng-container>
+
+            <ng-template #noSale>
+                <p class="price">{{ game.price | toPersian }}<app-toman></app-toman></p>
+            </ng-template>
+        </li>
+    </ul>
+    <img
+        class="empty"
+        *ngIf="(games || []).length === 0"
+        src="assets/images/empty.webp"
+        alt="لیست بازی خالی"
+        loading="lazy"
+    />
+    <h2 class="empty-text" *ngIf="(games || []).length === 0">خالییی... :(</h2>
+
+    <app-page-number-selector *ngIf="multiPage"></app-page-number-selector>
+</div>

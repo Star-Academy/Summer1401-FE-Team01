@@ -1,0 +1,38 @@
+.wrapper {
+    display: grid;
+    grid-template-areas:
+        ". count"
+        "filter games";
+    grid-template-columns: 17.5rem 1fr;
+    grid-template-rows: 2rem 1fr;
+    align-items: start;
+    column-gap: 2rem;
+
+    .item-count {
+        grid-area: count;
+
+        color: var(--color-background-85);
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        padding-inline: 0.75rem;
+    }
+
+    app-filters {
+        grid-area: filter;
+
+        background-color: transparent;
+
+        position: sticky;
+        inset-block-start: 1rem;
+
+        border: 1px solid var(--color-background-75);
+        border-radius: 0.25rem;
+    }
+
+    app-games-grid {
+        grid-area: games;
+    }
+}

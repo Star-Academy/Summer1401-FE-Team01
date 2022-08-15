@@ -1,0 +1,7 @@
+<div class="wrapper">
+    <div class="item-count">
+        <p>{{ searchService.totalGameCount }} بازی</p>
+    </div>
+    <app-filters></app-filters>
+    <app-games-grid [games]="searchService.games" [totalGameCount]="searchService.totalGameCount"></app-games-grid>
+</div>
