@@ -1,26 +1,23 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import {RoundNumberToHalfPipe} from '../../pages/search/components/games-grid/pipes/round-number-to-half.pipe';
+import {AfterViewInit, Component, Input} from '@angular/core';
 
 @Component({
     selector: 'app-rating',
     templateUrl: './rating.component.html',
     styleUrls: ['./rating.component.scss'],
 })
-export class RatingComponent {
+export class RatingComponent implements AfterViewInit {
     @Input() public darkMode: boolean = false;
-    @Input() public value: number = 0;
+    @Input() public value!: number;
 
     public readonly MAX_VALUE = 5;
 
-    public get fullStars(): Array<number> {
-        return new Array(Math.floor(this.value));
-    }
+    public fullStars: Array<number> = [];
+    public hasHalfStar: boolean = false;
+    public emptyStars: Array<number> = [];
 
-    public get hasHalfStar(): boolean {
-        return this.value.toString().includes('.');
-    }
-
-    public get emptyStars(): Array<number> {
-        return new Array(Math.floor(this.MAX_VALUE - this.value));
+    public ngAfterViewInit(): void {
+        this.fullStars.length = Math.floor(this.value);
+        this.hasHalfStar = this.value.toString().includes('.');
+        this.emptyStars.length = Math.floor(this.MAX_VALUE - this.value);
     }
 }
