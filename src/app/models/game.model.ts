@@ -5,33 +5,33 @@ import {Video} from './game/video.model';
 import {InvolvedCompany} from './game/involved-company.model';
 
 export class Game {
-    public id!: number;
-    public name!: string;
+    public id: number;
+    public name: string;
 
-    public price!: number;
-    public priceOnSale!: number;
+    public price: number;
+    public priceOnSale: number;
 
-    public gameModes!: Array<ChecklistItem>;
-    public genres!: Array<ChecklistItem>;
-    public keywords!: Array<ChecklistItem>;
-    public platforms!: Array<ChecklistItem>;
-    public themes!: Array<ChecklistItem>;
-    public playerPerspectives!: Array<ChecklistItem>;
+    public gameModes: Array<ChecklistItem>;
+    public genres: Array<ChecklistItem>;
+    public keywords: Array<ChecklistItem>;
+    public platforms: Array<ChecklistItem>;
+    public themes: Array<ChecklistItem>;
+    public playerPerspectives: Array<ChecklistItem>;
 
-    public involvedCompanies!: Array<InvolvedCompany>;
+    public involvedCompanies: Array<InvolvedCompany>;
 
-    public rating!: number;
-    public ratingCount!: number;
+    public rating: number;
+    public ratingCount: number;
 
-    public releaseDate!: number;
+    public releaseDate: number;
 
-    public cover!: Image;
-    public screenshots!: Array<Image>;
-    public artworks!: Array<Image>;
-    public videos!: Array<Video>;
+    public cover: Image;
+    public screenshots: Array<Image>;
+    public artworks: Array<Image>;
+    public videos: Array<Video>;
 
-    public storyline!: string;
-    public summary!: string;
+    public storyline: string;
+    public summary: string;
 
     public constructor(game: Game) {
         this.id = game.id || 0;
