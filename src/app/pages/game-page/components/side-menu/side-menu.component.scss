@@ -16,6 +16,10 @@
 
     border-radius: var(--border-radius-medium);
 
+    app-toman {
+        --fill: currentcolor;
+    }
+
     img {
         block-size: fit-content;
         inline-size: 100%;
@@ -130,13 +134,24 @@
                 opacity: 0.7;
 
                 font-size: 0.9rem;
+
+                text-decoration: line-through;
             }
 
             .price {
                 grid-area: price;
-                justify-self: start;
+                justify-self: end;
+            }
 
+            .price,
+            .price-on-sale {
                 font-size: 1.5rem;
+            }
+
+            .price-on-sale,
+            .price,
+            .percentage {
+                font-weight: bold;
             }
 
             .price-on-sale,
