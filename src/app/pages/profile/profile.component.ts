@@ -42,6 +42,7 @@ export class ProfileComponent {
             });
             return;
         }
+
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = async (): Promise<void> => {

@@ -70,7 +70,7 @@
             name="date"
             type="date"
             direction="ltr"
-            [value]="user.dateOfBirth.slice(0, 10)"
+            [value]="user.dateOfBirth | slice: 0:10"
             (valueChange)="editField('dateOfBirth', $event)"
         ></app-editable-field>
     </main>
