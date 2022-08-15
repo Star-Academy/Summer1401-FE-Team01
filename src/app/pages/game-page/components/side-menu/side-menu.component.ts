@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Game, ImageType} from '../../../../models/game.model';
+import {Game} from '../../../../models/game.model';
+import {ImageType} from '../../../../enums/image-type.enum';
 import {UserBookmarkFavouriteService} from '../../../../services/user-bookmark-favourite.service';
 
 @Component({

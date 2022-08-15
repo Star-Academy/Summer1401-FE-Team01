@@ -1,8 +1,9 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
-import {Game, ImageType} from '../../../../models/game.model';
+import {Game} from '../../../../models/game.model';
 import {Router} from '@angular/router';
 import {UserBookmarkFavouriteService} from '../../../../services/user-bookmark-favourite.service';
 import {GameService} from '../../../../services/game.service';
+import {ImageType} from '../../../../enums/image-type.enum';
 
 @Component({
     selector: 'app-games-grid',
