@@ -27,16 +27,16 @@ export class GamesGridComponent implements AfterViewInit {
     ) {}
 
     public async ngAfterViewInit(): Promise<void> {
-        if (!this.games) {
-            this.multiPage = false;
-            switch (this.router.url) {
-                case '/favourite':
-                    this.games = await this.userBookmarkFavouriteService.fetchAllFavourites();
-                    break;
-                case '/bookmark':
-                    this.games = await this.userBookmarkFavouriteService.fetchAllBookmarks();
-                    break;
-            }
+        if (this.games) return;
+
+        this.multiPage = false;
+        switch (this.router.url) {
+            case '/favourite':
+                this.games = await this.userBookmarkFavouriteService.fetchAllFavourites();
+                break;
+            case '/bookmark':
+                this.games = await this.userBookmarkFavouriteService.fetchAllBookmarks();
+                break;
         }
     }
 
