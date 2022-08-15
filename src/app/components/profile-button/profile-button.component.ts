@@ -17,6 +17,6 @@ export class ProfileButtonComponent {
     }
 
     public get profilePhotoSrc(): string {
-        return this.authService.cachedUser?.avatar || '../../../assets/images/default-profile-picture.svg';
+        return this.authService.cachedUser?.avatar || 'assets/images/default-profile-picture.svg';
     }
 }

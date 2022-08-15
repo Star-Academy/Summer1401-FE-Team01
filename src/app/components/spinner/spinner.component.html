@@ -1,4 +1,7 @@
 <div *ngIf="ids.length > 0" class="container">
     <div class="overlay"></div>
-    <div class="loader">Loading...</div>
+
+    <div class="infinity-particles" [style.--duration]="DURATION + 's'">
+        <i *ngFor="let delay of DELAYS" class="particle" [style.--delay]="delay + 's'"></i>
+    </div>
 </div>

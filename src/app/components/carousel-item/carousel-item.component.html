@@ -1,5 +1,6 @@
 <div class="slide" [style.--current-index]="currentIndex">
     <img [src]="sliderCoverImage" [alt]="game.name" (click)="openGamePage()" loading="lazy" />
+
     <div class="details">
         <h2 class="name">{{ game.name }}</h2>
         <h2 class="release-date">{{ game.persianReleaseDate }}</h2>
@@ -14,7 +15,8 @@
                 نظر
             </div>
         </div>
-        <div *ngIf="isLoggedIn" class="button-bar">
+
+        <div *ngIf="this.authService.cachedIsLoggedIn!" class="button-bar">
             <ng-container *ngIf="isInBookmarks; else addBookmark">
                 <app-button
                     iconClasses="fas fa-bookmark"
@@ -23,6 +25,7 @@
                     (click)="removeFromBookmark()"
                 ></app-button>
             </ng-container>
+
             <ng-template #addBookmark>
                 <app-button
                     iconClasses="far fa-bookmark"
@@ -31,6 +34,7 @@
                     (click)="addToBookmarks()"
                 ></app-button>
             </ng-template>
+
             <ng-container *ngIf="isInFavourites; else addFave">
                 <app-button
                     iconClasses="fas fa-heart"
@@ -39,6 +43,7 @@
                     (click)="removeFromFavourites()"
                 ></app-button>
             </ng-container>
+
             <ng-template #addFave>
                 <app-button
                     iconClasses="far fa-heart"
@@ -47,7 +52,9 @@
                     (click)="addToFavourites()"
                 ></app-button>
             </ng-template>
-            <app-button text="افزودن به سبد خرید" iconClasses="far fa-cart-circle-plus"> </app-button>
+
+            <app-button text="افزودن به سبد خرید" iconTitle="افزودن به سبد خرید" iconClasses="far fa-cart-circle-plus">
+            </app-button>
         </div>
     </div>
 </div>

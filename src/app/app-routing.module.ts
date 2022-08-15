@@ -15,8 +15,8 @@ const routes: Routes = [
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     {path: 'game', component: GamePageComponent},
     {path: 'search', component: SearchComponent},
-    {path: 'favourites', component: GamesGridComponent, canActivate: [AuthGuard]},
-    {path: 'bookmarks', component: GamesGridComponent, canActivate: [AuthGuard]},
+    {path: 'favourite', component: GamesGridComponent, canActivate: [AuthGuard]},
+    {path: 'bookmark', component: GamesGridComponent, canActivate: [AuthGuard]},
     {path: '**', redirectTo: ''},
 ];
 

@@ -30,10 +30,10 @@ export class GamesGridComponent implements AfterViewInit {
         if (!this.games) {
             this.multiPage = false;
             switch (this.router.url) {
-                case '/favourites':
+                case '/favourite':
                     this.games = await this.userBookmarkFavouriteService.fetchAllFavourites();
                     break;
-                case '/bookmarks':
+                case '/bookmark':
                     this.games = await this.userBookmarkFavouriteService.fetchAllBookmarks();
                     break;
             }
@@ -54,7 +54,7 @@ export class GamesGridComponent implements AfterViewInit {
     public async removeFromBookmark(game: Game, event: MouseEvent): Promise<void> {
         event.stopPropagation();
         const response = await this.userBookmarkFavouriteService.removeFromBookmarks(game.id);
-        if (this.router.url == '/bookmarks' && response) {
+        if (this.router.url == '/bookmark' && response) {
             this.games = this.games.filter((g) => g.id !== game.id);
         }
     }
@@ -71,7 +71,7 @@ export class GamesGridComponent implements AfterViewInit {
     public async removeFromFavourites(game: Game, event: MouseEvent): Promise<void> {
         event.stopPropagation();
         const response = await this.userBookmarkFavouriteService.removeFromFaves(game.id);
-        if (this.router.url == '/favourites' && response) {
+        if (this.router.url == '/favourite' && response) {
             this.games = this.games.filter((g) => g.id !== game.id);
         }
     }

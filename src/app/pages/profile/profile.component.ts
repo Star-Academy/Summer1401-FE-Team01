@@ -61,7 +61,7 @@ export class ProfileComponent {
     };
 
     public get profilePhotoSrc(): string {
-        return this.user.avatar || '../../../assets/images/default-profile-picture.svg';
+        return this.user.avatar || 'assets/images/default-profile-picture.svg';
     }
 
     public submitPhoto(event: Event): void {
