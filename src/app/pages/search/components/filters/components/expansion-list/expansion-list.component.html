@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="title" (click)="isExpanded = !isExpanded">
         <h3>{{ title }}</h3>
-        <i class="far fa-angle-down" [style.transform]="isExpanded ? 'rotateZ(180deg)' : ''"></i>
+        <i class="far fa-angle-down" [ngClass]="{expanded: isExpanded}"></i>
     </div>
     <ul *ngIf="isExpanded">
         <li #item *ngFor="let item of items; index as index">

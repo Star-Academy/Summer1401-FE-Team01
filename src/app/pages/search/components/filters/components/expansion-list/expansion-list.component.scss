@@ -11,6 +11,10 @@
 
         i {
             transition: transform 200ms ease-in-out;
+
+            &.expanded {
+                transform: rotateZ(180deg);
+            }
         }
     }
 
