@@ -5,8 +5,10 @@
             <p>ویژگی‌ها</p>
 
             <ul>
-                <li *ngFor="let mode of game.gameModes">
-                    <a (click)="searchService.goToSearchPageWithFilter({gameModes: [mode.id]})">{{ mode.name }}</a>
+                <li *ngFor="let gameMode of game.gameModes">
+                    <a (click)="searchService.goToSearchPageWithFilter({gameModes: [gameMode.id]})">
+                        {{ gameMode.name }}
+                    </a>
                 </li>
             </ul>
         </div>

@@ -11,14 +11,11 @@ export class GameService {
     public constructor(private apiService: ApiService, private translateService: TranslateService) {}
 
     public async fetchSlideshowGames(): Promise<Array<Game>> {
-        let gamesResponse =
-            (
-                await this.apiService.getRequest<{games: Array<Game>}>({
-                    url: API_GAME_UPCOMING,
-                })
-            )?.games
-                ?.map((game) => new Game(game))
-                ?.slice(0, 7) || [];
+        const response = await this.apiService.getRequest<{games: Array<Game>}>({url: API_GAME_UPCOMING});
+
+        let gamesResponse = response?.games || [];
+        gamesResponse = gamesResponse.map((game) => new Game(game));
+        gamesResponse = gamesResponse.slice(0, 7);
 
         if (gamesResponse) {
             const translations = await this.translateGameInfo(gamesResponse);
@@ -32,12 +29,9 @@ export class GameService {
     }
 
     public async fetchGame(gameId: number): Promise<Game | null> {
-        let gameResponse =
-            (
-                await this.apiService.getRequest<{game: Game}>({
-                    url: `${API_GAME_ONE}/${gameId}`,
-                })
-            )?.game || null;
+        const response = await this.apiService.getRequest<{game: Game}>({url: `${API_GAME_ONE}/${gameId}`});
+
+        let gameResponse = response?.game || null;
 
         if (gameResponse) {
             gameResponse = new Game(gameResponse);

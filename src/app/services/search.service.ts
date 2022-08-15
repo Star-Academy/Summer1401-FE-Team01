@@ -46,17 +46,25 @@ export class SearchService {
         this.resetFilters();
 
         if (filter.gameModes)
-            this.gameModes.filter((f) => filter.gameModes!.includes(f.id)).forEach((f) => (f.isSelected = true));
+            this.gameModes.forEach((item) => {
+                item.isSelected = filter.gameModes!.includes(item.id);
+            });
         if (filter.genres)
-            this.genres.filter((f) => filter.genres!.includes(f.id)).forEach((f) => (f.isSelected = true));
+            this.genres.forEach((item) => {
+                item.isSelected = filter.genres!.includes(item.id);
+            });
         if (filter.platforms)
-            this.platforms.filter((f) => filter.platforms!.includes(f.id)).forEach((f) => (f.isSelected = true));
+            this.platforms.forEach((item) => {
+                item.isSelected = filter.platforms!.includes(item.id);
+            });
         if (filter.playerPerspectives)
-            this.playerPerspectives
-                .filter((f) => filter.playerPerspectives!.includes(f.id))
-                .forEach((f) => (f.isSelected = true));
+            this.playerPerspectives.forEach((item) => {
+                item.isSelected = filter.playerPerspectives!.includes(item.id);
+            });
         if (filter.themes)
-            this.themes.filter((f) => filter.themes!.includes(f.id)).forEach((f) => (f.isSelected = true));
+            this.themes.forEach((item) => {
+                item.isSelected = filter.themes!.includes(item.id);
+            });
 
         await this.router.navigateByUrl('/search');
     }
@@ -103,7 +111,7 @@ export class SearchService {
                 },
             },
         });
-        this.games = response?.games.map((game) => new Game(game)) || [];
+        this.games = (response?.games || []).map((game) => new Game(game));
         this.totalGameCount = response?.count || 0;
     }
 
