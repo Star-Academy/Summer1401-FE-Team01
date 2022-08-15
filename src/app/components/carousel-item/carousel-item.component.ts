@@ -17,7 +17,7 @@ export class CarouselItemComponent {
 
     public constructor(
         private router: Router,
-        private authService: AuthService,
+        public authService: AuthService,
         private gameService: GameService,
         private userBookmarkFavouriteService: UserBookmarkFavouriteService
     ) {}
@@ -27,10 +27,6 @@ export class CarouselItemComponent {
             state: {game: (await this.gameService.translateGameInfo([this.game]))[0]},
             queryParams: {id: this.game.id},
         });
-    }
-
-    public get isLoggedIn(): boolean {
-        return this.authService.cachedIsLoggedIn!;
     }
 
     public get sliderCoverImage(): string {
