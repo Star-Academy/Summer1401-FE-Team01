@@ -41,9 +41,6 @@ export class GamesGridComponent implements AfterViewInit {
     }
 
     public async openGamePage(game: Game): Promise<void> {
-        await this.router.navigate(['/game'], {
-            state: {game: (await this.gameService.translateGameInfo([game]))[0]},
-            queryParams: {id: game.id},
-        });
+        await this.router.navigate(['/game'], {queryParams: {id: game.id}});
     }
 }

@@ -22,15 +22,10 @@ export class GamePageComponent {
     }
 
     public setupGame(): void {
-        this.game = this.router.getCurrentNavigation()?.extras?.state?.game;
-        if (this.game) {
+        this.route.queryParams.subscribe(async ({id}) => {
+            this.game = (await this.gameService.fetchGame(id))!;
             this.setupGameVideoUrls();
-        } else {
-            this.route.queryParams.subscribe(async ({id}) => {
-                this.game = (await this.gameService.fetchGame(id))!;
-                this.setupGameVideoUrls();
-            });
-        }
+        });
     }
 
     private setupGameVideoUrls(): void {

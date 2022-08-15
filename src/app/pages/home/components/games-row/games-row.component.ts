@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Game} from '../../../../models/game.model';
 import {Router} from '@angular/router';
-import {GameService} from '../../../../services/game.service';
 import {ImageType} from '../../../../enums/image-type.enum';
 
 @Component({
@@ -15,12 +14,9 @@ export class GamesRowComponent {
 
     public ImageType = ImageType;
 
-    public constructor(private router: Router, private gameService: GameService) {}
+    public constructor(private router: Router) {}
 
     public async openGamePage(game: Game): Promise<void> {
-        await this.router.navigate(['/game'], {
-            state: {game: (await this.gameService.translateGameInfo([game]))[0]},
-            queryParams: {id: game.id},
-        });
+        await this.router.navigate(['/game'], {queryParams: {id: game.id}});
     }
 }
