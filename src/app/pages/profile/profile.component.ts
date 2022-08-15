@@ -27,6 +27,7 @@ export class ProfileComponent {
 
     public editField(field: keyof User, newValue: string): void {
         this.user = {...this.user, [field]: newValue};
+        this.authService.cachedUser = this.user;
     }
 
     public get profilePhotoSrc(): string {
@@ -49,7 +50,7 @@ export class ProfileComponent {
             const base64Img = reader.result as string;
 
             const response = await this.userService.alterUserInfo('avatar', base64Img);
-            if (response) await this.editField('avatar', base64Img);
+            if (response) this.editField('avatar', base64Img);
         };
         reader.onerror = (_): void => {
             this.snackbarService.show({text: 'دریافت تصویر با خطا روبرو شد!', theme: SnackbarTheme.DANGER});
