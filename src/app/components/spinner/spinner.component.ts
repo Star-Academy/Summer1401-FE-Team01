@@ -8,7 +8,7 @@ import {SpinnerService} from '../../services/spinner.service';
     styleUrls: ['./spinner.component.scss'],
 })
 export class SpinnerComponent {
-    public ids: string[] = [];
+    public ids: Set<string> = new Set<string>();
 
     private readonly COUNT: number = 16;
 
@@ -23,16 +23,16 @@ export class SpinnerComponent {
 
     public show(): string {
         const id = uuid();
-        this.ids.push(id);
+        this.ids.add(id);
 
         return id;
     }
 
     public hide(id: string): void {
-        this.ids = this.ids.filter((i) => i !== id);
+        this.ids.delete(id);
     }
 
     public hideAll(): void {
-        this.ids = [];
+        this.ids = new Set();
     }
 }

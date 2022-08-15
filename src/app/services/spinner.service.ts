@@ -7,7 +7,7 @@ import {SpinnerComponent} from '../components/spinner/spinner.component';
 export class SpinnerService {
     private spinnerComponent!: SpinnerComponent;
 
-    public get ids(): Array<string> {
+    public get ids(): Set<string> {
         return this.spinnerComponent.ids;
     }
 

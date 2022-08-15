@@ -27,5 +27,6 @@ import {ImageUrlPipe} from '../../pipes/image-url.pipe';
         FaveBookmarkButtonsModule,
     ],
     exports: [ToPersianPipe, ImageUrlPipe],
+    providers: [ImageUrlPipe],
 })
 export class GamePageModule {}

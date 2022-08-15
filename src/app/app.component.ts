@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit {
 
     public constructor(private snackbarService: SnackbarService, private spinnerService: SpinnerService) {}
 
-    public get ids(): string[] {
+    public get ids(): Set<string> {
         return this.spinnerService.ids;
     }
 

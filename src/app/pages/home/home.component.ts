@@ -11,7 +11,7 @@ import {Sort} from '../../enums/sort.enum';
     styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-    public suggestionGames: Array<Game> = [];
+    public upcomingGames: Array<Game> = [];
     public popularGames: Array<Game> = [];
     public bestSellerGames: Array<Game> = [];
 
@@ -24,7 +24,7 @@ export class HomeComponent {
         this.searchService.resetFilters();
 
         Promise.all([
-            this.gameService.fetchSlideshowGames().then((games) => (this.suggestionGames = games || [])),
+            this.gameService.fetchSlideshowGames().then((games) => (this.upcomingGames = games || [])),
 
             Promise.resolve().then(async () => {
                 this.searchService.sort = Sort.POPULAR;
