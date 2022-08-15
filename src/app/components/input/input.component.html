@@ -8,7 +8,7 @@
         [autocomplete]="name"
         [required]="required"
         [pattern]="pattern"
-        [placeholder]="placeholder"
+        [placeholder]="placeholder || ''"
         [(ngModel)]="value"
         (ngModelChange)="valueChange.emit($event)"
     />
