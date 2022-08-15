@@ -25,40 +25,9 @@ export class ProfileComponent {
         this.user = authService.cachedUser!;
     }
 
-    public editField = async (field: string, newValue: string): Promise<boolean> => {
-        const response = await this.userService.alterUserInfo(field, newValue);
-        if (response) {
-            switch (field) {
-                case 'username':
-                    this.user.username = newValue;
-                    break;
-                case 'password':
-                    this.user.password = newValue;
-                    break;
-                case 'email':
-                    this.user.email = newValue;
-                    break;
-                case 'phone':
-                    this.user.phone = newValue;
-                    break;
-                case 'firstName':
-                    this.user.firstName = newValue;
-                    break;
-                case 'lastName':
-                    this.user.lastName = newValue;
-                    break;
-                case 'dateOfBirth':
-                    this.user.dateOfBirth = newValue;
-                    break;
-                case 'avatar':
-                    this.user.avatar = newValue;
-                    break;
-                default:
-                    throw new Error(`Invalid Field: ${field}`);
-            }
-        }
-        return response;
-    };
+    public editField(field: keyof User, newValue: string): void {
+        this.user = {...this.user, [field]: newValue};
+    }
 
     public get profilePhotoSrc(): string {
         return this.user.avatar || 'assets/images/default-profile-picture.svg';
@@ -74,7 +43,9 @@ export class ProfileComponent {
         reader.readAsDataURL(file);
         reader.onload = async (): Promise<void> => {
             const base64Img = reader.result as string;
-            await this.editField('avatar', base64Img);
+
+            const response = await this.userService.alterUserInfo('avatar', base64Img);
+            if (response) await this.editField('avatar', base64Img);
         };
         reader.onerror = (_): void => {
             this.snackbarService.show({text: 'دریافت تصویر با خطا روبرو شد!', theme: SnackbarTheme.DANGER});

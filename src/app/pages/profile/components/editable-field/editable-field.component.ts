@@ -1,4 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {UserService} from '../../../../services/user.service';
+import {User} from '../../../../models/user.model';
 
 @Component({
     selector: 'app-editable-field',
@@ -6,7 +8,7 @@ import {Component, Input} from '@angular/core';
     styleUrls: ['./editable-field.component.scss'],
 })
 export class EditableFieldComponent {
-    @Input() public title!: string;
+    @Input() public title!: keyof User;
     @Input() public titlePersian!: string;
 
     @Input() public type!: string;
@@ -16,12 +18,16 @@ export class EditableFieldComponent {
     @Input() public placeholder?: string;
 
     @Input() public value!: string;
-    @Input() public onValueChanged!: (title: string, newValue: string) => Promise<boolean>;
+    @Output() public valueChange = new EventEmitter<string>();
 
     public editable = false;
 
+    public constructor(private userService: UserService) {}
+
     public async onEditSubmit(): Promise<void> {
-        if (await this.onValueChanged(this.title, this.value)) {
+        const response = await this.userService.alterUserInfo(this.title, this.value);
+        if (response) {
+            this.valueChange.emit(this.value);
             this.editable = !this.editable;
         }
     }

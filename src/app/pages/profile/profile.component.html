@@ -17,7 +17,7 @@
             type="text"
             direction="ltr"
             [value]="user.username"
-            [onValueChanged]="editField"
+            (valueChange)="editField('username', $event)"
         ></app-editable-field>
 
         <app-editable-field
@@ -28,7 +28,7 @@
             type="email"
             direction="ltr"
             [value]="user.email"
-            [onValueChanged]="editField"
+            (valueChange)="editField('email', $event)"
         ></app-editable-field>
 
         <app-editable-field
@@ -41,7 +41,7 @@
             placeholder="+98 9XX XXX XXXX"
             direction="ltr"
             [value]="user.phone"
-            [onValueChanged]="editField"
+            (valueChange)="editField('phone', $event)"
         ></app-editable-field>
 
         <app-editable-field
@@ -51,7 +51,7 @@
             name="given-name"
             type="given-name"
             [value]="user.firstName"
-            [onValueChanged]="editField"
+            (valueChange)="editField('firstName', $event)"
         ></app-editable-field>
         <app-editable-field
             id="last-name"
@@ -60,7 +60,7 @@
             name="family-name"
             type="family-name"
             [value]="user.lastName"
-            [onValueChanged]="editField"
+            (valueChange)="editField('lastName', $event)"
         ></app-editable-field>
 
         <app-editable-field
@@ -71,7 +71,7 @@
             type="date"
             direction="ltr"
             [value]="user.dateOfBirth.slice(0, 10)"
-            [onValueChanged]="editField"
+            (valueChange)="editField('dateOfBirth', $event)"
         ></app-editable-field>
     </main>
 </div>

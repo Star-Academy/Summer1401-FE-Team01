@@ -21,7 +21,7 @@ export class UserService {
         return response?.user || null;
     }
 
-    public async alterUserInfo(alteredField: string, newValue: any): Promise<boolean> {
+    public async alterUserInfo(alteredField: keyof User, newValue: any): Promise<boolean> {
         const response = await this.apiService.postRequest<{}>({
             url: API_USER_ALTER,
             body: {token: this.token, [alteredField]: newValue},
